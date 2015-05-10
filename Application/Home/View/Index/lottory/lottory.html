@@ -58,9 +58,24 @@
             <td>一等 1名，二等2名，三等3名</td>
             <td>ipad</td>
             <td>20150401</td>
-            <td><a href="#">编辑</a><a href="#">删除</a></td>
+            <td><a href="{:U('index/lottory_view')}?id={$vo.id}">编辑</a>
+                <a href="#" onclick="del({$vo.id})">删除</a></td>
         </tr>
     </table>
 </body>
 
 </html>
+<script>
+$(function() {
+    $('#addnew').click(function() {
+        window.location.href = "{:U('index/lottory_add')}";
+    });
+});
+
+function del(id) {
+    if (confirm("确定要删除吗？")) {
+        var link = "{:U('index/lottory_delete')}?id=" + id;
+        window.location.href = link;
+    }
+}
+</script>

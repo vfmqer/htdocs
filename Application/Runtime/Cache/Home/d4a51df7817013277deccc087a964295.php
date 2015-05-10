@@ -104,7 +104,7 @@ $(function() {
 
 function del(id) {
     if (confirm("确定要删除吗？")) {
-        var url = "index.html";
+        var url = "<?php echo U('index/message_delete');?>";
         window.location.href = url;
     }
 }

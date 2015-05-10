@@ -38,20 +38,18 @@
         用户名称：
         <input type="text" name="username" id="username" class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
         <button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp;
-        <button type="button" class="btn btn-success" id="addnew">新增</button>
+        <button type="button" class="btn btn-success" id="addnew">新增问卷</button>
         <!-- &nbsp;&nbsp; <button type="button" class="btn btn-success" id="addnew">新增会员</button> -->
     </form>
     <table class="table table-bordered table-hover definewidth m10">
         <thead>
             <tr>
-                <th>编号</th>
+                <th>问卷编号</th>
                 <th>问卷类型</th>
-                <th>问题</th>
-                <th>邮箱</th>
-                <th>地址</th>
-                <th>详细地址</th>
-                <th>留言内容</th>
-                <th>留言用户</th>
+                <th>问卷创建时间</th>
+                <th>问卷开始时间</th>
+                <th>问卷结束时间</th>
+                <th>参加问卷人数</th>
                 <th>操作</th>
             </tr>
         </thead>
@@ -62,14 +60,25 @@
             <td>382938293</td>
             <td>普通</td>
             <td>普通</td>
-            <td>100</td>
-            <td>2</td>
             <td>
-                <a href="#">编辑</a>
-                <a href="#">删除</a>
+                <a href="{:U('index/lessons_view')}">统计&分析</a>
             </td>
         </tr>
     </table>
 </body>
 
 </html>
+<script>
+$(function() {
+    $('#addnew').click(function() {
+        window.location.href = "{:U('index/lessons_add')}";
+    });
+});
+
+function del(id) {
+    if (confirm("确定要删除吗？")) {
+        var link = "{:U('index/lottory_delete')}?id=" + id;
+        window.location.href = link;
+    }
+}
+</script>

@@ -71,19 +71,7 @@
         </td>
     </tr>
     <input type="hidden" name="id" value="<?php echo ($message["id"]); ?>">
-    <!-- <tr>
-        <td class="tableleft">状态</td>
-        <td>
-            <input type="radio" name="data[status]" value="1" checked/> 启用
-           <input type="radio" name="data[status]" value="0"/> 禁用
-            <input type="hidden" name="id" value="<?php echo ($message["id"]); ?>">
-        
-        </td>
-    </tr> -->
-   <!--  <tr>
-        <td class="tableleft">角色</td>
-        <td><?php echo ($role_checkbox); ?></td>
-    </tr> -->
+
     <tr>
         <td class="tableleft"></td>
         <td>

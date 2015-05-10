@@ -11,7 +11,7 @@ return array(
 	'DB_CHARSET'=> 'utf8', // 字符集
 
 	'MY_PAGE' =>'10',//公共页每页显示条数
-	'MY_PAGE_MESSAGE' =>'200',//message页每页显示条数
+	'MY_PAGE_MESSAGE' =>'5',//message页每页显示条数
 	'MY_PAGE_NEWS' =>'10',//News页每页显示条数
 
 	'SHOW_PAGE_TRACE'=> true,//开启调试输出

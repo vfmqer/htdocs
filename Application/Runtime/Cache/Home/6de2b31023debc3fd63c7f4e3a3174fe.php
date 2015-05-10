@@ -70,6 +70,7 @@
         </tr>
         </tr><?php endforeach; endif; ?>
     </table>
+    <hr />
     <div class="green-black"><?php echo ($page); ?>
         <div/>
         <!-- page方法显示分页 -->

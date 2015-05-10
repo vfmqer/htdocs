@@ -387,6 +387,25 @@ class IndexController extends Controller {
         
     }
 
+    public function lottory_add(){
+
+        $this->display('index/lottory/lottory');
+        
+    }
+
+
+    public function lottory_edit(){
+
+        $this->display('index/lottory/lottory');
+        
+    }    
+
+    public function lottory_view(){
+
+        $this->display('index/lottory/lottory');
+        
+    }
+
     public function address(){//地址管理方法
 
 
@@ -484,6 +503,24 @@ class IndexController extends Controller {
         $this->display('index/lessons/lessons'); 
         
     }
+
+    public function lessons_view(){
+
+        $this->display('index/lessons/lessons'); 
+        
+    }
+
+    public function lessons_add(){
+
+        $this->display('index/lessons/lessons'); 
+        
+    }
+
+    public function lessons_delete(){
+
+        $this->display('index/lessons/lessons'); 
+        
+    }   
 
     public function news(){//资讯管理方法
 
@@ -794,7 +831,7 @@ class IndexController extends Controller {
         
     }
     
-    public function rebate_look(){
+    public function rebate_look(){//返利查看单用户明细
 
         $name['username'] = I('get.username');
         $name['downtype']=1;
@@ -817,7 +854,6 @@ class IndexController extends Controller {
 
         $this->display('index/rebate/rebate_look');
 
-
     }
 
     public function barcode(){//条码管理方法 
@@ -834,7 +870,7 @@ class IndexController extends Controller {
 
         $list = $table->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
 
-        for ($i=0; $i < $count; $i++) {
+        for ($i=0; $i < count($list); $i++) {
             if($list[$i]['state']==0){
                 $list[$i]['state']='未扫码';
             }
@@ -1080,20 +1116,4 @@ class IndexController extends Controller {
             
     }
 
-    public function test(){//测试页面
-
-        $User = M('User');
-        $count = $User->where('level=6')->count();
-        $Page = new \Think\Page($count,2);
-        $show =$Page->show();
-
-        $list = $User->where('level=6')->limit($Page->firstRow.','.$Page->listRows)->select();
-
-        
-        $this->assign('list',$list);// 赋值数据集
-        $this->assign('page',$show);// 赋值分页输出
-       
-        $this->display(); //分页测试 
-
-    }
 }

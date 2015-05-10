@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, height = device-height, initial-scale=1, target-densitydpi=medium-dpi">
+<title>产品展示</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-2.1.1.min.js"></script>
+<style type="text/css">
+ .active{color:red;border-bottom:solid 1px red;width:23%;height:40px;float:left;background:white;line-height:40px;}
+ .list{color:#000;width:23%;height:40px;float:left;background:white;line-height:40px;}
+ .listm{color:#000;width:8%;height:40px;float:left;background:white;line-height:40px;} 
+</style>
+</head>
+
+<body bgcolor="#F5F5F5">
+
+<!--头部-->
+<div class="headbg" align="center">
+  <div class="headback" style="">
+  <a href="proshowlist.html"><img src="img/img002.png" height="30"></a></div>
+  <div class="headload" style="">产品展示</div>
+   
+</div>
+
+<!--主体-->
+<div class="">
+<div style="font-size:1em;height:40px;" align="center">
+  <a href="#" class="active" id="cat1">
+  <div>分类一</div></a>
+  <a href="#" class="list" id="cat2">
+  <div>分类二</div></a>
+  <a href="#" class="list" id="cat3">
+  <div>分类三</div></a>
+  <a href="#" class="list" id="cat4">
+  <div>分类四</div></a> 
+  <a href="#" class="listm" id="more">
+  <div>&nbsp;>&nbsp;</div></a>    
+</div>
+
+
+<div class="context">
+  <div class="prolist1">
+    <a href="prodetailss.html">
+      <img src="img/proimg001.png" class="proimg"/>
+      <div class="protitle">佳能（Canon）EOS 70D单反套机类<br/>（EF-S 18-135mm f/3.5）<br/>
+      <div style="font-size:12px;color:#999">点击：1000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布日期：2015-04-10</div>
+      </div>
+    </a>
+  </div>
+
+</div>
+
+<!--尾部-->
+
+
+<script>
+   var str='<div class="prolist1"><a href="prodetailss.html"><img src="img/proimg001.png" class="proimg"/><div class="protitle">佳能（Canon）EOS 70D单反套机类<br/>（EF-S 18-135mm f/3.5）<br/><div style="font-size:12px;color:#999">点击：1000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布日期：2015-04-10</div></div></a></div>';
+
+  $("#cat1").click(function(event) {
+    $(this).siblings("a").removeClass("active");
+    $(this).siblings("a").addClass("list");
+    $(this).removeClass("list");
+    $(this).addClass("active");
+    $(".context").html(str)
+  });
+
+  $("#cat2").click(function(event) {
+    $(this).siblings("a").removeClass("active");
+    $(this).siblings("a").addClass("list");
+    $(this).removeClass("list");
+    $(this).addClass("active");
+    $(".context").html(str+str)
+  });
+
+  $("#cat3").click(function(event) {
+    $(this).siblings("a").removeClass("active");
+    $(this).siblings("a").addClass("list");
+    $(this).removeClass("list");
+    $(this).addClass("active");
+    $(".context").html(str+str+str)
+  });
+
+  $("#cat4").click(function(event) {
+    $(this).siblings("a").removeClass("active");
+    $(this).siblings("a").addClass("list");
+    $(this).removeClass("list");
+    $(this).addClass("active");
+    $(".context").html(str+str+str+str)
+  });
+
+</script>
+
+</body>
+</html>

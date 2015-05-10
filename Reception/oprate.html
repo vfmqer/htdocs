@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, height = device-height, initial-scale=1, target-densitydpi=medium-dpi">
+<title>设置</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jquery-2.1.1.js"></script>
+<script type="text/javascript">
+jQuery(function () {
+  $("#showleft").click(function(event) {
+    /* Act on the event */
+    $(".cbbody").toggleClass('leftin');
+  });
+ });  
+</script>
+
+<style type="text/css">
+.leftin{left:0;}
+.leftout{left:100%;}
+</style>
+</head>
+
+<body>
+
+<!--头部-->
+<div class="headbg" align="center">
+  <div class="headback" style="">
+  <a href="javascript:void(0)" id="showleft"><img src="img/img06.png" height="30"></a></div>
+  <div class="headload" style="">设置</div>
+   
+</div>
+
+<!--主体-->
+<div class="more_maintab" >
+<p class="navi_paragraph" ><a href="#">
+<span>一键官网</span><img src="img/img22.png" height="15">
+</a></p>
+<p class="navi_paragraph"><a href="#">
+<span>关于</span><img src="img/img22.png" height="15">
+</a></p>
+<p class="navi_paragraph"><a href="#">
+<span>意见反馈</span><img src="img/img22.png" height="15">
+</a></p>
+<p class="navi_paragraph"><a href="#">
+<span>帮助</span><img src="img/img22.png" height="15">
+</a></p>
+<p class="navi_paragraph"><a href="#">
+<span>版本更新</span>
+<img src="img/img22.png" height="15">
+<span style="float:right;margin-right:10px" id="version_num" >v1.0.0</span>
+</a></p>
+</div>
+
+<!--尾部-->
+<div class="footertab" >
+  <a href="index.html"><div class="foot"><img src="img/img01.png" height="28" /><div>首页</div></div></a>  
+  <a href="directsell.html"><div class="foot"><img src="img/img02.png" height="28" /><div>直销模式</div></div></a> 
+  <a href="joinus.html"><div class="foot"><img src="img/img03.png" height="28" /><div>加盟</div></div></a> 
+  <a href="service.html"><div class="foot"><img src="img/img04.png" height="28" /><div>售后</div></div></a> 
+  <a href="#"><div class="foot_seleted"><img src="img/img05.png" height="28" /><div>设置</div></div></a> 
+</div>
+
+<!--侧边栏-->
+<div class="cbbody" >
+   <div class="cbuser" align="center">用户昵称</div>
+   <div class="cblist"> <img src="img/img11.png" > <div>我的产品  </div> </div>
+   <div class="cblist"> <img src="img/img12.png" > <div>我的订单  </div> </div>
+   <div class="cblist"> <img src="img/img13.png" > <div>我的奖品  </div> </div>
+   <div class="cblist"> <img src="img/img14.png" > <div>资讯      </div> </div>
+   <div class="cblist"> <img src="img/img15.png" > <div>绑定推荐人</div> </div>
+   <div class="cblist"> <img src="img/img16.png" > <div>修改密码  </div> </div>
+   <div class="cblist"> <img src="img/img17.png" > <div>一键地图  </div> </div>
+   <div class="cblist"> <img src="img/img18.png" > <div>官方淘宝  </div> </div>
+   <div class="cblist"> <img src="img/img19.png" > <div>投诉      </div> </div>
+   <div class="cblist"> <img src="img/img20.png" > <div>退出      </div> </div>
+   <img src="img/img21.png" style="position:absolute;bottom:0;width:96%;margin:5px 5px;left:0;">   
+</div>
+
+</body>
+</html>

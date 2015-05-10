@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, height = device-height, initial-scale=1, target-densitydpi=medium-dpi">
+<title>产品</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/TouchSlide.1.1.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+<!--头部-->
+<div class="headbg" align="center">
+  <div class="headback" style="">
+  <a href="#"><img src="img/img002.png" height="30"></a></div>
+  <div class="headload" style="">产品</div>
+</div>
+
+
+<!--主体-->
+<div class="" style="">
+  <div class="" style="margin:10px 5% 0 5%">
+    <div class="" style="font-size:14px;color:red">订单码 123456789012</div>
+    <div class="tianjiawenzi" style="">此处添加说明文字</div>
+  </div>
+
+  <!--幻灯片-->  
+  <div class="" style="margin-top:10px">
+  <div id="focus" class="focus">
+    <div class="hd" >
+      <ul style="list-style:none">
+      </ul>
+    </div>
+    <div class="bd">
+      <ul>
+        <li> <img _src="img/pro100101.png"/> </li>
+        <li> <img _src="img/pro100102.png"/> </li>
+        <li> <img _src="img/pro100101.png"/> </li>
+        <li> <img _src="img/pro100102.png"/> </li>
+      </ul>
+    </div>
+  </div>
+  <script type="text/javascript">
+		TouchSlide({ 
+			slideCell:"#focus",
+			titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+			mainCell:".bd ul", 
+			effect:"left", 
+			autoPlay:true,//自动播放
+			autoPage:true, //自动分页
+			switchLoad:"_src" //切换加载，真实图片路径为"_src" 
+		});
+	</script> 
+  </div>
+  
+  <div class="productdes" style="">
+    <div class="productname" style="">Ssus/华硕FF454LJ5200五代处理器 手提 游戏 笔记本电脑</div>
+    <div class="productline" style=""></div>
+    <a href="#"><div class="" style="font-size:10px;color:#000">
+      <img src="img/img006.png" height="30"/><br/>分享</div></a>
+  </div>
+  
+  <div class="" style="margin:10px 5% 0 5%">
+    <div class="" style="font-size:25px">￥3699.00&nbsp;<a href="#"><img src="img/img007.png" height="18"/></a></div>
+    <div class="" style="font-size:14px;color:#999">价格：<s>￥3999.00&nbsp;</s></div>
+  </div>
+  
+  <div class="productft" style="">
+    <div style="width:33%;float:left">顺丰包邮</div>
+    <div style="width:33%;float:left">月销270笔</div>
+    <div style="width:33%;float:left">广东广州</div>
+  </div>
+  
+</div>
+
+<!--尾部-->
+
+
+</body>
+</html>

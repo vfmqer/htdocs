@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, height = device-height, initial-scale=1, target-densitydpi=medium-dpi">
+<title>首页</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
+<script type="text/javascript">
+jQuery(function () {
+  $("#showleft").click(function(event) {
+    /* Act on the event */
+    $(".cbbody").toggleClass('leftin');
+  });
+ });  
+</script>
+
+<style type="text/css">
+.leftin{left:0;}
+.zxlist{margin:0 5% 5px 5%;height:70px;width:90%;background:#fff;float:left;}
+.zximg{height:60px;width:60px;float:left;margin:5px 0 5px 5px;}
+.zxcontect{margin:0 5px;width:80%;padding:5px 0 0 65px;line-height:20px;}
+</style>
+</head>
+
+<body bgcolor="#F5F5F5">
+
+<!--头部-->
+<div class="headbg" align="center">
+  <div class="headback" style="">
+  <a href="javascript:void(0)" id="showleft"><img src="img/img06.png" height="30"></a></div>
+  <div class="headload" style="">首页</div>
+   
+</div>
+
+<!--主体-->
+<!--幻灯片-->
+<div class="top10">
+  <div id="focus" class="focus">
+    <div class="hd" >
+      <ul style="list-style:none">
+      </ul>
+    </div>
+    <div class="bd">
+      <ul>
+        <li> <img _src="img/proimg002.png"/> </li>
+        <li> <img _src="img/proimg002.png"/> </li>
+        <li> <img _src="img/proimg002.png"/> </li>
+        <li> <img _src="img/proimg002.png"/> </li>
+      </ul>
+    </div>
+  </div>
+  <script type="text/javascript">
+		TouchSlide({ 
+			slideCell:"#focus",
+			titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+			mainCell:".bd ul", 
+			effect:"left", 
+			autoPlay:true,//自动播放
+			autoPage:true, //自动分页
+			switchLoad:"_src" //切换加载，真实图片路径为"_src" 
+		});
+	</script> 
+
+	<div style="margin:2.5% 10px" align="center">
+	  <a href="proshowlist.html"><div class="proshow" style="background:#0e396e;">产品展示</div></a>
+      <a href="#"><div class="proshow" style="background:#00a2e9;">产品状态</div></a>
+	</div>	
+
+    <div style="font-size:0.8em;line-height:4em;margin:10px 5%;width:90%">
+    	<a href="#"><div style="float:left;color:#999;">水健康</div></a>
+      <a href="zxcenter.html"><div style="float:right;color:#999;">更多></div></a>
+    </div>
+
+  <a href="zxdetail.html">
+  <div class="zxlist" align="left">
+    <img src="img/pro100201.png" class="zximg" />
+    <div class="zxcontect" >
+      <div style="font-size:14px;color:#000">中国南海岛礁填海造地引关注</div>
+      <div style="font-size:12px;color:#000">摘要：4月10日讯 综合媒体报道</div>
+      <div style="font-size:12px;color:#ccc">点击：3000&nbsp;&nbsp;&nbsp;发布日期：2015-04-10</div>
+    </div>
+  </div></a>
+
+</div>
+
+
+<!--尾部-->
+<div class="footertab" >
+  <a href="#"><div class="foot_seleted"><img src="img/img01.png" height="28" /><div>首页</div></div></a>  
+  <a href="directsell.html"><div class="foot"><img src="img/img02.png" height="28" /><div>直销模式</div></div></a> 
+  <a href="joinus.html"><div class="foot"><img src="img/img03.png" height="28" /><div>加盟</div></div></a> 
+  <a href="service.html"><div class="foot"><img src="img/img04.png" height="28" /><div>售后</div></div></a> 
+  <a href="oprate.html"><div class="foot"><img src="img/img05.png" height="28" /><div>设置</div></div></a> 
+</div>
+
+
+<!--侧边栏-->
+<div class="cbbody" >
+   <div class="cbuser" align="center">用户昵称</div>
+   <div class="cblist"> <img src="img/img11.png" > <a href="myproductlist.html"><div>我的产品  </div></a> </div>
+   <div class="cblist"> <img src="img/img12.png" > <a href="myorder.html"><div>我的订单  </div></a> </div>
+   <div class="cblist"> <img src="img/img13.png" > <a href="myreward.html"><div>我的奖品  </div></a> </div>
+   <div class="cblist"> <img src="img/img14.png" > <a href="zxcenter.html"><div>资讯      </div></a> </div>
+   <div class="cblist"> <img src="img/img15.png" > <a href="recommend.html"><div>绑定推荐人</div></a> </div>
+   <div class="cblist"> <img src="img/img16.png" > <a href="wjmm.html"><div>修改密码  </div></a> </div>
+   <div class="cblist"> <img src="img/img17.png" > <a href="onekeymap.html"><div>一键地图  </div></a> </div>
+   <div class="cblist"> <img src="img/img18.png" > <a href="http://ai.m.taobao.com/index.html"><div>官方淘宝  </div></a> </div>
+   <div class="cblist"> <img src="img/img19.png" > <a href="complain.html"><div>投诉      </div></a> </div>
+   <div class="cblist"> <img src="img/img20.png" > <a href="#"><div>退出      </div></a> </div>
+   <img src="img/img21.png" style="position:absolute;bottom:0;width:96%;margin:5px 5px;left:0;">   
+</div>
+
+
+</body>
+</html>

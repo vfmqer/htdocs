@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, height = device-height, initial-scale=1, target-densitydpi=medium-dpi">
+<title>绑定推荐人</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/TouchSlide.1.1.js" type="text/javascript"></script>
+<style type="text/css">
+  .smbody{width:180px;height:40px;border:solid 1px red;border-radius:5px;}
+  .smbody img{width:30px;margin:5px 0px 5px 10px;float:left;}
+  .smhq{color:red;font-size:18px;margin:10px 0;}
+  .sginput{font-size:14px;border:0;margin-left:10px;}
+  .signbody{font-size:14px;color:#0F0;margin:10px 0;padding:10px 0 ;border:solid 1px #0f0;}
+  .shuoming{font-size:14px;color:#999999;float:left;width:100%;}
+  .active{width:50%;height:40px;color:red;float:left;padding:12px 0;}
+  .list{width:50%;height:40px;color:#fff;float:left;padding:12px 0;}
+  .configbtn{width:100%;height:40px;position:fixed;bottom:0;text-align:center;font-size:16px;background-color:#000;}
+  .configbtn div{cursor:pointer;}
+  .configbtn div:hover{width:50%;height:40px;background-color:#CCC;display:block;}
+</style>
+</head>
+
+<body>
+
+<!--头部-->
+<div class="headbg" align="center">
+  <div class="headback" style="">
+  <a href="index.html"><img src="img/img002.png" height="30"></a></div>
+  <div class="headload" style="">绑定推荐人</div>
+</div>
+
+
+<!--主体-->
+<div class="" style="">
+  <a href="#">
+  <div class="" style="margin:30px 5% 30px 5%;" align="center">
+    <div class="smbody">
+      <img src="img/img008.png" />
+      <div class="smhq">扫描获取推荐人</div>
+    </div>
+  </div></a>
+
+  <div class="" style="margin:20px 5% 0 5%">
+    <input type="text" placeholder="手工输入推荐人" class="sginput" ></input>
+    <div class="hline" style=""></div>
+  </div>
+
+  <div class="" style="margin:10px 5% 0 5%">
+    
+    <div class="signbody" >
+      <div class="shuoming" style="">说明：一个手机只能绑定一个推荐人</div>
+      <div style="text-align:center;margin:40px 0">此处添加绑定信息说明</div>
+    </div>
+  </div>
+    
+</div>
+
+<!--尾部-->
+<div class="configbtn" >
+    <div class="active" id="cat1">确认</div>
+    <div class="list" id="cat2">取消</div>
+</div>
+
+
+<script type="text/javascript">
+
+    $("#cat1").click(function(event) {
+    $(this).siblings("div").removeClass("active");
+    $(this).siblings("div").addClass("list");
+    $(this).removeClass("list");
+    $(this).addClass("active");
+  });
+
+  $("#cat2").click(function(event) {
+    $(this).siblings("div").removeClass("active");
+    $(this).siblings("div").addClass("list");
+    $(this).removeClass("list");
+    $(this).addClass("active");
+  });
+
+</script>
+</body>
+</html>

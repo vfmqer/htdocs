@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type"content="text/html; charset=utf-8"/>
+<meta name="viewport"content="width=device-width, height = device-height, initial-scale=1, target-densitydpi=medium-dpi">
+<title>资讯中心</title>
+<link href="css/main.css"rel="stylesheet"type="text/css">
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/TouchSlide.1.1.js"type="text/javascript"></script>
+<style type="text/css">
+  .zxselect {height: 40px; border-bottom: solid 1px #ccc; background-color: #fff; }
+  .active { color: red; width: 23%; height: 40px; float: left; background: white; line-height: 40px; }
+  .list { color: #000; width: 23%; height: 40px; float: left; background: white; line-height: 40px; }
+  .listm { color: #000; width: 8%; height: 40px; float: left; background: white; line-height: 40px; }
+  .zxselect div,.zxselect span{cursor:pointer;}
+  .context { margin: 5px 5% 5px 5%; height: 70px; background-color: #fff; }
+  .context img { height: 60px; width: 60px; float: left; margin: 5px 0 5px 5px; }
+  .details { margin: 0 5px; width: 75%; padding: 5px 0 0 65px;line-height:20px;}
+  </style>
+  </head>
+
+  <body style="background-color:#f5f5f5">
+
+  <!--头部-->
+  <div class="headbg"align="center">
+  <div class="headback"style="">
+  <a href="index.html"><img src="img/img002.png"height="30"></a></div>
+  <div class="headload"style="">资讯中心</div>
+  </div>
+
+
+  <!--主体-->
+  <div class=""style="">
+    <div class="zxselect"align="center">
+      <div class="active" id="cat1">行业信息</div>
+      <div class="list"   id="cat2">问题详解</div>
+      <div class="list"   id="cat3">科普知识</div>
+      <div class="list"   id="cat4">安装教程</div> 
+      <span class="listm"  id="more">&nbsp;>&nbsp;</span>        
+    </div>
+
+<div class="zxctext">
+    <a href="zxdetail.html">
+      <div class="context" align="left">
+        <img src="img/pro100201.png"/>
+        <div  class="details">
+          <div class=""style="font-size:14px;color:#000">中国南海岛礁填海造地引关注</div>
+          <div class=""style="font-size:12px;color:#000">摘要：4月10日讯 综合媒体报道</div>
+          <div class=""style="font-size:12px;color:#ccc">点击：3000&nbsp; &nbsp;发布日期：2015-04-10</div>
+        </div>
+      </div>
+    </a>
+</div>
+  </div>
+
+  <!--尾部-->
+
+  <script>
+  var str='<a href="zxdetail.html"><div class="context"align="left"><img src="img/pro100201.png"/><div  class="details"><div class=""style="font-size:14px;color:#000">中国南海岛礁填海造地引关注</div><div class=""style="font-size:12px;color:#000">摘要：4月10日讯 综合媒体报道</div><div class=""style="font-size:12px;color:#ccc">点击：3000&nbsp; &nbsp; &nbsp; 发布日期：2015-04-10</div></div></div></a>';
+
+  $("#cat1").click(function(event) {
+    $(this).siblings("div").removeClass("active");
+    $(this).siblings("div").addClass("list");
+    $(this).removeClass("list");
+    $(this).addClass("active");
+    $(".zxctext").html(str)
+  });
+
+  $("#cat2").click(function(event) {
+    $(this).siblings("div").removeClass("active");
+    $(this).siblings("div").addClass("list");
+    $(this).removeClass("list");
+    $(this).addClass("active");
+    $(".zxctext").html(str+str)
+  });
+
+  $("#cat3").click(function(event) {
+    $(this).siblings("div").removeClass("active");
+    $(this).siblings("div").addClass("list");
+    $(this).removeClass("list");
+    $(this).addClass("active");
+    $(".zxctext").html(str+str+str)
+  });
+
+  $("#cat4").click(function(event) {
+    $(this).siblings("div").removeClass("active");
+    $(this).siblings("div").addClass("list");
+    $(this).removeClass("list");
+    $(this).addClass("active");
+    $(".zxctext").html(str+str+str+str)
+  });
+</script>
+
+  </body>
+  </html>

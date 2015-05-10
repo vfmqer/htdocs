@@ -1,0 +1,146 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*通用*/
+/*overflow:hidden影藏拖动框*/
+body{padding:0px;margin:0px;font-weight:normal;width:100%;min-width:320px;}
+p,span,div,input,button{font-family:"黑体", "微软雅黑";}
+p{padding:0;margin:0;}
+a:link,a:visited{ text-decoration:none;  /*超链接无下划线*/}
+a:hover{ text-decoration:none;  /*鼠标放上去无下划线*/}
+
+
+/*登录*/
+.headbg{width:100%;height:60px;background-image:url(../img/img001.png);background-size:cover;}
+.headback{margin:15px 0 0 5%;float:left;}
+.headfx{margin:15px 5% 0 0 ;float:right;}
+.headload{width:45%;color:#FFF;font-size:25px;line-height:60px;}
+.mbimg{float:left;margin:0px 0px 0 10px;}
+.mbinput{font-size:18px;border:0;margin-left:10px;}
+.hline{width:100%;height:5px;border:solid 1px #999999;border-top:none;margin-top:0px;}
+
+.btload{width:100%;height:50px;background-color:#F00;color:#FFF;font-size:20px;border:0;border-radius:3px;cursor:pointer;}
+.btyzm{width:35%;margin-left:2%;height:40px;background-color:#F00;color:#FFF;font-size:16px;border:0;border-radius:3px;cursor:pointer;}
+
+.btbg{width:100%;height:60px;position:fixed;bottom:0;}
+.wjmm{font-size:16px;color:#999999;float:left;}
+.sline{width:2px;height:18px;float:left;background-color:#999999;margin-left:7px;}
+.zcxyy{font-size:16px;color:#999999;margin-left:7px;}
+
+
+/*订单*/
+.prolist{margin:10px 0 0 0;padding:0 0 5px 0;border-bottom:solid 1px #ccc;height:95px;}
+.prolist1{margin:5px 0 5px 0;padding:10px 0 5px 0;border-bottom:solid 0px #ccc;height:80px;background:#FFF;}
+.proimg{width:80px;margin:0 3%;float:left;}
+.protitle{font-size:14px;line-height:23px;color:#000;}
+
+/*奖品*/
+.rewardbg{margin:10px 0 0 0;padding:0 0 5px 0;border-bottom:solid 1px #ccc;height:110px;}
+.rewardhd{font-size:14px;margin:0 10px 5px 10px;float:left;width:70%;}
+.rewardname{font-size:14px;margin:0 10px 5px 10px;float:right;color:red;}
+.rewarddhm{font-size:12px;margin:0 10px 5px 10px;float:left;width:40%;}
+.rewardjz{font-size:12px;margin:0 10px 5px 10px;float:right;}
+.rewardsy{font-size:12px;margin:4px 10px 0 0;float:right;width:75px;line-height:20px;}
+
+
+/*产品*/
+.tianjiawenzi{font-size:14px;color:#0F0;text-align:center;margin:10px 0 10px 0;padding:20px 0 20px 0;border:solid 1px #0f0;}
+.productdes{margin:10px 5% 0 5%;border-bottom:solid 1px #ccc;padding-bottom:10px;}
+.productname{width:80%;float:left;line-height:22px;}
+.productline{width:2px;height:50px;background-color:#ccc;float:left;margin:0 15px 15px 5px;}
+.productft{margin:10px 5% 0 5%;font-size:12px;color:#999;}
+
+
+
+/*我的产品*/
+.imgsize{width:100px;margin:0 3%;float:left;}
+.shouming{width:65%;float:left;margin:10px 0 10px 0;}
+.smbtm{width:85%;height:12px;background-color:#eeeeef;border-radius:5px;float:right;margin:5px 2%;}
+.smlenth{width:25%;height:12px;background-color:red;border-radius:5px;float:left;}
+.butbuy{width:70px;height:20px;background-color:red;border-radius:2px;color:#fff;float:right;border:0;margin:2px 5%;}
+
+/*售后*/
+.maintap{text-align:center;font-size:20px;height:50px;color:#000;}
+.maintap .lessonbtn{width:50%;height:50px;float:left;background:white;line-height:50px;color:#000;}
+.lottery{width:100%;height:50px;position:fixed;bottom:60px;background:#F00;color:#FFF;text-align:center;}
+.lottery div{font-size:18px;margin-top:15px;}
+.submit_les{width:100%;height:50px;position:fixed;bottom:0;background:#000;color:#FFF;text-align:center;}
+.submit_les div{font-size:18px;margin-top:15px;}
+.lessons{margin-top:5px;padding:0;width:100%;}
+.lessons a:hover{background:#DFDFDF;}
+.lessons a{height:40px;line-height:40px;background:white;display:block;width:100%;color:black;text-decoration:none;font-size:14px;}
+.lessons span{float:left;margin-left:5%;}
+.lessons img{float:right;margin-top:11px;margin-right:5%;padding-top:2px;}
+
+/*抽奖*/
+.lotterydes{width:90%;height:40px;margin:5px 5%;border:dashed 1px #0F0;text-align:center;}
+.lotterydes div{color:#0F0;font-size:16px;margin:12px 0;}
+.textfont{text-indent:2em;font-size:14px;line-height:23px;padding:10px 5% 50px 5%;}
+
+/*留言*/
+.somet{margin:5px 3%;padding:0 2%;background:#FFF;width:90%;height:2.5em;font-size:1em;line-height:2.5em;color:#333;}
+.inputcs{border:0;width:70%;margin-left:3em;font-size:1em;line-height:2.2em;background:#FFF}
+.selectop{width:25%;margin-right:2%;font-size:0.8em;}
+.ttarea{height:8em;width:100%;line-height:1.5em;margin:0;margin:0;border:0;resize:none;}
+
+/*产品*/
+.maintap1{text-align:center;font-size:20px;height:40px;}
+.maintap1 .lessonbtn1{width:50%;height:40px;float:left;line-height:40px;color:#000;background-color:#D5D5D5;border-top:solid 1px #D5D5D5;}
+.proname{padding:10px 0 10px 5%;width:95%;line-height:1.4em;float:left;background-color:#F5F5F5;}
+.proname1{padding:10px 5% 10px 5%;width:90%;line-height:1.4em;background-color:#F5F5F5;}
+.redpri{color:red;font-size:1.4em;line-height:1.6em;}
+.content{padding:10px 5%;width:90%;margin-top:100px;}
+.contentfont{text-indent:2em;font-size:14px;width:100%;line-height:20px;color:#666;}
+.anzjc{width:100%;bottom:0;position:fixed;height:40px;line-height:40px;font-size:1em;color:red;background:black;text-align:center;}
+
+.prods{margin-top:5px;padding:0 5%;width:90%;height:70px;background:#FFF;font-size:1.2em;}
+.prods span{line-height:70px;margin-left:10px;color:#999;}
+.prods img{float:left;margin:10px 0;}
+.prods div{right:10px;float:right;line-height:70px;color:#999;}
+
+/*加盟*/
+.signs{padding-top:10px;background:#F5F5F5;width:100%;height:60px;}
+.smword{float:left;width:39%;height:40px;margin:5px 5%;border-radius:5px;background:#FFF;}
+.smwords{width:60px;color:#999;font-size:1em;padding-top:10px;}
+
+/*产品展示*/
+.proshow{width:45%;margin:0 2.5%;color:#FFF;height:3em;font-size:1em;line-height:3em;float:left;border-radius:5px;}
+.catg{background:url(../img/img10.png) no-repeat;background-size:80px 80px;width:80px;height:80px;text-align:left;color:#FFF;font-size:1em;line-height:80px;text-align:center;margin:15px 1.5%;}
+.divfl{float:left;width:33.3%;border:solid 0px red;}
+
+/*侧边栏*/
+.cbbody{position:absolute;z-index:2;overflow:hidden;;background:#0e396e;width:70%;top:60px;bottom:0px;color:#FFF;left:-70%;}
+.cbbody .cbuser{width:100%;height:60px;background:red;text-align:center;line-height:60px;font-size:1.2em}
+.cbbody .cblist{width:100%;height:40px;font-size:0.9em;line-height:40px}
+.cblist img{float:left;margin:12.5px 2% 13.5px 8%;height:15px;}
+.cblist div{width:80%;border-bottom:solid 1px #999;float:right;cursor:pointer;color:#FFF;}
+.cblist div:hover{background:#00A2E9}
+
+
+/*幻灯片*/
+.focus{width:100%;margin:0 auto;position:relative;overflow:hidden;border-top:solid 1px #CCC;border-bottom:solid 1px #CCC;}
+.focus .hd{width:100%;height:11px;position:absolute;z-index:1;bottom:5px;text-align:center;}
+.focus .hd ul{display:inline-block;height:5px;padding:0px 5px;background-color:rgba(255,255,255,0.7);-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;font-size:0;vertical-align:top;}
+.focus .hd ul li{display:inline-block;width:5px;height:5px;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;background:#8C8C8C;margin:0 5px;vertical-align:top;overflow:hidden;}
+.focus .hd ul .on{background:#FE6C9C;}
+.focus .bd{position:relative;z-index:0;}
+.focus .bd li img{width:100%;}
+
+
+/*设置样式 */
+.navi_paragraph,.version_num_wrapper{margin:0;padding:0;width:100%;margin-top:0px;}
+.navi_paragraph a:hover,.version_num_wrapper a:hover{background:#DFDFDF;}
+.navi_paragraph a,.version_num_wrapper a{height:40px;line-height:40px;background:white;display:block;width:100%;color:black;border-bottom:1px solid #CCCCCC;text-decoration:none;font-size:14px;}
+.navi_paragraph span,.version_num_wrapper span{float:left;margin-left:5%;}
+.navi_paragraph img{float:right;margin-top:11px;margin-right:5%;padding-top:2px;}
+
+
+/*最下部按钮*/
+.footertab{position:fixed;bottom:0px;width:100%;height:60px;background-color:#000;background-size:1px 60px;border-top:1px solid #CCCCCC;}
+.footertab .foot:hover{background-color:red;background-size:1px 60px;display:block;width:20%;height:60px;}
+.footertab p{padding:0px;margin:0px;font-size:12px;color:#4D4D4D;}
+.footertab img{margin:4px 0px 0px 0px;}
+.footertab .foot{width:20%;height:60px;text-align:center;float:left;color:#fff;font-size:14px;padding-top:3px;}
+.footertab .foot_seleted{width:20%;height:60px;text-align:center;float:left;color:#fff;font-size:14px;padding-top:3px;background-color:red;}
+
+

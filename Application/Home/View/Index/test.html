@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <load href="__PUBLIC__/Css/page.css" />
+    <div>
+        <foreach name="list" item="vo">
+            <tr>
+                <td> {$vo.id}</td>
+                <td>{$vo.username}</td>
+                <td>{$vo.truename}</td>
+                <td>{$vo.phone}</td>
+                <td>{$vo.barcode}</td>
+                <td>{$vo.integral}</td>
+                <td>{$vo.type}</td>
+                <td>{$vo.recommend}</td>
+                <td>
+                    <a href="{:U('Index/admin_edit')}?id={$vo.id}">编辑</a>
+                    <a href="{:U('Index/admin_delete')}?id={$vo.id}">删除</a>
+                </td>
+            </tr>
+        </foreach>
+    </div>
+    <hr/>
+    <div class="green-black">{$page}
+        <div/>
+</body>
+
+</html>

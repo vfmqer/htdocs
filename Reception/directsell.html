@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, height = device-height, initial-scale=1, target-densitydpi=medium-dpi">
+<title>直销模式</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+jQuery(function () {
+  $("#showleft").click(function(event) {
+    /* Act on the event */
+    $(".cbbody").toggleClass('leftin');
+  });
+ });  
+</script>
+
+<style type="text/css">
+.leftin{left:0;}
+.proimg{width:100px;margin:0 3%;float:left;}
+.pro_name{font-size:14px;line-height:23px;color:#000;}
+</style>
+</head>
+
+<body>
+
+<!--头部-->
+<div class="headbg" align="center">
+  <div class="headback" >
+  <a href="javascript:void(0)" id="showleft"><img src="img/img06.png" height="30"></a></div>
+  <div class="headload" >直销模式</div>
+   
+</div>
+
+<!--主体-->
+<div class="listbody">
+  <a href="prodetails.html">
+  <div class="prolist" >
+    <img src="img/proimg001.png" class="proimg" />
+    <div class="pro_name" >佳能（Canon）EOS 70D单反套机（EF-S 18-135mm f/3.5）<br/>
+    <span style="color:red">￥600</span>
+    <div style="font-size:12px;color:#999">发布日期：2015-04-10</div>
+    </div>
+  </div>
+  </a>  
+</div>
+
+
+
+
+<!--尾部-->
+<div class="footertab" >
+  <a href="index.html"><div class="foot"><img src="img/img01.png" height="28" /><div>首页</div></div></a>  
+  <a href="#"><div class="foot_seleted"><img src="img/img02.png" height="28" /><div>直销模式</div></div></a> 
+  <a href="joinus.html"><div class="foot"><img src="img/img03.png" height="28" /><div>加盟</div></div></a> 
+  <a href="service.html"><div class="foot"><img src="img/img04.png" height="28" /><div>售后</div></div></a> 
+  <a href="oprate.html"><div class="foot"><img src="img/img05.png" height="28" /><div>设置</div></div></a> 
+</div>
+
+
+<!--侧边栏-->
+<div class="cbbody" >
+   <div class="cbuser" align="center">用户昵称</div>
+   <div class="cblist"> <img src="img/img11.png" > <div>我的产品  </div> </div>
+   <div class="cblist"> <img src="img/img12.png" > <div>我的订单  </div> </div>
+   <div class="cblist"> <img src="img/img13.png" > <div>我的奖品  </div> </div>
+   <div class="cblist"> <img src="img/img14.png" > <div>资讯      </div> </div>
+   <div class="cblist"> <img src="img/img15.png" > <div>绑定推荐人</div> </div>
+   <div class="cblist"> <img src="img/img16.png" > <div>修改密码  </div> </div>
+   <div class="cblist"> <img src="img/img17.png" > <div>一键地图  </div> </div>
+   <div class="cblist"> <img src="img/img18.png" > <div>官方淘宝  </div> </div>
+   <div class="cblist"> <img src="img/img19.png" > <div>投诉      </div> </div>
+   <div class="cblist"> <img src="img/img20.png" > <div>退出      </div> </div>
+   <img src="img/img21.png" style="position:absolute;bottom:0;width:96%;margin:5px 5px;left:0;">   
+</div>
+
+</body>
+</html>

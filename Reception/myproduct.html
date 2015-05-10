@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, height = device-height, initial-scale=1, target-densitydpi=medium-dpi">
+<title>我的产品</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jquery-2.1.1.js"></script>
+
+<script language="javascript">
+
+for (var i=0; i<3; i++){
+  var data="<div class=\"prolist\"><img src=\"img/proimg001.png\" class=\"imgsize\"/><div style=\"line-height:23px\">某某滤芯名称<div class=\"shouming\"><span style=\"width:26px;font-size:10px\">寿命</span><div class=\"smbtm\"><div class=\"smlenth\"></div></div></div><div style=\"font-size:14px;width:100%\"><div style=\"float:left;width:60px\">一级滤芯</div><button class=\"butbuy\" >购买滤芯</button></div></div></div>";
+ document.getElementById("listpro").appendChild("");	 
+}
+</script>
+
+<script type="text/javascript">
+
+  var data="<div class=\"prolist\"><img src=\"img/proimg001.png\" class=\"imgsize\"/><div style=\"line-height:23px\">某某滤芯名称<div class=\"shouming\"><span style=\"width:26px;font-size:10px\">寿命</span><div class=\"smbtm\"><div class=\"smlenth\"></div></div></div><div style=\"font-size:14px;width:100%\"><div style=\"float:left;width:60px\">一级滤芯</div><button class=\"butbuy\" >购买滤芯</button></div></div></div>";
+  
+$(function(){	  
+for (var i=1; i<4; i++){
+  $("#listpro").append(data);
+  $(".smlenth").attr("style","width:"+15*i+"%");
+}
+})
+
+
+</script>
+
+</head>
+
+<body>
+
+<!--头部-->
+<div class="headbg" align="center">
+  <div class="headback" style="">
+  <a href="myproductlist.html"><img src="img/img002.png" height="30"></a></div>
+  <div class="headload" style="">我的产品</div>
+   
+</div>
+
+<!--主体-->
+<div id="listpro">
+
+  <div class="prolist" style="">
+    <img src="img/proimg001.png" class="imgsize" style=""/>
+    <div class="" style="line-height:23px">
+    某某滤芯名称
+    <div class="shouming" style="">
+        <span style="width:26px;font-size:10px">寿命</span> 
+        <div class="smbtm" style="">
+           <div class="smlenth" style=""></div>
+        </div>      
+    </div>
+    <div style="font-size:14px;width:100%">
+      <div style="float:left;width:60px">一级滤芯</div>
+      <button class="butbuy" >购买滤芯</button></div>
+    </div>
+  </div>
+
+
+</div>
+<!--尾部-->
+
+</body>
+</html>

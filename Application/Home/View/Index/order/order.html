@@ -38,38 +38,58 @@
         用户名称：
         <input type="text" name="username" id="username" class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
         <button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp;
-        <button type="button" class="btn btn-success" id="addnew">新增</button>
+        <button type="button" class="btn btn-success" id="addnew">误删重增</button>
         <!-- &nbsp;&nbsp; <button type="button" class="btn btn-success" id="addnew">新增会员</button> -->
     </form>
+<load href="__PUBLIC__/Css/page.css" / > 
     <table class="table table-bordered table-hover definewidth m10">
         <thead>
             <tr>
                 <th>编号</th>
-                <th>姓名</th>
-                <th>电话</th>
-                <th>邮箱</th>
-                <th>地址</th>
-                <th>详细地址</th>
-                <th>留言内容</th>
-                <th>留言用户</th>
+                <th>用户名</th>
+                <th>定单名称</th>
+                <th>定单编号</th>
+                <th>产品编号</th>
+                <th>交易时间</th>
+                <th>最后修改时间</th>
+                <th>定单状态</th>
                 <th>操作</th>
             </tr>
         </thead>
+        <foreach name='result' item='vo'>
         <tr>
-            <td>1</td>
-            <td>会员1</td>
-            <td>15333446423</td>
-            <td>382938293</td>
-            <td>普通</td>
-            <td>普通</td>
-            <td>100</td>
-            <td>2</td>
+            <td>{$vo.id}</td>
+            <td>{$vo.username}</td>
+            <td>{$vo.ordername}</td>
+            <td>{$vo.orderid}</td>
+            <td>{$vo.productid}</td>
+            <td>{$vo.transactiontime}</td>
+            <td>{$vo.lasttime}</td>
+            <td>{$vo.state}</td>
             <td>
-                <a href="#">编辑</a>
-                <a href="#">删除</a>
+                <a href="{:U('index/order_edit')}?id={$vo.id}">编辑</a>
+                <a href="#" onclick="del({$vo.id})">删除</a>
             </td>
         </tr>
+        </foreach>
     </table>
+   <hr />
+
+<div class="green-black">{$page}<div/> 
 </body>
 
 </html>
+<script>
+$(function() {
+    $('#addnew').click(function() {
+        window.location.href = "{:U('index/order_add')}";
+    });
+});
+
+function del(id) {
+    if (confirm("确定要删除吗？")) {
+        var link="{:U('index/order_delete')}?id="+id;
+        window.location.href = link;
+    }
+}
+</script>

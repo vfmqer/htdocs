@@ -38,38 +38,56 @@
         用户名称：
         <input type="text" name="username" id="username" class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
         <button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp;
-        <button type="button" class="btn btn-success" id="addnew">新增</button>
+        <button type="button" class="btn btn-success" id="addnew">误删重增</button>
         <!-- &nbsp;&nbsp; <button type="button" class="btn btn-success" id="addnew">新增会员</button> -->
     </form>
+<link rel="stylesheet" type="text/css" href="/Public/Css/page.css" /> 
     <table class="table table-bordered table-hover definewidth m10">
         <thead>
             <tr>
                 <th>编号</th>
-                <th>姓名</th>
-                <th>电话</th>
-                <th>邮箱</th>
-                <th>地址</th>
-                <th>详细地址</th>
-                <th>留言内容</th>
-                <th>留言用户</th>
+                <th>用户名</th>
+                <th>定单名称</th>
+                <th>定单编号</th>
+                <th>产品编号</th>
+                <th>交易时间</th>
+                <th>最后修改时间</th>
+                <th>定单状态</th>
                 <th>操作</th>
             </tr>
         </thead>
-        <tr>
-            <td>1</td>
-            <td>会员1</td>
-            <td>15333446423</td>
-            <td>382938293</td>
-            <td>普通</td>
-            <td>普通</td>
-            <td>100</td>
-            <td>2</td>
+        <?php if(is_array($result)): foreach($result as $key=>$vo): ?><tr>
+            <td><?php echo ($vo["id"]); ?></td>
+            <td><?php echo ($vo["username"]); ?></td>
+            <td><?php echo ($vo["ordername"]); ?></td>
+            <td><?php echo ($vo["orderid"]); ?></td>
+            <td><?php echo ($vo["productid"]); ?></td>
+            <td><?php echo ($vo["transactiontime"]); ?></td>
+            <td><?php echo ($vo["lasttime"]); ?></td>
+            <td><?php echo ($vo["state"]); ?></td>
             <td>
-                <a href="#">编辑</a>
-                <a href="#">删除</a>
+                <a href="<?php echo U('index/order_edit');?>?id=<?php echo ($vo["id"]); ?>">编辑</a>
+                <a href="#" onclick="del(<?php echo ($vo["id"]); ?>)">删除</a>
             </td>
-        </tr>
+        </tr><?php endforeach; endif; ?>
     </table>
+   <hr />
+
+<div class="green-black"><?php echo ($page); ?><div/> 
 </body>
 
 </html>
+<script>
+$(function() {
+    $('#addnew').click(function() {
+        window.location.href = "<?php echo U('index/order_add');?>";
+    });
+});
+
+function del(id) {
+    if (confirm("确定要删除吗？")) {
+        var link="<?php echo U('index/order_delete');?>?id="+id;
+        window.location.href = link;
+    }
+}
+</script>

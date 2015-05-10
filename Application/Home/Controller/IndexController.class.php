@@ -651,12 +651,113 @@ class IndexController extends Controller {
         
     }
 
-    public function order(){
+    public function order(){//订单管理方法
 
+        $table = M('Order');
+        $where = '';
+        $count = $table ->where($where)->count();
+
+        $Page = new \Think\Page($count,C('MY_PAGE'));
+        $show =$Page->show();
+
+        $list = $table->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
+        //数据库state 交易状态(0.已下单；1.已支付；2.已返利）
+        for ($i=0; $i < count($list); $i++) { 
+            switch ($list[$i]['state']) {
+                case '0':
+                    $list[$i]['state']='已下单';
+                    break;
+                case '1':
+                    $list[$i]['state']='已支付';
+                    break;
+                case '2':
+                    $list[$i]['state']='已返利';
+                    break;
+                default:
+                    $list[$i]['state']='状态出错';
+                    break;
+            }
+        }
+        $this->assign('result',$list);
+        $this->assign('page',$show);
         $this->display('index/order/order');
         
     }
 
+    public function order_add(){
+
+        if (IS_POST) {
+
+            $data=I('post.data');
+            if ($data['username']==''||$data['ordername']==''||$data['orderid']==''||$data['productid']==''||$data['transactiontime']==''||$data['state']=='') {
+
+                $this->error('请填写完全！');
+            }
+
+            $table = M('Order');
+            $ret = $table ->add($data);
+            if(!empty($ret)&&is_numeric($ret)){
+                $this->success('增加成功',U('index/order_add'));
+            }
+        }else{
+
+        $this->display('index/order/order_add');
+        }
+        
+    }
+
+    public function order_edit(){//订单编辑方法
+
+            if(IS_POST){   
+            $data = I('post.data');
+            if($data['username']==''||$data['ordername']==''||$data['orderid']==''||$data['productid']==''||$data['transactiontime']==''||$data['state']==''){
+                $this->error('请填写完全!');
+
+            }
+            $id = I('post.id');
+            $op = 'id='.$id;
+            $order = M('Order');
+            
+
+            $data['lasttime'] =  date('Y-m-d H:i:s',time());
+
+            $ret = $order->where($op)->save($data);
+            if(!empty($ret) && is_numeric($ret)){
+                $this->success('修改成功!',U('Index/order'));
+            }  
+        
+            }else{
+                    $id = I('get.id');
+
+                    if(empty($id)){
+
+                         $this->error('非法访问!');
+                    }
+                    
+                    $table = M('Order');
+                    $order = $table->where(array('id'=>$id))->select();
+                    $this->assign('order',$order[0]);
+                    $this->display('index/order/order_edit'); 
+                    } //地址编辑方法    
+
+    }
+
+    public function order_delete(){//订单删除方法
+
+            $id = $_GET['id'];
+        
+            if(empty($id)){
+                $this->error('非法访问!');
+            }
+
+            $table = M('Order');
+            $ret = $table->where('id='.$id)->delete();
+            if(!empty($ret) && is_numeric($ret)){
+
+                $this->success('删除成功!',U('Index/Order'));
+            } 
+        
+    }
     public function rebate(){
 
         $this->display('index/rebate/rebate');
@@ -674,7 +775,17 @@ class IndexController extends Controller {
         $Page = new \Think\Page($count,C('MY_PAGE'));
         $show =$Page->show();
 
+
         $list = $table->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
+
+        for ($i=0; $i < $count; $i++) {
+            if($list[$i]['state']==0){
+                $list[$i]['state']='未扫码';
+            }
+            if($list[$i]['state']==1){
+                $list[$i]['state']='已扫码';
+            }
+        }
         $this->assign('result',$list);
         $this->assign('page',$show);// 赋值分页输出
         $this->display('index/barcode/barcode');
@@ -685,40 +796,18 @@ class IndexController extends Controller {
 
         if (IS_POST) {
 
-            $news=I('post.data');
-            if ($news['title']==''||$news['type']==''||$news['remark']==''||$news['contect']=='') {
+            $data=I('post.data');
+            if ($data['name']==''||$data['productid']==''||$data['barcode']=='') {
 
                 $this->error('请填写完全！');
             }
-            $news['date'] = date('Y-m-d H:i:s',time());
-            
-            switch ($news['type']) {
-                case '产品安装介绍':
-                    $news['type']='1';
-                    break;
-                case '问题详解':
-                    $news['type']='2';
-                    break;
-                case '健康科谱知识':
-                    $news['type']='3';
-                    break;
-                case '行业信息':
-                    $news['type']='4';
-                    break;
-                case '活动信息':
-                    $news['type']='5';
-                    break;
-                
-                default:
-                    $news['type']='0';
-                    break;
-            }
+            $data['state'] = '0';//未扫码
+            $data['addtime'] = date('Y-m-d H:i:s',time());
 
-
-            $table = M('News');
-            $ret = $table ->add($news);
+            $table = M('Barcode');
+            $ret = $table ->add($data);
             if(!empty($ret)&&is_numeric($ret)){
-                $this->success('增加成功',U('index/news_add'));
+                $this->success('增加成功',U('index/barcode_add'));
             }
         }else{
 
@@ -727,24 +816,23 @@ class IndexController extends Controller {
    
     }
 
+    public function barcode_delete(){//条码删除方法
 
-    public function barcode_delete(){
+            $id = $_GET['id'];
+        
+            if(empty($id)){
+                $this->error('非法访问!');
+            }
 
-        $table = M('Barcode');
+            $table = M('Barcode');
+            $ret = $table->where('id='.$id)->delete();
+            if(!empty($ret) && is_numeric($ret)){
 
-        $where='';
-        $count = $table->where($where)->count();//计算数量
-
-        $Page = new \Think\Page($count,C('MY_PAGE'));
-        $show =$Page->show();
-
-        $list = $table->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
-
-        $this->assign('result',$list);
-        $this->assign('page',$show);// 赋值分页输出
-        $this->display('index/barcode/barcode');
+                $this->success('删除成功!',U('Index/barcode'));
+            } 
         
     }
+
     public function productRebate(){//返利产品管理方法
 
         $table = M('productrebate');
@@ -789,7 +877,6 @@ class IndexController extends Controller {
         
     }
    
-
     public function productRebate_edit(){//返利产品增加方法 
 
             if(IS_POST){   
@@ -886,7 +973,6 @@ class IndexController extends Controller {
         
     }
    
-
     public function product_edit(){//展示产品增加方法 
 
             if(IS_POST){   

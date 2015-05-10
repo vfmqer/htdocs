@@ -43,12 +43,12 @@
     </tr>
     <tr>
         <td class="tableleft">商品编码</td>
-        <td><input type="password" name="data[password]"/></td>
+        <td><input type="text" name="data[productid]"/></td>
     </tr>
 
      <tr>
         <td class="tableleft">条形码</td>
-        <td><input type="password" name="data[confirm]"/></td>
+        <td><input type="text" name="data[barcode]"/></td>
     </tr>
     <tr>
         <td class="tableleft"></td>

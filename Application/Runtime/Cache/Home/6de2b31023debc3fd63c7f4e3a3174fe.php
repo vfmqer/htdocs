@@ -51,6 +51,7 @@
                 <th>商品编码</th>
                 <th>条形码</th>
                 <th>是否被扫码</th>
+                <th>增加条码时间</th>
                 <th>扫码时间</th>
                 <th>操作</th>
             </tr>
@@ -61,7 +62,8 @@
             <td><?php echo ($vo["productid"]); ?></td>
             <td><?php echo ($vo["barcode"]); ?></td>
             <td><?php echo ($vo["state"]); ?></td>
-            <td><?php echo ($vo["time"]); ?></td>
+            <td><?php echo ($vo["addtime"]); ?></td>
+            <td><?php echo ($vo["scantime"]); ?></td>
             <td>
                 <a href="#" onclick="del(<?php echo ($vo["id"]); ?>)">删除</a>
             </td>

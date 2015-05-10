@@ -111,7 +111,7 @@
                     href: "<?php echo U('index/address');?>"
                 }, {
                     id: '11',
-                    text: 'aaaa订单管理',
+                    text: '订单管理',
                     href: "<?php echo U('index/order');?>"
                 }, {
                     id: '12',

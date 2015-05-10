@@ -51,6 +51,7 @@
                 <th>商品编码</th>
                 <th>条形码</th>
                 <th>是否被扫码</th>
+                <th>增加条码时间</th>
                 <th>扫码时间</th>
                 <th>操作</th>
             </tr>
@@ -62,7 +63,8 @@
             <td>{$vo.productid}</td>
             <td>{$vo.barcode}</td>
             <td>{$vo.state}</td>
-            <td>{$vo.time}</td>
+            <td>{$vo.addtime}</td>
+            <td>{$vo.scantime}</td>
             <td>
                 <a href="#" onclick="del({$vo.id})">删除</a>
             </td>

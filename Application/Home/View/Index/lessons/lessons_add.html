@@ -33,29 +33,59 @@
     }
     </style>
 </head>
-<form class="form-inline definewidth m20" action="?" method="get">
-    地址关键字：
-    <input type="text" name="username" id="username" class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
-    <button type="submit" class="btn btn-primary" onclick="addRow()">查询</button>&nbsp;&nbsp;
-    <button type="button" class="btn btn-success" onclick="addRow()" id="addnew">新增</button>
-</form>
 
 <body>
+    <form class="form-inline definewidth m20" action="?" method="get">
+        地址关键字：
+        <input type="text" name="username" id="username" class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
+        <button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp;
+        <button type="button" class="btn btn-success" onclick="addRow()" id="addnew">新增</button>
+    </form>
     <br/>
-    <table id="table" class="table table-bordered table-hover definewidth m10" cellpadding="3">
-        <thead>
-            <tr>
-                <td width="30px">编号</td>
-                <td width="40%">问题</td>
-                <td width="10%">A选项</td>
-                <td width="10%">B选项</td>
-                <td width="10%">C选项</td>
-                <td width="10%">D选项</td>
-                <td width="10%">操作</td>
-            </tr>
-        </thead>
-    </table>
+    <form class="form-inline definewidth m20" action="?" method="post">
+        <table id="table" name="data" class="table table-bordered table-hover definewidth m10" cellpadding="3">
+            <thead>
+                <tr>
+                    <td>编号</td>
+                    <td>问题</td>
+                    <td>A选项</td>
+                    <td>B选项</td>
+                    <td>C选项</td>
+                    <td>D选项</td>
+                    <td>操作</td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>1</p>
+                    </td>
+                    <td>
+                        <input value="asdfas" name="data[que1]" type="text">
+                    </td>
+                    <td>
+                        <input value="" name="data[a1]" type="text">
+                    </td>
+                    <td>
+                        <input value="" name="data[b1]" type="text">
+                    </td>
+                    <td>
+                        <input value="" name="data[c1]" type="text">
+                    </td>
+                    <td>
+                        <input value="" name="data[d1]" type="text">
+                    </td>
+                    <td><a>删除</a></td>
+                </tr>
+                </tr>
+            </thead>
+        </table>
 </body>
+<hr />
+<div style="text-align: center;">
+    <button type="submit" class="btn btn-primary">保存 </button>&nbsp;&nbsp;
+    <div>
+        </form>
+
+</html>
 <script language="javascript" type="text/javascript">
 function addRow() {
     //get rows
@@ -74,13 +104,18 @@ function addRow() {
     var newTd6 = newTr.insertCell();
     //设置列内容和属性
     newTd0.innerHTML = '<p>' + rows + '</p>';
-    newTd1.innerHTML = '<input type="text" >';
-    newTd2.innerHTML = '<input type="text" >';
-    newTd3.innerHTML = '<input type="text" >';
-    newTd4.innerHTML = '<input type="text" >';
-    newTd5.innerHTML = '<input type="text" >';
+    newTd1.innerHTML = '<input  value="ddd" name=data[que' + rows + '] type="text" >';
+    newTd2.innerHTML = '<input  value="" name=data[a' + rows + '] type="text" >';
+    newTd3.innerHTML = '<input  value="" name=data[b' + rows + '] type="text" >';
+    newTd4.innerHTML = '<input value=""  name=data[c' + rows + '] type="text" >';
+    newTd5.innerHTML = '<input  value="" name=data[d' + rows + '] type="text" >';
     newTd6.innerHTML = '<a>删除</a>';
 }
-</script>
 
-</html>
+// function table() {
+
+// alert(document.getElementsByTagName('que[2]').value);
+//     // var url = "{:U('index/lessons_add')}?id=1";
+//     // window.location.href = url;
+// }
+</script>

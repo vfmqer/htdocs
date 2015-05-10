@@ -684,7 +684,7 @@ class IndexController extends Controller {
         
     }
 
-    public function order_add(){
+    public function order_add(){//订单误删重建方法
 
         if (IS_POST) {
 
@@ -758,12 +758,68 @@ class IndexController extends Controller {
             } 
         
     }
-    public function rebate(){
+
+    public function rebate(){//返利查询方法
+
+        $where = '';
+        $table = M('Rebate');
+
+        $alluser = $table->distinct(true)->field('username')->select();
+
+
+        for ($i=0; $i < count($alluser); $i++) {
+
+            $alluser[$i]['id']=$i;
+            $where['downtype']= 1;
+            $where['username']=$alluser[$i]['username'];
+            $alluser[$i]['rebate1']=$table->where($where)->SUM('backmoney');
+                $where['downtype']= 2;
+            $alluser[$i]['rebate2']=$table->where($where)->SUM('backmoney');
+                $where['downtype']= 3;
+            $alluser[$i]['rebate3']=$table->where($where)->SUM('backmoney');
+            //获得所有返利金额
+            $alluser[$i]['allrebate']=$alluser[$i]['rebate1']+$alluser[$i]['rebate2']+$alluser[$i]['rebate3'];
+        }
+        $count=count($alluser);
+
+        $Page = new \Think\Page($count,C('MY_PAGE'));
+        $show = $Page->show();
+
+        // $list =$alluser->limit($Page->firstRow.''.$Page->listRows);
+
+        $this->assign('result',$alluser);
+        $this->assign('page',$show);
 
         $this->display('index/rebate/rebate');
         
     }
     
+    public function rebate_look(){
+
+        $name['username'] = I('get.username');
+        $name['downtype']=1;
+
+        $table = M('Rebate');
+        $result1 = $table ->where($name)->order('downtype')->select();
+        $name['downtype']=2;
+
+        $result2 = $table ->where($name)->order('downtype')->select();
+        $name['downtype']=3;
+
+        $result3 = $table ->where($name)->order('downtype')->select();
+
+        $result['username']=$name['username'];
+        $result['result1']=$result1;
+        $result['result2']=$result2;
+        $result['result3']=$result3;
+        $this->assign('result',$result);
+
+
+        $this->display('index/rebate/rebate_look');
+
+
+    }
+
     public function barcode(){//条码管理方法 
 
 

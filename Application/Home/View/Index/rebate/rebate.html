@@ -45,31 +45,43 @@
         <thead>
             <tr>
                 <th>编号</th>
-                <th>姓名</th>
-                <th>电话</th>
-                <th>邮箱</th>
-                <th>地址</th>
-                <th>详细地址</th>
-                <th>留言内容</th>
-                <th>留言用户</th>
+                <th>用户名</th>
+                <th>下一级返利金额</th>
+                <th>下二级返利金额</th>
+                <th>下三级返利金额</th>
+                <th>返利总和</th>
                 <th>操作</th>
             </tr>
         </thead>
+        <foreach name="result" item="vo">
         <tr>
-            <td>1</td>
-            <td>会员1</td>
-            <td>15333446423</td>
-            <td>382938293</td>
-            <td>普通</td>
-            <td>普通</td>
-            <td>100</td>
-            <td>2</td>
+            <td>{$vo.id}</td>
+            <td>{$vo.username}</td>
+            <td>{$vo.rebate1}</td>
+            <td>{$vo.rebate2}</td>
+            <td>{$vo.rebate3}</td>
+            <td>{$vo.allrebate}</td>
             <td>
-                <a href="#">编辑</a>
-                <a href="#">删除</a>
+                <a href="{:U('index/rebate_look')}?username={$vo.username}">查看详情</a>
+                <!-- <a href="#" onclick="del({$vo.id})">删除</a> -->
             </td>
         </tr>
+        </foreach>
     </table>
 </body>
 
 </html>
+<script>
+$(function() {
+    $('#addnew').click(function() {
+        window.location.href = "add.html";
+    });
+});
+
+function del(id) {
+    if (confirm("确定要删除吗？")) {
+        var url = "{:U('index/rebate_delete')}?id="+id;
+        window.location.href = url;
+    }
+}
+</script>

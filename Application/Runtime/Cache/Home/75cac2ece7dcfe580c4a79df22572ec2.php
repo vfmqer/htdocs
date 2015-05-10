@@ -64,16 +64,6 @@
         <th>操作</th>
     </tr>
     </thead>
-	     <!-- <tr>
-            <td>2</td>
-            <td>admin</td>
-            <td>管理员</td>
-            <td></td>
-            <td>
-                <a href="edit.html">编辑</a>                
-            </td>
-        </tr> -->	
-
         <?php if(is_array($result)): foreach($result as $key=>$vo): ?><tr>
             <td> <?php echo ($vo["id"]); ?></td>
             <td><?php echo ($vo["username"]); ?></td>

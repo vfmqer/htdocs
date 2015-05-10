@@ -45,31 +45,41 @@
         <thead>
             <tr>
                 <th>编号</th>
-                <th>姓名</th>
-                <th>电话</th>
-                <th>邮箱</th>
-                <th>地址</th>
-                <th>详细地址</th>
-                <th>留言内容</th>
-                <th>留言用户</th>
+                <th>用户名</th>
+                <th>下一级返利金额</th>
+                <th>下二级返利金额</th>
+                <th>下三级返利金额</th>
+                <th>返利总和</th>
                 <th>操作</th>
             </tr>
         </thead>
-        <tr>
-            <td>1</td>
-            <td>会员1</td>
-            <td>15333446423</td>
-            <td>382938293</td>
-            <td>普通</td>
-            <td>普通</td>
-            <td>100</td>
-            <td>2</td>
+        <?php if(is_array($result)): foreach($result as $key=>$vo): ?><tr>
+            <td><?php echo ($vo["id"]); ?></td>
+            <td><?php echo ($vo["username"]); ?></td>
+            <td><?php echo ($vo["rebate1"]); ?></td>
+            <td><?php echo ($vo["rebate2"]); ?></td>
+            <td><?php echo ($vo["rebate3"]); ?></td>
+            <td><?php echo ($vo["allrebate"]); ?></td>
             <td>
-                <a href="#">编辑</a>
-                <a href="#">删除</a>
+                <a href="<?php echo U('index/rebate_look');?>?username=<?php echo ($vo["username"]); ?>">查看详情</a>
+                <!-- <a href="#" onclick="del(<?php echo ($vo["id"]); ?>)">删除</a> -->
             </td>
-        </tr>
+        </tr><?php endforeach; endif; ?>
     </table>
 </body>
 
 </html>
+<script>
+$(function() {
+    $('#addnew').click(function() {
+        window.location.href = "add.html";
+    });
+});
+
+function del(id) {
+    if (confirm("确定要删除吗？")) {
+        var url = "<?php echo U('index/rebate_delete');?>?id="+id;
+        window.location.href = url;
+    }
+}
+</script>

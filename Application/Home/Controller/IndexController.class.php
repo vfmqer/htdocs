@@ -506,13 +506,13 @@ class IndexController extends Controller {
 
     public function lessons_view(){
 
-        $this->display('index/lessons/lessons'); 
+        $this->display('index/lessons/lessons_add'); 
         
     }
 
     public function lessons_add(){
 
-        $this->display('index/lessons/lessons'); 
+        $this->display('index/lessons/lessons_add'); 
         
     }
 

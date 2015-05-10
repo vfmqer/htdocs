@@ -61,10 +61,24 @@
             <td>普通</td>
             <td>普通</td>
             <td>
-                <a href="#">统计&分析</a>
+                <a href="<?php echo U('index/lessons_view');?>?id=<?php echo ($vo["id"]); ?>">统计&分析</a>
             </td>
         </tr>
     </table>
 </body>
 
 </html>
+<script>
+$(function() {
+    $('#addnew').click(function() {
+        window.location.href = "<?php echo U('index/lessons_add');?>";
+    });
+});
+
+function del(id) {
+    if (confirm("确定要删除吗？")) {
+        var link = "<?php echo U('index/lessons_delete');?>?id=" + id;
+        window.location.href = link;
+    }
+}
+</script>

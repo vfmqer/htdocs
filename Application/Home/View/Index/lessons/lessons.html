@@ -61,7 +61,7 @@
             <td>普通</td>
             <td>普通</td>
             <td>
-                <a href="{:U('index/lessons_view')}">统计&分析</a>
+                <a href="{:U('index/lessons_view')}?id={$vo.id}">统计&分析</a>
             </td>
         </tr>
     </table>
@@ -77,7 +77,7 @@ $(function() {
 
 function del(id) {
     if (confirm("确定要删除吗？")) {
-        var link = "{:U('index/lottory_delete')}?id=" + id;
+        var link = "{:U('index/lessons_delete')}?id=" + id;
         window.location.href = link;
     }
 }

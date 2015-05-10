@@ -1,18 +1,18 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html>
 
 <head>
     <title>订单返利管理</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/style.css" />
-    <script type="text/javascript" src="__PUBLIC__/Js/jquery.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Js/jquery.sorted.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Js/bootstrap.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Js/ckform.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Js/common.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Js/view.js"></script>
+    <link rel="stylesheet" type="text/css" href="/Public/Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/Public/Css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/Public/Css/style.css" />
+    <script type="text/javascript" src="/Public/Js/jquery.js"></script>
+    <script type="text/javascript" src="/Public/Js/jquery.sorted.js"></script>
+    <script type="text/javascript" src="/Public/Js/bootstrap.js"></script>
+    <script type="text/javascript" src="/Public/Js/ckform.js"></script>
+    <script type="text/javascript" src="/Public/Js/common.js"></script>
+    <script type="text/javascript" src="/Public/Js/view.js"></script>
     <style type="text/css">
     body {
         padding-bottom: 40px;
@@ -52,7 +52,7 @@
                 <td width="10%">C选项</td>
                 <td width="10%">D选项</td>
                 <td width="10%">操作</td>
-            </tr>
+                </tr>
         </thead>
     </table>
 </body>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, height = device-height, initial-scale=1, target-densitydpi=medium-dpi">
+<title>留言</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/area.js"></script>
+<script type="text/javascript">
+  Init("北京","","");
+</script> 
+</head>
+
+<body style="background:#f5f5f5">
+
+<!--头部-->
+<div class="headbg" align="center">
+  <div class="headback" style="">
+  <a href="joinus.html"><img src="img/img002.png" height="30"></a></div>
+  <div class="headload" style="">留言</div>
+   
+</div>
+
+<!--主体-->
+<div style="margin-top:10px">	
+  <form class="somet"><label>姓名</label><input type="text" class="inputcs" placeholder="必填项"></form>
+  <form class="somet"><label>电话</label><input type="text" class="inputcs" placeholder="必填项"></form>
+  <form class="somet"><label>邮箱</label><input type="text" class="inputcs" placeholder="必填项"></form>
+  <form class="somet" id="address">
+  	<label style="margin-right:2.5em">地址</label>
+  	<select id="sel-provance" name="province" onchange="selectCity()" class="selectop">
+		<option value="" selected="true" >请选择</option>
+	</select><span>省</span>
+	<select id="sel-city" name="city" onchange="selectcounty()" class="selectop">
+		<option value="" selected="true">请选择</option>
+	</select><span>市</span>
+   </form>		
+  <form class="somet"><label>详细地址</label><input type="text" class="inputcs" style="margin-left:1em" placeholder="必填项"></form>
+  <form class="somet" style="height:10em"><label>留言</label><input type="text" class="inputcs" placeholder="必填项" disabled>
+    <TEXTAREA class="ttarea"></TEXTAREA>
+  </form>		       
+</div>
+
+
+<!--尾部-->
+<a href="#"><div class="submit_les"><div>提交</div></div></a>
+
+
+</body>
+</html>

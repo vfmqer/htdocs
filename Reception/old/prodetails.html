@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, height = device-height, initial-scale=1, target-densitydpi=medium-dpi">
+<title>产品详情</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jquery-2.1.1.js"></script>
+
+<style type="text/css">
+ .active{color:red;border-top:solid 1px red;background-color:#FFF;width:50%;height:40px;float:left;line-height:40px;border-top:solid 1px red;}
+</style>
+
+</head>
+<body>
+
+<!--头部-->
+<div class="headbg" align="center">
+  <div class="headback" style="">
+  <a href="directsell.html"><img src="img/img002.png" height="30"></a></div>
+  <div class="headload" style="">产品详情</div>   
+</div>
+
+<!--主体-->
+<div id="listpro">
+  
+  
+  <div class="" style="margin-top:10px" align="center" >
+    <img src="img/proimg001.png" class="" style="height:150px" />
+  </div>
+  
+  <div class="proname">
+    佳能（canon）EOS70D单反套机（EF-S 18-135cm）
+    <div class="redpri" style="">￥3000</div>
+  </div>
+  
+  <div  class="maintap1">
+    <a href="#" class="active" id="dettro">
+    <div>详细介绍</div></a>
+    <a href="#" class="lessonbtn1" id="data">
+    <div>参数</div></a>
+  </div>
+
+  <div class="content" >
+    <div class="contentfont">
+      革新AF--佳能革新的自动对焦改变拍摄方式<br/>在忽然出现快门实际的一瞬间，拍摄取决于能否迅速精确地对焦。EOS 70D搭载的Dual Pixel CMOS AF（全像素双核CMOS AF）凝聚了EOS全新科技，当启用液晶监视器来进行实时显示拍摄时，将带来CMOS相面告诉相差检测自动对焦。
+    </div>
+  </div>  
+    
+</div>
+<!--尾部-->
+<div style="height:50px;width:100%;background:#000;bottom:0;position:fixed">
+  <a href="#">
+  <div style="float:left;text-align:center;width:60%;margin:5px 5%;height:40px;line-height:40px;color:red;border:solid 1px red;border-radius:5px;">立即购买</div>
+  </a>
+  <a href="#">
+  <div style="float:right;width:24%;font-size:1em;color:#ccc;margin:12.5px 2%"><img src="img/img08.png" height="16"/>&nbsp;咨询</div>
+  </a>
+</div>
+
+
+
+<script>
+  
+  var str="革新AF--佳能革新的自动对焦改变拍摄方式<br/>在忽然出现快门实际的一瞬间，拍摄取决于能否迅速精确地对焦。EOS 70D搭载的Dual Pixel CMOS AF（全像素双核CMOS AF）凝聚了EOS全新科技，当启用液晶监视器来进行实时显示拍摄时，将带来CMOS相面告诉相差检测自动对焦。";
+
+  $("#dettro").click(function(event) {
+    $(this).siblings("a").removeClass("active");
+    $(this).siblings("a").addClass("lessonbtn1");
+    $(this).removeClass("lessonbtn1");
+    $(this).addClass("active");
+    $(".contentfont").html(str)
+  });
+  $("#data").click(function(event) {
+    $(this).siblings("a").removeClass("active");
+    $(this).siblings("a").addClass("lessonbtn1");
+    $(this).removeClass("lessonbtn1");
+    $(this).addClass("active");
+    $(".contentfont").html(str)
+  });
+  
+</script>
+</body>
+</html>

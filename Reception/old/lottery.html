@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, height = device-height, initial-scale=1, target-densitydpi=medium-dpi">
+<title>设置</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jquery-2.1.1.js"></script>
+
+<style type="text/css">
+.egg{width:100%; height:160px;border:solid 0px red;background:#FC0;}
+.eggList{padding:30px 3% 0 8%;}
+.eggList div{float:left;background:url(img/egg_1.png) no-repeat;background-size:contain;width:33%;height:100px;cursor:pointer;}
+
+.eggList span{position:absolute;width:10px;height:20px;color:#FC0;font-size:30px;font-weight:bold;margin:30px 0 0 35px;}
+.eggList div.curr{background:url(img/egg_2.png) no-repeat;cursor:default;background-size:contain;width:33%;height:100px;}
+
+.eggList div.curr sup{position:absolute;background:url(img/egg_3.png) no-repeat;background-size:contain;width:60%;height:55px;margin:10px 20px 0 0;}
+
+.hammer{background:url(img/egg_4.png) no-repeat;background-size:contain;left:100px;top:150px;width:40px;height:60px;position:absolute; }
+.resultTip{position:absolute; background:#FC0;text-align:center;overflow:hidden;display:none;}
+.resultTip b{font-size:12px;line-height:30px;color:red;}
+
+.hdsign{font-size:15px;line-height:40px;color:#999;height:40px;width:100%;text-align:center;background:#f5f5f5;}
+/*.clickegg{background:url(img/egg_2.png) no-repeat;border:solid 1px red}*/
+
+/*
+.resultTip{position:absolute; background:#FC0 ;width:148px;padding:6px;z-index:500;top:200px; left:10px; color:#f60; text-align:center;overflow:hidden;display:block;z-index:500;}
+.resultTip b{font-size:14px;line-height:24px;}*/
+</style>
+
+</head>
+
+<body >
+
+<!--头部-->
+<div class="headbg" align="center">
+  <div class="headback" style="">
+  <a href="#"><img src="img/img002.png" height="30"></a></div>
+  <div class="headload" style="">抽奖</div>   
+</div>
+
+<!--主体-->
+<div class="lotterydes"><div>此处填写说明文字</div></div>
+
+<div id="egg" class="egg">
+    <div class="eggList">
+		<p class="hammer" id="hammer"></p>
+		<p class="resultTip" id="resultTip"><b id="result"></b></p>
+		<div><span>1</span><sup></sup></div>
+		<div><span>2</span><sup></sup></div>
+		<div><span>3</span><sup></sup></div>        
+	</div>
+</div>
+
+<div class="hdsign" >2015劳动节抽ipad大奖活动说明</div>
+
+<div class="textfont">
+<div>五一假日已至，金蛋迎福，大使抬来一担担的祝福送给大家，祝大家砸金蛋，得大奖，在新的一年里幸福美满。</div>
+<div>特等奖1名  奖品：某某电器</div><div>特等奖2名  奖品：某某电器</div>
+<div>特等奖3名  奖品：某某电器</div><div>参与奖&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;奖品：充值卡</div>
+</div>
+
+<!--尾部-->
+
+<script type="text/javascript">
+function eggClick(obj) {
+	var _this = obj;
+	$.getJSON("data.php",function(res){
+		if(_this.hasClass("curr")){
+			alert("蛋全碎了，别砸了！刷新再来.");
+			return false;
+		}
+		//_this.unbind('click');
+		//$(".hammer").css({"top":_this.position().top-55,"left":_this.position().left+185});
+		$(".hammer").css({"top":_this.position().top-55,"left":_this.position().left});
+		$(".hammer").animate({
+			"top":_this.position().top-25,
+			"left":_this.position().left  //"left":_this.position().left+125
+			},30,function(){
+				_this.addClass("curr"); //蛋碎效果
+
+				_this.find("sup").show(); //金花四溅
+				$(".hammer").hide();
+				$('.resultTip').css({display:'block',top:'550px',left:_this.position().left-15,opacity:0}).animate({top: '120px',opacity:1},300,function(){
+					if(res.msg==1){
+						$("#result").html("恭喜，您中得"+res.prize+"!");
+					}else{
+						$("#result").html("很遗憾,您没能中奖!");
+					}
+				});	
+			}
+		);
+	});
+}
+$(".eggList div").click(function() {
+	$(this).children("span").hide();
+	eggClick($(this));
+});
+$(".eggList div").hover(function() {
+	var posL = $(this).position().left + 65;
+	$("#hammer").show().css('left', posL);
+})
+</script>
+</body>
+</html>

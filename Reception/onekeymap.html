@@ -20,16 +20,85 @@
 </div>
 
 <!--主体-->
-<div class="">
-  <div class="" style="width:100%;height:600px">
-    地图内容
-  </div> 
 
-</div>
+<div style="width:95%;position:relative;bottom:10px;top:10px;left:2.5%;right:2.5%">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";font-family:"微软雅黑";}
+        #allmap{width:100%;height:500px;}
+        #r-result{width:100%;}
+        p{margin-left:5px; font-size:14px;}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=pj4GSVhYWndaxn3xnktmTpQa"></script>
+    <title>依森百度地图插件</title>
+</head>
+<body>
 
-
-<!--尾部-->
-
+    <div id="allmap"></div> 
+    <div id="r-result"></div>
 
 </body>
 </html>
+
+
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");//新建一个地图实例
+    var point = new BMap.Point(121.55772,29.829636);  // 创建点坐标  
+    map.centerAndZoom(point, 18); //地图实例化，设置放大级别为18级
+
+
+    function showInfo(e){
+        //alert(e.point.lng + ", " + e.point.lat);
+        document.getElementById('xy').innerHTML(e.point.lng + ", " + e.point.lat);
+    }
+    map.addEventListener("click", showInfo);//设置点击事件
+    
+    function search(){
+    //输出查找到的地址所需要的函数
+    // var options = {
+    //     onSearchComplete: function(results){
+    //         // 判断状态是否正确
+    //         if (local.getStatus() == BMAP_STATUS_SUCCESS){
+    //             var s = [];
+    //             for (var i = 0; i < results.getCurrentNumPois(); i ++){
+    //                 s.push(results.getPoi(i).title + ", " + results.getPoi(i).address);
+    //             }
+    //             document.getElementById("r-result").innerHTML = s.join("<br/>");
+    //         }
+    //     }
+    // };
+    // var local = new BMap.LocalSearch(map, {renderOptions: {map: map, panel: "r-result"}});//列表输出查找到的地点，并在地图标注，显示信息
+    // var local = new BMap.LocalSearch(map, options);//输出查找到的地址，不标注
+    // local.search("万达");
+    }
+
+ 
+    // 初始化地图，设置中心点坐标和地图级别  
+    var opts = {type: BMAP_NAVIGATION_CONTROL_LARGE}    //设置放大缩小框
+    map.addControl(new BMap.NavigationControl(opts));
+
+
+    map.enableScrollWheelZoom();   //启用滚轮放大缩小，默认禁用
+    map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
+
+
+    var marker = new BMap.Marker(point);  // 创建标注
+    map.addOverlay(marker);               // 将标注添加到地图中
+    //marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+</script>
+
+</div>
+</body>
+</html>
+<script>
+    $(function () {       
+		$('#backid').click(function(){
+				window.location.href="index.html";
+		 });
+
+    });
+</script>

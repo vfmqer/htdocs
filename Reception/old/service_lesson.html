@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, height = device-height, initial-scale=1, target-densitydpi=medium-dpi">
+<title>售后</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jquery-2.1.1.js"></script>
+<!-- <script src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" type="text/css"> -->
+
+<style type="text/css">
+  .wenj{text-align:center;font-size:20px;height:50px;background:#FFF;line-height:50px;}
+  .wjlist{margin:0.8em 2.5%;font-size:1em;line-height:2.5em;}
+  .wjitem{width:100%;height:2.5em;border:solid 1px #ccc;background:#FFF;}
+/*   input[type="radio"] {margin: 3px 3px 0px 5px;display: none;}
+label {padding-left: 20px;cursor: pointer;background: url(bg.gif) no-repeat left top;}
+label.checked {background-position:left bottom;background: url(bg.gif) no-repeat left top;} */
+</style>
+  
+</head>
+
+<body style="background-color:#f5f5f5">
+
+<!--头部-->
+<div class="headbg" align="center">
+  <div class="headback" >
+    <a href="service.html"><img src="img/img002.png" height="30"></a></div>
+  <div class="headload" style="">售后</div>   
+</div>
+
+<!--主体-->
+<div  class="wenj">
+ 某某问卷调查表
+</div>
+
+<div >
+  <form action="echo.cfm" method="post">                
+    <div class="wjlist">  
+      <div >您的性别：</div>    
+        <div class="wjitem" ><input type="radio" name="sex" id="nan" value="男" checked><label for="nan">男</label></div>
+        <div class="wjitem" ><input type="radio" name="sex" id="nv" value="女" ><label for="nv">女</label></div>           
+    </div>                           
+  </form>  
+
+</div>  
+
+
+<!--尾部-->
+<a href="#"><div class="submit_les"><div>提交</div></div></a>
+
+
+</body>
+</html>

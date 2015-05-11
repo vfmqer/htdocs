@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, height = device-height, initial-scale=1, target-densitydpi=medium-dpi">
+<title>加盟</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jquery-2.1.1.js"></script>
+
+<style type="text/css">
+ .active{color:red;border-bottom:solid 1px red;width:50%;height:50px;float:left;background:white;line-height:50px;}
+ .leftin{left:0;}
+ .leftout{left:100%;}
+</style>
+
+<script type="text/javascript">
+jQuery(function () {
+  $("#showleft").click(function(event) {
+    /* Act on the event */
+    $(".cbbody").toggleClass('leftin');
+  });
+ });  
+</script>
+
+</head>
+
+<body>
+
+<!--头部-->
+<div class="headbg" align="center">
+  <div class="headback" style="">
+  <a href="javascript:void(0)" id="showleft"><img src="img/img06.png" height="30"></a></div>
+  <div class="headload" style="">加盟</div>   
+</div>
+
+<!--主体-->
+
+<div  class="maintap">
+  <a href="#" class="active" id="joinus">
+  <div>加盟合作</div></a>
+  <a href="#" class="lessonbtn" id="sinds">
+  <div>网店咨询</div></a>
+</div>
+
+<div class="signs" align="center" >
+  <a href="message.html"><div class="smword"><div class="smwords">
+    <img src="img/img07.png" style="float:left;height:18px"/><div>留言</div></div>
+  </div></a>
+
+  <a href="#"><div class="smword" style="float:right;"><div class="smwords">
+    <img src="img/img08.png" style="float:left;height:18px"/><div>电话</div></div>
+  </div></a>
+</div>
+
+<div class="textfont">
+  网店新手注意了哦！刚刚经营小店，有顾客来敲门肯定会紧张的哦！这个时候是考验你的关键，你应该学会抓住顾客的新呢。我来分析一下网店老手们教我的谈话技巧哦！
+  <br/>1、顾客首次咨询问题是<br/>应该面带微笑（旺旺微笑表情）回答："您好，有什么可以帮到您的吗？"或"您好，欢迎光临"
+</div>
+
+
+<!--尾部-->
+
+<div class="footertab" >
+  <a href="index.html"><div class="foot"><img src="img/img01.png" height="28" /><div>首页</div></div></a>  
+  <a href="directsell.html"><div class="foot"><img src="img/img02.png" height="28" /><div>直销模式</div></div></a> 
+  <a href="#"><div class="foot_seleted"><img src="img/img03.png" height="28" /><div>加盟</div></div></a> 
+  <a href="service.html"><div class="foot"><img src="img/img04.png" height="28" /><div>售后</div></div></a> 
+  <a href="oprate.html"><div class="foot"><img src="img/img05.png" height="28" /><div>设置</div></div></a> 
+</div>
+
+<!--侧边栏-->
+<div class="cbbody" >
+   <div class="cbuser" align="center">用户昵称</div>
+   <div class="cblist"> <img src="img/img11.png" > <div>我的产品  </div> </div>
+   <div class="cblist"> <img src="img/img12.png" > <div>我的订单  </div> </div>
+   <div class="cblist"> <img src="img/img13.png" > <div>我的奖品  </div> </div>
+   <div class="cblist"> <img src="img/img14.png" > <div>资讯      </div> </div>
+   <div class="cblist"> <img src="img/img15.png" > <div>绑定推荐人</div> </div>
+   <div class="cblist"> <img src="img/img16.png" > <div>修改密码  </div> </div>
+   <div class="cblist"> <img src="img/img17.png" > <div>一键地图  </div> </div>
+   <div class="cblist"> <img src="img/img18.png" > <div>官方淘宝  </div> </div>
+   <div class="cblist"> <img src="img/img19.png" > <div>投诉      </div> </div>
+   <div class="cblist"> <img src="img/img20.png" > <div>退出      </div> </div>
+   <img src="img/img21.png" style="position:absolute;bottom:0;width:96%;margin:5px 5px;left:0;">   
+</div>
+
+<script>
+  var str='网店新手注意了哦！刚刚经营小店，有顾客来敲门肯定会紧张的哦！这个时候是考验你的关键，你应该学会抓住顾客的新呢。我来分析一下网店老手们教我的谈话技巧哦！<br/>1、顾客首次咨询问题是<br/>应该面带微笑（旺旺微笑表情）回答："您好，有什么可以帮到您的吗？"或"您好，欢迎光临"';
+
+  $("#joinus").click(function(event) {
+    $(this).siblings("a").removeClass("active");
+    $(this).siblings("a").addClass("lessonbtn");
+    $(this).removeClass("lessonbtn");
+    $(this).addClass("active");
+    $(".textfont").html(str)
+  });
+
+  $("#sinds").click(function(event) {
+    $(this).siblings("a").removeClass("active");
+    $(this).siblings("a").addClass("lessonbtn");
+    $(this).removeClass("lessonbtn");
+    $(this).addClass("active");
+    $(".textfont").html(str)
+  });
+    
+</script>
+
+</body>
+</html>

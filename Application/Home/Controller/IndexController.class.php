@@ -389,7 +389,35 @@ class IndexController extends Controller {
 
     public function lottory_add(){
 
-        $this->display('index/lottory/lottory');
+        if(IS_POST){
+            $time=I('post.time');
+            $data=I('post.data');
+        if($time['starttime']==""||$time['endtime']==""){
+            $this->error('请填写完全!');
+        }
+        $time['time'] = date('Y-m-d H:i:s',time());
+        $tdata = M('Prize');//打开奖品表
+
+        $ttime  = M('Serialstart');//打开活动时间表
+
+        $serialnumber=$ttime->max('serialnumber')+1;
+
+        for ($i=0; $i < count($data); $i++) { 
+        $data[$i]['serialnumber']=$serialnumber;
+        }
+
+        $time['serialnumber'] =$serialnumber;
+        $ret1 = $ttime->add($time);
+        for ($i=0; $i < count($data); $i++) { 
+            $ret2 = $tdata->add($data[$i]); 
+        }
+        if(!empty($ret2) && is_numeric($ret2)&&!empty($ret1) && is_numeric($ret1)){
+            $this->success('增加成功!',U('Index/lottory_add'));
+        }
+
+        }else{
+        $this->display('index/lottory/lottory'); 
+        }   
         
     }
 
@@ -515,9 +543,9 @@ class IndexController extends Controller {
         if(IS_POST){
             $data=I('post.data');
             dump($data);
-    }else{
+        }else{
         $this->display('index/lessons/lessons_add'); 
-    }
+        }   
 
    }
 
@@ -1150,6 +1178,55 @@ class IndexController extends Controller {
                 $td_array[] = $td;
             } 
             return $td_array;
-            } 
+
+    } 
+
+
+
+
+    public function lottory_getdata(){//后台获得中奖概率
+        $prize_arr = array(
+            '0' => array('id'=>1,'prize'=>'平板电脑','v'=>3),
+            '1' => array('id'=>2,'prize'=>'数码相机','v'=>5),
+            '2' => array('id'=>3,'prize'=>'音箱设备','v'=>10),
+            '3' => array('id'=>4,'prize'=>'4G优盘','v'=>12),
+            '4' => array('id'=>5,'prize'=>'Q币10元','v'=>20),
+            '5' => array('id'=>6,'prize'=>'下次没准就能中哦','v'=>50),);
+
+
+                foreach ($prize_arr as $key => $val) {
+                    $arr[$val['id']] = $val['v'];
+                }
+                //print_r($arr);
+
+                $rid = getRand($arr); //根据概率获取奖项id
+                $res['msg'] = ($rid==6)?0:1; 
+                $res['prize'] = $prize_arr[$rid-1]['prize']; //中奖项
+                echo json_encode($res);exit;
 
     }
+  
+    public function getRand($proArr) { //计算概率
+
+            $result = '';
+
+            //概率数组的总概率精度
+            $proSum = array_sum($proArr);
+
+            //概率数组循环
+            foreach ($proArr as $key => $proCur) {
+                $randNum = mt_rand(1, $proSum);
+                if ($randNum <= $proCur) {
+                    $result = $key;
+                    break;
+                } else {
+                    $proSum -= $proCur;
+                }
+            }
+            unset ($proArr);
+
+            return $result;
+         }   
+
+    }
+    

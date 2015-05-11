@@ -121,7 +121,7 @@ if($jiekey==$newkey) //钥匙验证
       if(isset($_POST["username"]) && isset($_POST["password"])) //判断PSOT是否提交
       {
 	    $username=$_POST['username'];
-		$password=$_POST['password'];
+		  $password=md5($_POST['password']);
         $regstr="select * from js_user where username='".$username."'";
     
         if(sqlquery($regstr,"username")==$username)
@@ -162,9 +162,8 @@ if($jiekey==$newkey) //钥匙验证
         
 		if(sqlquery($loadstr,"username")==$username && sqlquery($loadstr,"password")==$password){
            
-    			echo json_return("02001");//登陆成功
-               
-        
+    			//echo json_return("02001");//登陆成功
+          echo '{"username":"dsadsdsds"}';            
 		}else{
 			 echo json_return("02002");//登陆失败		
 		}
@@ -415,10 +414,8 @@ if($jiekey==$newkey) //钥匙验证
 
         if(sqlquery($selectstr,"id")!=null) //检查是否存在数据
         {   
-            echo json_return("13001"); //查询成功
-            //foreach (sqlset($selectstr) as $value){}
-            $value=sqlset($selectstr);
-            echo json_encode($value);//返回资讯信息;
+            //echo json_return("13001"); //查询成功
+            echo '{"demoData":"This Is The JSON Data"}'; 
         } 
 
         else

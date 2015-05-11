@@ -34,7 +34,7 @@
 </head>
 
 <body>
-    <form class="form-inline definewidth m20">
+    <form class="form-inline definewidth m20" action="?" method="get">
         用户名称：
         <input type="text" name="username" id="username" class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
         <button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp;
@@ -58,9 +58,24 @@
             <td>一等 1名，二等2名，三等3名</td>
             <td>ipad</td>
             <td>20150401</td>
-            <td><a href="#">编辑</a><a href="#">删除</a></td>
+            <td><a href="<?php echo U('index/lottory_view');?>?id=<?php echo ($vo["id"]); ?>">编辑</a>
+                <a href="#" onclick="del(<?php echo ($vo["id"]); ?>)">删除</a></td>
         </tr>
     </table>
 </body>
 
 </html>
+<script>
+$(function() {
+    $('#addnew').click(function() {
+        window.location.href = "<?php echo U('index/lottory_add');?>";
+    });
+});
+
+function del(id) {
+    if (confirm("确定要删除吗？")) {
+        var link = "<?php echo U('index/lottory_delete');?>?id=" + id;
+        window.location.href = link;
+    }
+}
+</script>

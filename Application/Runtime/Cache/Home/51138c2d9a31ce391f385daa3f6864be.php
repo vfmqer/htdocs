@@ -4,15 +4,15 @@
 <head>
     <title>订单返利管理</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/Public/Css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="/Public/Css/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="/Public/Css/style.css" />
-    <script type="text/javascript" src="/Public/Js/jquery.js"></script>
-    <script type="text/javascript" src="/Public/Js/jquery.sorted.js"></script>
-    <script type="text/javascript" src="/Public/Js/bootstrap.js"></script>
-    <script type="text/javascript" src="/Public/Js/ckform.js"></script>
-    <script type="text/javascript" src="/Public/Js/common.js"></script>
-    <script type="text/javascript" src="/Public/Js/view.js"></script>
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/style.css" />
+    <script type="text/javascript" src="/htdocs/Public/Js/jquery.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/jquery.sorted.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/bootstrap.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/ckform.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/common.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/view.js"></script>
     <style type="text/css">
     body {
         padding-bottom: 40px;
@@ -59,19 +59,19 @@
                         <p>1</p>
                     </td>
                     <td>
-                        <input value="asdfas" name="data[1][que1]" type="text">
+                        <input value="asdfas" name="data[que1]" type="text">
                     </td>
                     <td>
-                        <input value="" name="data[1][a1]" type="text">
+                        <input value="" name="data[a1]" type="text">
                     </td>
                     <td>
-                        <input value="" name="data[1][b1]" type="text">
+                        <input value="" name="data[b1]" type="text">
                     </td>
                     <td>
-                        <input value="" name="data[1][c1]" type="text">
+                        <input value="" name="data[c1]" type="text">
                     </td>
                     <td>
-                        <input value="" name="data[1][d1]" type="text">
+                        <input value="" name="data[d1]" type="text">
                     </td>
                     <td><a>删除</a></td>
                 </tr>
@@ -83,7 +83,7 @@
 <div style="text-align: center;">
     <button type="submit" class="btn btn-primary">保存 </button>&nbsp;&nbsp;
     <div>
-        </form>[1]
+        </form>
 
 </html>
 <script language="javascript" type="text/javascript">
@@ -104,11 +104,11 @@ function addRow() {
     var newTd6 = newTr.insertCell();
     //设置列内容和属性
     newTd0.innerHTML = '<p>' + rows + '</p>';
-    newTd1.innerHTML = '<input  value="ddd" name=data['+rows+'][que' + rows + '] type="text" >';
-    newTd2.innerHTML = '<input  value="" name=data['+rows+'][a' + rows + '] type="text" >';
-    newTd3.innerHTML = '<input  value="" name=data['+rows+'][b' + rows + '] type="text" >';
-    newTd4.innerHTML = '<input value=""  name=data['+rows+'][c' + rows + '] type="text" >';
-    newTd5.innerHTML = '<input  value="" name=data['+rows+'][d' + rows + '] type="text" >';
+    newTd1.innerHTML = '<input  value="ddd" name=data[que' + rows + '] type="text" >';
+    newTd2.innerHTML = '<input  value="" name=data[a' + rows + '] type="text" >';
+    newTd3.innerHTML = '<input  value="" name=data[b' + rows + '] type="text" >';
+    newTd4.innerHTML = '<input value=""  name=data[c' + rows + '] type="text" >';
+    newTd5.innerHTML = '<input  value="" name=data[d' + rows + '] type="text" >';
     newTd6.innerHTML = '<a>删除</a>';
 }
 

@@ -49,24 +49,29 @@
 </div>
 
 <script>
-$(function(){
-  $("#login").click(function(event){
-    /* Act on the event */
-    alert('ddsds');
-    var baseurl="http://192.168.1.104/api.php?keys=7fff7c317d3d5eeef988d15c6934d111&datetime=2015-05-08-05-33&id=02";
-    $.ajax({
-      url: baseurl,
-      type: 'POST',
-      dataType: 'json',
-      data:{(username : $("#username").val() , password : $("#password").val())},// 要提交的数据
-      success: function (data) { 
-                $("#username").val(data[0].username); 
-                } 
-    })
-    return false;
-  })   
-}) 
-
+ 
+$("#login").click(function(event){
+  /* Act on the event */
+  alert('ddsds');
+  $.ajax({
+    url: 'http://baidu.com',
+    type: 'POST',
+    dataType: 'json',
+    data:(username:$("#username"),password:$("#password"))// 要提交的数据 
+  })
+/*  .done(function(ret) {
+    if(ret.a=="02001"){
+      window.location.href="http://www.baidu.com";
+    }else if(ret.a=="02002"){
+      alert('登陆失败，用户密码错误！');
+    }else if(ret.a=="02003"){
+      alert('用户名、密码不能为空！');
+    }else{
+      alert('登陆失败，用户密码错误！');     
+    }
+  });
+  return false;*/
+});
 </script>
 
 

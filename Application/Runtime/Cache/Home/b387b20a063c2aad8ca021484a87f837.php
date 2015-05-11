@@ -4,14 +4,14 @@
 <head>
     <title>问卷管理</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/Public/Css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="/Public/Css/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="/Public/Css/style.css" />
-    <script type="text/javascript" src="/Public/Js/jquery.js"></script>
-    <script type="text/javascript" src="/Public/Js/jquery.sorted.js"></script>
-    <script type="text/javascript" src="/Public/Js/bootstrap.js"></script>
-    <script type="text/javascript" src="/Public/Js/ckform.js"></script>
-    <script type="text/javascript" src="/Public/Js/common.js"></script>
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/style.css" />
+    <script type="text/javascript" src="/htdocs/Public/Js/jquery.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/jquery.sorted.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/bootstrap.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/ckform.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/common.js"></script>
     <style type="text/css">
     body {
         padding-bottom: 40px;

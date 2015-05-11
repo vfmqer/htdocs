@@ -59,19 +59,19 @@
                         <p>1</p>
                     </td>
                     <td>
-                        <input value="" name="data[1][que]" type="text">
+                        <input value="asdfas" name="data[que1]" type="text">
                     </td>
                     <td>
-                        <input value="" name="data[1][a]" type="text">
+                        <input value="" name="data[a1]" type="text">
                     </td>
                     <td>
-                        <input value="" name="data[1][b]" type="text">
+                        <input value="" name="data[b1]" type="text">
                     </td>
                     <td>
-                        <input value="" name="data[1][c]" type="text">
+                        <input value="" name="data[c1]" type="text">
                     </td>
                     <td>
-                        <input value="" name="data[1][d]" type="text">
+                        <input value="" name="data[d1]" type="text">
                     </td>
                     <td><a>删除</a></td>
                 </tr>
@@ -104,11 +104,11 @@ function addRow() {
     var newTd6 = newTr.insertCell();
     //设置列内容和属性
     newTd0.innerHTML = '<p>' + rows + '</p>';
-    newTd1.innerHTML = '<input  value="" name=data['+rows+'][que] type="text" >';
-    newTd2.innerHTML = '<input  value="" name=data['+rows+'][a] type="text" >';
-    newTd3.innerHTML = '<input  value="" name=data['+rows+'][b] type="text" >';
-    newTd4.innerHTML = '<input value=""  name=data['+rows+'][c] type="text" >';
-    newTd5.innerHTML = '<input  value="" name=data['+rows+'][d] type="text" >';
+    newTd1.innerHTML = '<input  value="ddd" name=data[que' + rows + '] type="text" >';
+    newTd2.innerHTML = '<input  value="" name=data[a' + rows + '] type="text" >';
+    newTd3.innerHTML = '<input  value="" name=data[b' + rows + '] type="text" >';
+    newTd4.innerHTML = '<input value=""  name=data[c' + rows + '] type="text" >';
+    newTd5.innerHTML = '<input  value="" name=data[d' + rows + '] type="text" >';
     newTd6.innerHTML = '<a>删除</a>';
 }
 

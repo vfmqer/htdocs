@@ -1,18 +1,18 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html>
 
 <head>
     <title>订单返利管理</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/style.css" />
-    <script type="text/javascript" src="__PUBLIC__/Js/jquery.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Js/jquery.sorted.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Js/bootstrap.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Js/ckform.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Js/common.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Js/view.js"></script>
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/style.css" />
+    <script type="text/javascript" src="/htdocs/Public/Js/jquery.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/jquery.sorted.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/bootstrap.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/ckform.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/common.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/view.js"></script>
     <style type="text/css">
     body {
         padding-bottom: 40px;
@@ -78,7 +78,7 @@
 <hr />
 <div style="text-align: center;">
     <button type="submit" class="btn btn-primary">保存 </button>&nbsp;&nbsp;
-    <button type="button" class="btn btn-success" onclick="function(window.herf={:U(index/lottory)})">返回列表</button>
+    <button type="button" class="btn btn-success" onclick="function(window.herf=<?php echo U(index/lottory);?>)">返回列表</button>
 </div>
 </form>
 

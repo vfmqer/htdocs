@@ -388,7 +388,9 @@ class IndexController extends Controller {
         $where='';
         $wtserial=$ttserial ->field('serialnumber')->select();
         $result = $ttserial -> select();
-        for ($i=0; $i < count($wtserial); $i++) { 
+        for ($i=0; $i < count($wtserial); $i++) {
+           $result[$i]['starttime']=date('Y-m-d',strtotime($result[$i]['starttime']));
+           $result[$i]['endtime']=date('Y-m-d',strtotime($result[$i]['endtime']));
             $a=$tprize->field('name,number,winning')->where($wtserial[$i])->select();
             for ($j=0; $j < count($a); $j++) { 
                 $string[$j] = $a[$j]['name'].'---'.$a[$j]['number'].'---'.$a[$j]['winning'].'%'.'<br />';
@@ -448,7 +450,7 @@ class IndexController extends Controller {
 
     public function lottory_view(){
 
-        $this->display('index/lottory/lottory');
+        $this->display('index/lottory/lottory_view');
         
     }
 
@@ -1170,6 +1172,9 @@ class IndexController extends Controller {
 
     public function test(){
 
+        $date  =  date_create ( '2015-05-12 00:00:00' );
+echo  date_format ( $date ,  'Y-m-d' );
+exit();
         $this->display();
 
     }

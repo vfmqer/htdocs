@@ -41,27 +41,34 @@
         <button type="button" class="btn btn-success" id="addnew">新增</button>
         <!-- &nbsp;&nbsp; <button type="button" class="btn btn-success" id="addnew">新增会员</button> -->
     </form>
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/page.css" />
+    <!-- 导入Page样式的样式表 -->
     <table class="table table-bordered table-hover definewidth m10">
         <thead>
             <tr>
                 <th>活动序号</th>
                 <th>抽奖名称</th>
-                <th>抽奖描述</th>
+                <th width="30%">抽奖描述</th>
                 <th>抽奖奖品,奖品数量,中奖概率</th>
                 <th>抽奖开始－结束日期</th>
                 <th>操作</th>
             </tr>
         </thead>
-        <tr>
-            <td>1</td>
-            <td>五一抽奖</td>
-            <td>一等 1名，二等2名，三等3名</td>
-            <td>ipad</td>
-            <td>20150401</td>
+        <?php if(is_array($result)): foreach($result as $key=>$vo): ?><tr>
+            <td><?php echo ($vo["id"]); ?></td>
+            <td><?php echo ($vo["title"]); ?></td>
+            <td><?php echo ($vo["describe"]); ?></td>
+            <td>
+            <?php echo ($vo["prize"]); ?>
+            </td>
+            <td><?php echo ($vo["starttime"]); ?>至<?php echo ($vo["endtime"]); ?></td>
             <td><a href="<?php echo U('index/lottory_view');?>?id=<?php echo ($vo["id"]); ?>">编辑</a>
                 <a href="#" onclick="del(<?php echo ($vo["id"]); ?>)">删除</a></td>
-        </tr>
+        </tr><?php endforeach; endif; ?>
     </table>
+<div class="green-black"><?php echo ($page); ?>
+    <div/>
+    <!-- page方法显示分页 -->
 </body>
 
 </html>

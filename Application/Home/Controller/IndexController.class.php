@@ -381,13 +381,37 @@ class IndexController extends Controller {
 
     }
 
-    public function lottory(){
+    public function lottory(){//抽奖活动管理方法
+
+        $tprize = M('Prize');
+        $ttserial = M('Serialstart');
+        $where='';
+        $wtserial=$ttserial ->field('serialnumber')->select();
+        $result = $ttserial -> select();
+        for ($i=0; $i < count($wtserial); $i++) { 
+            $a=$tprize->field('name,number,winning')->where($wtserial[$i])->select();
+            for ($j=0; $j < count($a); $j++) { 
+                $string[$j] = $a[$j]['name'].'---'.$a[$j]['number'].'---'.$a[$j]['winning'].'%'.'<br />';
+            }
+            for ($k=0; $k < count($string); $k++) { 
+            $result[$i]['prize'].=$string[$k];
+            }
+        }
+        $count =count($result);//计算地址数量
+
+        $Page = new \Think\Page($count,C('MY_PAGE'));
+        $show =$Page->show();
+
+        $list = $ttserial->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
+
+        $this->assign('result',$result);
+        $this->assign('page',$show);// 赋值分页输出
 
         $this->display('index/lottory/lottory');
         
     }
 
-    public function lottory_add(){
+    public function lottory_add(){//增加抽奖活动方法
 
         if(IS_POST){
             $time=I('post.time');
@@ -420,13 +444,7 @@ class IndexController extends Controller {
         }   
         
     }
-
-
-    public function lottory_edit(){
-
-        $this->display('index/lottory/lottory');
-        
-    }    
+ 
 
     public function lottory_view(){
 

@@ -412,11 +412,11 @@ class IndexController extends Controller {
             $ret2 = $tdata->add($data[$i]); 
         }
         if(!empty($ret2) && is_numeric($ret2)&&!empty($ret1) && is_numeric($ret1)){
-            $this->success('增加成功!',U('Index/lottory_add'));
+            $this->success('增加成功!',U('Index/lottory'));
         }
 
         }else{
-        $this->display('index/lottory/lottory'); 
+        $this->display('index/lottory/lottory_add'); 
         }   
         
     }

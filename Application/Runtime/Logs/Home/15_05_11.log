@@ -2719,3 +2719,104 @@ INFO: [ app_init ] --START--
 INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
 INFO: [ app_init ] --END-- [ RunTime:0.000624s ]
 
+[ 2015-05-11T19:46:23+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lessons
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+
+[ 2015-05-11T19:46:26+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lessons_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+
+[ 2015-05-11T19:46:36+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lottory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+
+[ 2015-05-11T19:46:39+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lottory_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-05-11T19:46:40+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lottory_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002001s ]
+
+[ 2015-05-11T19:50:51+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lottory_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-05-11T19:52:29+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lottory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-05-11T19:52:30+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lottory_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-05-11T19:55:34+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lottory_add?
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'js_mydata.js_serialstart' doesn't exist
+
+[ 2015-05-11T20:24:21+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lottory_add?
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002001s ]
+
+[ 2015-05-11T20:24:23+08:00 ] 127.0.0.1 /htdocs/index.php/Home/Index/lottory_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+
+[ 2015-05-11T20:29:27+08:00 ] 127.0.0.1 /htdocs/index.php/Home/Index/lottory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+
+[ 2015-05-11T20:29:28+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lottory_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-05-11T20:29:30+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lottory_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+
+[ 2015-05-11T20:29:31+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lottory_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+
+[ 2015-05-11T20:29:50+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lottory_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002001s ]
+
+[ 2015-05-11T20:29:56+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lottory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-05-11T20:29:57+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lottory_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+
+[ 2015-05-11T20:31:32+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lottory_add?
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004001s ]
+
+[ 2015-05-11T20:31:33+08:00 ] 127.0.0.1 /htdocs/index.php/Home/Index/lottory
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+

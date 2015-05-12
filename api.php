@@ -412,14 +412,25 @@ if($jiekey==$newkey) //钥匙验证
        if(isset($_POST["newsid"]) && isset($_POST["type"])) //判断PSOT是否提交
       {       
         $newsid=$_POST["newsid"];$type=$_POST["type"];
-        $selectstr="select * from js_news where id='".$newsid."' and type='".$type."'";
 
+        if ($newsid == "" && $type =="") {
+          $selectstr="select * from js_news";
+        }elseif ($newsid == "") {
+          $selectstr="select * from js_news where type='".$type."'";
+        }elseif ($type =="") {
+          $selectstr="select * from js_news where id='".$newsid."'";
+        }else{
+          $selectstr="select * from js_news where id='".$newsid."' and type='".$newsid."'";
+        }
+        
         if(sqlquery($selectstr,"id")!=null) //检查是否存在数据
         {   
             //echo json_return("13001"); //查询成功
-            foreach (sqlset($selectstr) as $value){}
-            //$value=sqlset($selectstr);
-            echo json_encode($value);//返回资讯信息;
+            /*foreach (sqlset($selectstr) as $value){
+              echo json_encode($value);//返回资讯信息;
+            }*/
+            $value=sqlsetarry($selectstr);
+            echo json_encode($value);
         } 
 
         else

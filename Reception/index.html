@@ -28,7 +28,7 @@ jQuery(function () {
 <style type="text/css">
 .leftin{left:0;}
 .leftout{left:-70%;}
-.zxlist{margin:0 5% 5px 5%;height:70px;width:90%;background:#fff;float:left;}
+.zxlist{margin:0 5% 5px 5%;height:70px;width:90%;background:#fff;float:left;cursor:pointer;}
 .zximg{height:60px;width:60px;float:left;margin:5px 0 5px 5px;}
 .zxcontect{margin:0 5px;width:80%;padding:5px 0 0 65px;line-height:20px;}
 </style>
@@ -82,19 +82,12 @@ jQuery(function () {
     	<a href="#"><div style="float:left;color:#999;">水健康</div></a>
       <a href="zxcenter.html"><div style="float:right;color:#999;">更多></div></a>
     </div>
-
-  <a href="zxdetail.html">
-  <div class="zxlist" align="left">
-    <img src="img/pro100201.png" class="zximg" />
-    <div class="zxcontect" >
-      <div style="font-size:14px;color:#000">中国南海岛礁填海造地引关注</div>
-      <div style="font-size:12px;color:#000">摘要：4月10日讯 综合媒体报道</div>
-      <div style="font-size:12px;color:#ccc">点击：3000&nbsp;&nbsp;&nbsp;发布日期：2015-04-10</div>
-    </div>
-  </div></a>
+  
+  <div id="lists"></div>
 
 </div>
 
+<div class="blank"></div>
 
 <!--尾部-->
 <div class="footertab" >
@@ -131,6 +124,32 @@ jQuery(function () {
 
 <script type="text/javascript">
   $(function(){
+
+        var id = '13';
+        var urls = generateUrl(id);
+        var postdata = {
+          "newsid":"",    
+          "type":"",   
+        }; 
+        $.ajax({
+          url: urls,
+          type: 'POST',
+          dataType: 'json',
+          data:jQuery.param(postdata, true),// 要提交的数据
+          //error:function(XMLResponse){alert(XMLResponse.responseText)},
+          success:function(data){
+            if(data!=null){   //返回成功   
+              for(var i=0;i<data.length;i++){
+                  $html='<div class="zxlist" align="left"><div><img src='+url_img()+data[i]["img"]+' class="zximg" /><div class="zxcontect" ><div style="display:none">data[i]["id"]</div><div style="font-size:14px">'+data[i]["title"]+'</div><div style="font-size:12px">摘要：'+data[i]["remark"]+'</div><div style="font-size:12px;color:#ccc">点击：'+data[i]["read"]+'&nbsp;&nbsp;&nbsp;发布日期：'+data[i]["date"].substring(0, 10);+'</div></div></div></div>';
+                 $("#lists").append($html); 
+
+              }
+
+            }else{  //没有资讯！
+              openTip('没有资讯！','.personregist_tip','.personregist_windowcover');
+            }
+          }
+        });
 
     //如果已经登录，显示用户名
     if ($.session.get('username')) {
@@ -181,7 +200,7 @@ jQuery(function () {
     //6跳转之前先检查是否登录，没有登录直接跳转到登录界面
     $("#mypassword").click(function(event) {
       if ($.session.get('username')) {
-        location.href = "wjmm.html";
+        location.href = "xgmm.html";
       }else{
         location.href = "login.html";
       }
@@ -214,6 +233,12 @@ jQuery(function () {
       }else{
         openTip('没有登录，不需要退出！','.personregist_tip','.personregist_windowcover');
       }
+    });
+
+    //新闻展示
+    $(".zxlist").click(function(event) {
+      location.href = "zxdetail.html";
+      $.session.set("newsid","3");
     });
 
   })

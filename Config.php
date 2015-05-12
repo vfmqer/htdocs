@@ -5,7 +5,19 @@
 	$mysql_password='123456';
 	$mysql_database='js_mydata';
 	$mysql_bk="set names utf8";
-	
+
+function sqlsetarry($strsql)
+{
+
+	global $mysql_server_name,$mysql_username,$mysql_password,$mysql_database;						
+	$dsn = "mysql:host=".$mysql_server_name.";dbname=".$mysql_database;
+    $db = new PDO($dsn,$mysql_username,$mysql_password);
+    $db->query("set names utf8");
+ 	$data = $db->query($strsql)->fetchAll(PDO::FETCH_ASSOC);   
+	return $data;
+
+}
+
 function sqlsetjson($strsql) //返回多条数据JOSN方法
 {
 	global $mysql_server_name,$mysql_username,$mysql_password,$mysql_database;

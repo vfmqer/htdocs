@@ -136,7 +136,7 @@ POST发送值：username(用户编号), number(第几套）,type(问卷类型)
 获取资讯信息
 提交模式：GET+POST
 接口ID：13
-POST发送值：newsid(资讯编号), type(资讯类型)
+POST发送值：newsid(资讯编号), type(资讯类型)//newsid、type都可为空
 返回信息：资讯信息
 提示信息：
 13001--查询成功

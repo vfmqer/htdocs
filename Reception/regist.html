@@ -7,6 +7,7 @@
 <link href="css/main.css" rel="stylesheet" type="text/css">
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/jquery-2.1.1.js"></script>
+<script src="js/Pclass.js"></script>
 <script src="js/jquerysession.js"></script>
 </head>
 
@@ -63,57 +64,56 @@
 
 <script>
 $(function(){
-  $('.btload').click(function(event){
-  
-  var username=$('#username').val();
-  var password=$('#password').val();
-  var yanzm=$('#yanzm').val();
-  //alert(username+"|"+password+"|"+yanzm);
+    $('.btload').click(function(event){
+    
+    var username=$('#username').val();
+    var password=$('#password').val();
+    var yanzm=$('#yanzm').val();
+    //alert(username+"|"+password+"|"+yanzm);
 
-  if(username == '' )
-  {  
-    openTip('请填写用户名！','.personregist_tip','.personregist_windowcover'); 
-    $('#username').focus();
-  }
-  else if(password == '' )
-  {
-    openTip('请填写密码！','.personregist_tip','.personregist_windowcover');  
-    $('#password').focus();
-  }  
-  else if(yanzm == '' )
-  {
-    openTip('请填写验证码！','.personregist_tip','.personregist_windowcover');  
-    $('#yanzm').focus();
-  }
-  else 
-  {      
-        var id = '01';
-        var urls = generateUrl(id);
-        var postdata = {
-          "username":username,    
-          "password":password,
-          //"yanzm":yanzm   
-        }; 
-        $.ajax({
-          url: urls,
-          type: 'POST',
-          dataType: 'json',
-          data:jQuery.param(postdata, true),// 要提交的数据
-          success: function (data) {
-            if(data["a"]=='01001'){   //注册成功
-              location.href = "index.html";
-            }else if(data["a"]=='01002'){//重复注册
-              openTip('用户名已被注册，请重新填写！','.personregist_tip','.personregist_windowcover');
-            }else{  //注册失败
-              openTip('注册失败！','.personregist_tip','.personregist_windowcover');
+    if(username == '' )
+    {  
+      openTip('请填写用户名！','.personregist_tip','.personregist_windowcover'); 
+      $('#username').focus();
+    }
+    else if(password == '' )
+    {
+      openTip('请填写密码！','.personregist_tip','.personregist_windowcover');  
+      $('#password').focus();
+    }  
+    else if(yanzm == '' )
+    {
+      openTip('请填写验证码！','.personregist_tip','.personregist_windowcover');  
+      $('#yanzm').focus();
+    }
+    else 
+    {      
+          var id = '01';
+          var urls = generateUrl(id);
+          var postdata = {
+            "username":username,    
+            "password":password,
+            //"yanzm":yanzm   
+          }; 
+          $.ajax({
+            url: urls,
+            type: 'POST',
+            dataType: 'json',
+            data:jQuery.param(postdata, true),// 要提交的数据
+            success: function (data) {
+              if(data["a"]=='01001'){   //注册成功
+                location.href = "index.html";
+                $.session.set('username', username);
+              }else if(data["a"]=='01002'){//重复注册
+                openTip('用户名已被注册，请重新填写！','.personregist_tip','.personregist_windowcover');
+              }else{  //注册失败
+                openTip('注册失败！','.personregist_tip','.personregist_windowcover');
+              }
             }
-          }
-        });
-        return false;
-  } 
-  return false;
-   })
-  
+          });
+          return false;
+    } 
+  }) 
 })
       
 </script>

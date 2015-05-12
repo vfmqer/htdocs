@@ -2,7 +2,7 @@
 function generateUrl(id) { //生成url
 
     var keyswitcher = "1123456789";
-    var baseurl = "http://192.168.1.104/api.php?keys=7fff7c317d3d5eeef988d15c6934d111&datetime=2015-05-08-05-33&id=" + id;
+    var baseurl = "http://192.168.110.100/api.php?keys=7fff7c317d3d5eeef988d15c6934d111&datetime=2015-05-08-05-33&id=" + id;
     /*	var date=new Date();
     	var year=date.getFullYear();
     	var month=date.getMonth()+1;
@@ -19,14 +19,10 @@ function generateUrl(id) { //生成url
 }
 
 
+function url_img() {
 
-function success_function(info) {
-
-    return info;
-    //do what you want do
-    //alert(info);
-    //var infos =info;
-    //return infos;
+    return "http://192.168.110.100/Public/Images/";
+   
 }
 
 function PostSubmit(urls, postdata) {
@@ -38,10 +34,11 @@ function PostSubmit(urls, postdata) {
             type: 'POST',
             dataType: 'json',
             data: jQuery.param(postdata, true),
+            async:false, //使用同步请求，因为异步请求不能将返回值传给全局变量； 
         })
         .done(function(result) {
-
-            return resulta;
+            str = result;
+            return str;
 
         });
     /*$.ajax({url:urls, 

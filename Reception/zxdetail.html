@@ -15,7 +15,7 @@
 <!--头部-->
 <div class="headbg" align="center">
   <div class="headback" style="">
-  <a href="zxcenter.html"><img id="img" height="30"></a></div>
+  <a href="zxcenter.html"><img src="img/img002.png" height="30"></a></div>
   <div class="headload" style="" >资讯详情</div>
 </div>
 
@@ -23,13 +23,13 @@
 <!--主体-->
 <div class="" style="">
   <div class="" style="margin:10px 5% 0 5%;border-bottom:solid 1px red" align="center">
-    <div class="" style="font-size:18px" id="title">中国南海岛礁填海造地引关注 外媒：规模大速度快</div>
-    <div class="" style="font-size:12px;width:200px;margin:6px 0;color:#ccc">点击：<span id="read"></span>&nbsp;&nbsp;&nbsp;发布日期：<span id="date"></span></div>
+    <div class="" style="font-size:18px"><p id="title"></p></div>
+    <div class="" style="font-size:12px;width:200px;margin:6px 0;color:#ccc">点击：<span id="read"></span>&nbsp;&nbsp;&nbsp;<span id="date"></span></div>
   </div> 
   
   <div class="" style="margin:10px 5% 0 5%">
-    <img src="img/pro100201.png" style="width:100%"/>
-    <div class="" style="font-size:14px;margin:6px 4px;line-height:20px;text-indent:2em;">大公网4月10日讯 综合媒体报道，美国战略与国际研究中心（CSIS）9日公布了近期最新的卫星图片，显示中国正在美济礁附加迅速填海造地，一些瓦尼船在作业，海堤已建成。</div>
+    <img id="img" style="width:100%"/>
+    <div class="" style="font-size:14px;margin:6px 4px;line-height:20px;text-indent:2em;"><p id="contect"></p></div>
   </div>
 
   
@@ -50,19 +50,18 @@
           dataType: 'json',
           data:jQuery.param(postdata, true),// 要提交的数据
           success: function (data) {
-            //alert(data["title"]);
             if(data!=null){   //查询成功
-              //location.href = "index.html";
              $("#title").text(data["title"]);
-             
+             $("#img").attr("src",url_img()+data["img"]);
+             $("#read").text(data["read"]);
+             $("#date").text(data["date"]);
+             $("#contect").text(data["contect"]);
             }else{  //没有资讯
               openTip('没有资讯！','.personregist_tip','.personregist_windowcover');
             }
           }
         });
         return false;
-
-
   })
 
 </script>

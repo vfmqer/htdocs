@@ -146,4 +146,6 @@ a:hover{ text-decoration:none;  /*鼠标放上去无下划线*/}
 .footertab .foot{width:20%;height:60px;text-align:center;float:left;color:#fff;font-size:14px;padding-top:3px;}
 .footertab .foot_seleted{width:20%;height:60px;text-align:center;float:left;color:#fff;font-size:14px;padding-top:3px;background-color:red;}
 
+/*添加空白*/
+.blank{position:relative;left:0px;bottom:0px;width:100%;height:100px}
 

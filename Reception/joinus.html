@@ -76,6 +76,14 @@ jQuery(function () {
   <a href="oprate.html"><div class="foot"><img src="img/img05.png" height="28" /><div>设置</div></div></a> 
 </div>
 
+<!--提示框 -->
+<div class="personregist_windowcover"></div>
+<div class="personregist_tip">
+<p></p>
+<a href="javascript:void(0);" class="personregist_tip_surebtn" onClick="closeTip('.personregist_windowcover','.personregist_tip',event)">确定</a>
+</div>
+
+
 <!--侧边栏-->
 <div class="cbbody" >
    <div class="cbuser" align="center" id="usernc">用户昵称</div>
@@ -144,7 +152,7 @@ jQuery(function () {
     //6跳转之前先检查是否登录，没有登录直接跳转到登录界面
     $("#mypassword").click(function(event) {
       if ($.session.get('username')) {
-        location.href = "wjmm.html";
+        location.href = "xgmm.html";
       }else{
         location.href = "login.html";
       }

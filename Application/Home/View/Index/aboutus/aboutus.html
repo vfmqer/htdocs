@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/style.css" />
+    <script type="text/javascript" src="__PUBLIC__/Js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/jquery.sorted.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/bootstrap.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/ckform.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/common.js"></script>
+    <style type="text/css">
+    body {
+        padding-bottom: 40px;
+    }
+    
+    .sidebar-nav {
+        padding: 9px 0;
+    }
+    
+    @media (max-width: 980px) {
+        /* Enable use of floated navbar text */
+        
+        .navbar-text.pull-right {
+            float: none;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <form action="?" method="post" class="definewidth m20">
+        <table class="table table-bordered table-hover definewidth m10">
+            <tr>
+                <td width="10%" class="tableleft">是否开放注册</td>
+                <td>
+                    <input type="text" style="width:50%;" name="data[openregedit]" value="{$aboutus.openregedit}" />
+                </td>
+            </tr>
+            <tr>
+                <td class="tableleft">注册协议</td>
+                <td>
+                    <textarea name="data[agreement]" style="margin: 0px 0px 10px; width: 80%; height: 233px;resize: none;">{$aboutus.agreement}</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td class="tableleft">企业介绍</td>
+                <td>
+                    <input type="text" style="width:50%;" name="data[introduction]" value="{$aboutus.introduction}" />
+                </td>
+            </tr>
+            <tr>
+                <td class="tableleft">关于我们</td>
+                <td>
+                    <input type="text" style="width:50%;" name="data[aboutus]" value="{$aboutus.aboutus}" />
+                </td>
+            </tr>
+            <tr>
+                <td class="tableleft">APP版本</td>
+                <td>
+                    <input type="text" style="width:50%;" name="data[appedition]" value="{$aboutus.appedition}" />
+                </td>
+            </tr>
+            <tr>
+                <td class="tableleft">APP下载地址</td>
+                <td>
+                    <input type="text" style="width:50%;" name="data[appdowload]" value="{$aboutus.appdowload}" />
+                </td>
+            </tr>
+            <tr>
+                <td class="tableleft">企业网址</td>
+                <td>
+                    <input type="text" style="width:50%;" name="data[enterpriseweb]" value="{$aboutus.enterpriseweb}" />
+                </td>
+            </tr>
+            <tr>
+                <td class="tableleft">设置时间</td>
+                <td>
+                    <input type="text" style="width:50%;" name="data[settime]" value="{$aboutus.settime}" />
+                </td>
+            </tr>
+            <tr>
+                <td class="tableleft">最后修改时间</td>
+                <td>
+                    <input type="text" style="width:50%;" name="data[endtime]" value="{$aboutus.endtime}" />
+                </td>
+            </tr>
+            <input type="hidden" name="id" value="{$aboutus.id}">
+            <tr>
+                <td class="tableleft"></td>
+                <td>
+                    <button type="submit" class="btn btn-primary" type="button">修改</button> &nbsp;&nbsp;
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

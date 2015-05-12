@@ -8,6 +8,8 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/jquery-2.1.1.js"></script>
+<script src="js/Pclass.js"></script>
+<script src="js/jquerysession.js"></script>
 <style type="text/css">
  .active{color:red;border-bottom:solid 1px red;width:50%;height:50px;float:left;background:white;line-height:50px;}
  .leftin{left:0;}
@@ -55,7 +57,7 @@ jQuery(function () {
 </div>
 
 <!--尾部-->
-<a href="#"><div class="lottery"><div>我要抽奖</div></div></a>
+<a href="lottery_list.html"><div class="lottery"><div>我要抽奖</div></div></a>
 <div class="footertab" >
   <a href="index.html"><div class="foot"><img src="img/img01.png" height="28" /><div>首页</div></div></a>  
   <a href="directsell.html"><div class="foot"><img src="img/img02.png" height="28" /><div>直销模式</div></div></a> 
@@ -64,42 +66,136 @@ jQuery(function () {
   <a href="oprate.html"><div class="foot"><img src="img/img05.png" height="28" /><div>设置</div></div></a> 
 </div>
 
+<!--提示框 -->
+<div class="personregist_windowcover"></div>
+<div class="personregist_tip">
+<p></p>
+<a href="javascript:void(0);" class="personregist_tip_surebtn" onClick="closeTip('.personregist_windowcover','.personregist_tip',event)">确定</a>
+</div>
+
 <!--侧边栏-->
 <div class="cbbody" >
-   <div class="cbuser" align="center">用户昵称</div>
-   <div class="cblist"> <img src="img/img11.png" > <a href="myproductlist.html"><div>我的产品  </div></a> </div>
-   <div class="cblist"> <img src="img/img12.png" > <a href="myorder.html"><div>我的订单  </div></a> </div>
-   <div class="cblist"> <img src="img/img13.png" > <a href="myreward.html"><div>我的奖品  </div></a> </div>
-   <div class="cblist"> <img src="img/img14.png" > <a href="zxcenter.html"><div>资讯      </div></a> </div>
-   <div class="cblist"> <img src="img/img15.png" > <a href="recommend.html"><div>绑定推荐人</div></a> </div>
-   <div class="cblist"> <img src="img/img16.png" > <a href="wjmm.html"><div>修改密码  </div></a> </div>
-   <div class="cblist"> <img src="img/img17.png" > <a href="onekeymap.html"><div>一键地图  </div></a> </div>
-   <div class="cblist"> <img src="img/img18.png" > <a href="http://ai.m.taobao.com/index.html"><div>官方淘宝  </div></a> </div>
-   <div class="cblist"> <img src="img/img19.png" > <a href="complain.html"><div>投诉      </div></a> </div>
-   <div class="cblist"> <img src="img/img20.png" > <a href="#"><div>退出      </div></a> </div>
+   <div class="cbuser" align="center" id="usernc">用户昵称</div>
+   <div class="cblist"> <img src="img/img11.png" > <div id="myproduct"><span>我的产品  </div></span> </div>
+   <div class="cblist"> <img src="img/img12.png" > <div id="myorder"><span>我的订单  </div></span> </div>
+   <div class="cblist"> <img src="img/img13.png" > <div id="myreward"><span>我的奖品  </div></span> </div>
+   <div class="cblist"> <img src="img/img14.png" > <div id="zxcenter"><span>资讯      </span></div> </div>
+   <div class="cblist"> <img src="img/img15.png" > <div id="recommend"><span>绑定推荐人</span></div> </div>
+   <div class="cblist"> <img src="img/img16.png" > <div id="mypassword"><span>修改密码  </span></div> </div>
+   <div class="cblist"> <img src="img/img17.png" > <div id="onekeymap"><span>一键地图  </span></div> </div>
+   <div class="cblist"> <img src="img/img18.png" > <div id="totaobao"><span>官方淘宝  </span></div> </div>
+   <div class="cblist"> <img src="img/img19.png" > <div id="complain"><span>投诉      </span></div> </div>
+   <div class="cblist"> <img src="img/img20.png" > <div id="loginout"><span>退出      </span></div> </div>
    <img src="img/img21.png" style="position:absolute;bottom:0;width:96%;margin:5px 5px;left:0;">   
 </div>
 
-<script>
+<script type="text/javascript">
+  $(function(){
 
-var str='<div class="lessons" ><a href="service_lesson.html"><span>售后服务调查问卷</span><img src="img/img22.png" height="15"></a></div>';
-  
-$("#joinus").click(function(event) {
-    $(this).siblings("a").removeClass("active");
-    $(this).siblings("a").addClass("lessonbtn");
-    $(this).removeClass("lessonbtn");
-    $(this).addClass("active");
-    $("#textfont").html(str)
-  });
+    //如果已经登录，显示用户名
+    if ($.session.get('username')) {
+      $("#usernc").text($.session.get('username'));
+    }
 
-  $("#sinds").click(function(event) {
-    $(this).siblings("a").removeClass("active");
-    $(this).siblings("a").addClass("lessonbtn");
-    $(this).removeClass("lessonbtn");
-    $(this).addClass("active");
-    $("#textfont").html(str)
-  });
-  
+    //1跳转之前先检查是否登录，没有登录直接跳转到登录界面
+    $("#myproduct").click(function(event) {
+      if ($.session.get('username')) {
+        location.href = "myproductlist.html";
+      }else{
+        location.href = "login.html";
+      }
+    });
+
+    //2跳转之前先检查是否登录，没有登录直接跳转到登录界面
+    $("#myorder").click(function(event) {
+      if ($.session.get('username')) {
+        location.href = "myorder.html";
+      }else{
+        location.href = "login.html";
+      }
+    });
+
+    //3跳转之前先检查是否登录，没有登录直接跳转到登录界面
+    $("#myreward").click(function(event) {
+      if ($.session.get('username')) {
+        location.href = "myreward.html";
+      }else{
+        location.href = "login.html";
+      }
+    });
+
+    //4跳转之前先检查是否登录，没有登录直接跳转到登录界面
+    $("#zxcenter").click(function(event) {
+      location.href = "zxcenter.html";
+    });
+
+    //5跳转之前先检查是否登录，没有登录直接跳转到登录界面
+    $("#recommend").click(function(event) {
+      if ($.session.get('username')) {
+        location.href = "recommend.html";
+      }else{
+        location.href = "login.html";
+      }
+    });
+
+    //6跳转之前先检查是否登录，没有登录直接跳转到登录界面
+    $("#mypassword").click(function(event) {
+      if ($.session.get('username')) {
+        location.href = "wjmm.html";
+      }else{
+        location.href = "login.html";
+      }
+    });
+
+    //7跳转之前先检查是否登录，没有登录直接跳转到登录界面
+    $("#onekeymap").click(function(event) {
+      location.href = "onekeymap.html";
+    });    
+
+    //8跳转之前先检查是否登录，没有登录直接跳转到登录界面
+    $("#totaobao").click(function(event) {
+      location.href = "http://ai.m.taobao.com/index.html";
+    });       
+
+    //9跳转之前先检查是否登录，没有登录直接跳转到登录界面
+    $("#complain").click(function(event) {
+      if ($.session.get('username')) {
+        location.href = "complain.html";
+      }else{
+        location.href = "login.html";
+      }
+    });
+
+    //10退出登录，关闭session
+    $("#loginout").click(function(event) {
+      if ($.session.get('username')) {
+        $.session.clear();
+        $("#usernc").text("用户昵称");
+      }else{
+        openTip('没有登录，不需要退出！','.personregist_tip','.personregist_windowcover');
+      }
+    });
+
+    var str='<div class="lessons" ><a href="service_lesson.html"><span>售后服务调查问卷</span><img src="img/img22.png" height="15"></a></div>';
+      
+    $("#joinus").click(function(event) {
+        $(this).siblings("a").removeClass("active");
+        $(this).siblings("a").addClass("lessonbtn");
+        $(this).removeClass("lessonbtn");
+        $(this).addClass("active");
+        $("#textfont").html(str)
+      });
+
+      $("#sinds").click(function(event) {
+        $(this).siblings("a").removeClass("active");
+        $(this).siblings("a").addClass("lessonbtn");
+        $(this).removeClass("lessonbtn");
+        $(this).addClass("active");
+        $("#textfont").html(str)
+      });
+  })
+
 </script>
+
 </body>
 </html>

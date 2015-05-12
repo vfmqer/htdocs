@@ -8,6 +8,7 @@
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/jquery-2.1.1.js"></script>
 <script src="js/Pclass.js"></script>
+<script src="js/jquerysession.js"></script>
 </head>
 
 <body>
@@ -48,15 +49,12 @@
  
 </div>
 
-
 <!--提示框 -->
 <div class="personregist_windowcover"></div>
 <div class="personregist_tip">
 <p></p>
-<a href="javascript:void(0);" class="personregist_tip_surebtn" onClick="close()">确定</a>
-</div><!--提示框 -->
-
-
+<a href="javascript:void(0);" class="personregist_tip_surebtn" onClick="closeTip('.personregist_windowcover','.personregist_tip',event)">确定</a>
+</div>
 
 <script>
 $(function(){
@@ -90,6 +88,7 @@ $(function(){
 		      success: function (data) {
 			      if(data["a"]=='02001'){   //登陆成功
 			        location.href = "index.html";
+			        $.session.set('username', username);
 			      }else{  //登陆失败
 			      	openTip('用户名或者密码错误！','.personregist_tip','.personregist_windowcover');
 			      }

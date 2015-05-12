@@ -117,10 +117,14 @@
                     id: '12',
                     text: '返利管理',
                     href: "<?php echo U('index/rebate');?>"
-                }, {
+                },{
                     id: '13',
                     text: '条码管理',
                     href: "<?php echo U('index/barcode');?>"
+                }, {
+                    id: '14',
+                    text: '系统信息维护',
+                    href: "<?php echo U('index/aboutus');?>"
                 }]
             }]
         }];

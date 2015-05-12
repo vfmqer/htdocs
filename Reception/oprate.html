@@ -8,6 +8,8 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/jquery-2.1.1.js"></script>
+<script src="js/Pclass.js"></script>
+<script src="js/jquerysession.js"></script>
 <script type="text/javascript">
 jQuery(function () {
   $("#showleft").click(function(event) {
@@ -66,6 +68,13 @@ jQuery(function () {
   <a href="joinus.html"><div class="foot"><img src="img/img03.png" height="28" /><div>加盟</div></div></a> 
   <a href="service.html"><div class="foot"><img src="img/img04.png" height="28" /><div>售后</div></div></a> 
   <a href="#"><div class="foot_seleted"><img src="img/img05.png" height="28" /><div>设置</div></div></a> 
+</div>
+
+<!--提示框 -->
+<div class="personregist_windowcover"></div>
+<div class="personregist_tip">
+<p></p>
+<a href="javascript:void(0);" class="personregist_tip_surebtn" onClick="closeTip('.personregist_windowcover','.personregist_tip',event)">确定</a>
 </div>
 
 <!--侧边栏-->

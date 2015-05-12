@@ -1170,11 +1170,43 @@ class IndexController extends Controller {
             
     }
 
+    public function aboutus(){//完成关于企业的信息
+
+        $result = M('Aboutus');
+
+        if(IS_POST){
+            $data=I('post.data');
+            //判断是否全部填写
+            if($data['openregedit']==''||$data['agreement']==''||$data['introduction']==''||$data['aboutus']==''||$data['openregedit']==''||$data['appedition']==''||$data['appdowload']==''||$data['enterpriseweb']==''){
+                $this->error('请填写完全！');
+            } 
+                if($date['settime']==''){
+                    //如果第一次设置，则设置当前时间
+                $date['settime'] = date('Y-m-d H:i:s',time());
+                }
+                //设置修改时间
+                $date['endtime'] = date('Y-m-d H:i:s',time());
+
+
+                //由于只有一条数据，所以查询条件直接写出
+                $ret = $result ->where('id=1')->save($data);
+
+                //如果不为空则为写入成功
+                if(!empty($ret)&&is_numeric($ret)){
+                    $this ->success('修改成功',U('index/aboutus'));
+                 
+            }
+        }else{
+            //不是提交的POST的情况下直接显示所有要修改的信息
+        $aboutus = $result->select();
+        $this ->assign('aboutus',$aboutus[0]);
+        $this->display('index/aboutus/aboutus');
+        }
+
+    }
+
     public function test(){
 
-        $date  =  date_create ( '2015-05-12 00:00:00' );
-echo  date_format ( $date ,  'Y-m-d' );
-exit();
         $this->display();
 
     }
@@ -1203,8 +1235,6 @@ exit();
             return $td_array;
 
     } 
-
-
 
 
     public function lottory_getdata(){//后台获得中奖概率

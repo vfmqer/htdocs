@@ -118,3 +118,4 @@ function openTip(tip, target, cover) { //打开提示窗口
     $(target).fadeIn();
     $(cover).fadeIn();
 }
+

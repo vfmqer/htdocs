@@ -9,9 +9,15 @@
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/jquery-2.1.1.js"></script>
 <script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
+<script src="js/Pclass.js"></script>
 <script type="text/javascript">
 jQuery(function () {
   $("#showleft").click(function(event) {
+    /* Act on the event */
+    $(".cbbody").toggleClass('leftin');
+  });
+
+  $(".cbbody").click(function(event) {
     /* Act on the event */
     $(".cbbody").toggleClass('leftin');
   });
@@ -20,6 +26,7 @@ jQuery(function () {
 
 <style type="text/css">
 .leftin{left:0;}
+.leftout{left:-70%;}
 .zxlist{margin:0 5% 5px 5%;height:70px;width:90%;background:#fff;float:left;}
 .zximg{height:60px;width:60px;float:left;margin:5px 0 5px 5px;}
 .zxcontect{margin:0 5px;width:80%;padding:5px 0 0 65px;line-height:20px;}

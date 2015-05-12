@@ -4,9 +4,9 @@
 <head>
     <title>后台管理系统</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="/htdocs/Public/assets/css/dpl-min.css" rel="stylesheet" type="text/css" />
-    <link href="/htdocs/Public/assets/css/bui-min.css" rel="stylesheet" type="text/css" />
-    <link href="/htdocs/Public/assets/css/main-min.css" rel="stylesheet" type="text/css" />
+    <link href="/Public/assets/css/dpl-min.css" rel="stylesheet" type="text/css" />
+    <link href="/Public/assets/css/bui-min.css" rel="stylesheet" type="text/css" />
+    <link href="/Public/assets/css/main-min.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
     function setTime() {
         var dt = new Date();
@@ -54,10 +54,10 @@
         <ul id="J_NavContent" class="dl-tab-conten">
         </ul>
     </div>
-    <script type="text/javascript" src="/htdocs/Public/assets/js/jquery-1.8.1.min.js"></script>
-    <script type="text/javascript" src="/htdocs/Public/assets/js/bui-min.js"></script>
-    <script type="text/javascript" src="/htdocs/Public/assets/js/common/main-min.js"></script>
-    <script type="text/javascript" src="/htdocs/Public/assets/js/config-min.js"></script>
+    <script type="text/javascript" src="/Public/assets/js/jquery-1.8.1.min.js"></script>
+    <script type="text/javascript" src="/Public/assets/js/bui-min.js"></script>
+    <script type="text/javascript" src="/Public/assets/js/common/main-min.js"></script>
+    <script type="text/javascript" src="/Public/assets/js/config-min.js"></script>
     <script>
     BUI.use('common/main', function() {
         var config = [{

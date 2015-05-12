@@ -7,6 +7,7 @@
 <link href="css/main.css" rel="stylesheet" type="text/css">
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/TouchSlide.1.1.js" type="text/javascript"></script>
+<script src="js/Pclass.js"></script>
 </head>
 
 <body>
@@ -15,16 +16,16 @@
 <div class="headbg" align="center">
   <div class="headback" style="">
   <a href="zxcenter.html"><img src="img/img002.png" height="30"></a></div>
-  <div class="headload" style="">资讯详情</div>
+  <div class="headload" style="" >资讯详情</div>
 </div>
 
 
 <!--主体-->
 <div class="" style="">
   <div class="" style="margin:10px 5% 0 5%;border-bottom:solid 1px red" align="center">
-    <div class="" style="font-size:18px">中国南海岛礁填海造地引关注 外媒：规模大速度快</div>
-    <div class="" style="font-size:12px;width:200px;margin:6px 0;color:#ccc">点击：3000&nbsp;&nbsp;&nbsp;发布日期：2015-04-10</div>
-  </div>
+    <div class="" style="font-size:18px" id="title">中国南海岛礁填海造地引关注 外媒：规模大速度快</div>
+    <div class="" style="font-size:12px;width:200px;margin:6px 0;color:#ccc">点击：<span id="read"></span>&nbsp;&nbsp;&nbsp;发布日期：<span id="date"></span></div>
+  </div> 
   
   <div class="" style="margin:10px 5% 0 5%">
     <img src="img/pro100201.png" style="width:100%"/>
@@ -35,6 +36,37 @@
 </div>
 
 <!--尾部-->
+<script type="text/javascript">
+  $(function(){
+      var id = '13';
+      var urls = generateUrl(id);
+      var postdata = {
+          "newsid":3,    
+          "type":3,   
+        }; 
+        $.ajax({
+          url: urls,
+          type: 'POST',
+          dataType: 'json',
+          data:jQuery.param(postdata, true),// 要提交的数据
+          success: function (data) {
+            //alert(data["title"]);
+            if(data!=null){   //查询成功
+              //location.href = "index.html";
+             $("#title").text(data["title"]);
+             
+            }else{  //没有资讯
+              openTip('没有资讯！','.personregist_tip','.personregist_windowcover');
+            }
+          }
+        });
+        return false;
+
+
+  })
+
+</script>
+
 
 
 </body>

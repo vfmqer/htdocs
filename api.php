@@ -121,7 +121,7 @@ if($jiekey==$newkey) //钥匙验证
       if(isset($_POST["username"]) && isset($_POST["password"])) //判断PSOT是否提交
       {
 	    $username=$_POST['username'];
-		  $password=md5($_POST['password']);
+		$password=$_POST['password'];
         $regstr="select * from js_user where username='".$username."'";
     
         if(sqlquery($regstr,"username")==$username)
@@ -152,23 +152,25 @@ if($jiekey==$newkey) //钥匙验证
 	}
 
     elseif($_GET['id']=="02") //用户登录	  
-    {
-      if(isset($_POST["username"]) && !empty($_POST["username"]) && isset($_POST["password"]) && !empty($_POST["password"])){
-      
-		$username=$_POST['username'];
-		$password=md5($_POST['password']);
-        
-	 	$loadstr="select * from js_user where username='{$username}' AND password='{$password}'";
-        
-		if(sqlquery($loadstr,"username")==$username && sqlquery($loadstr,"password")==$password){
-           
-    			//echo json_return("02001");//登陆成功
-          echo '{"username":"dsadsdsds"}';            
-		}else{
-			 echo json_return("02002");//登陆失败		
-		}
+    {  
+      if(isset($_POST["username"]) && isset($_POST["password"]))
+      {
+    		$username=$_POST['username'];
+    		$password=md5($_POST['password']);
+    	 	$loadstr="select * from js_user where username='{$username}' AND password='{$password}'";
+            
+    		if(sqlquery($loadstr,"username")==$username && sqlquery($loadstr,"password")==$password)
+        {              
+        			echo json_return("02001");//登陆成功
+/*              $bcf=array();
+              $bcf["username"]="success";
+              echo json_encode($bcf);        */
+            
+    		}else{
+    			 echo json_return("02002");//登陆失败		
+    		}
       }else{
-        echo json_return("02003");//没有获取到值
+          echo json_return("1111");//没有获取到值
       }
 	}
     
@@ -415,7 +417,9 @@ if($jiekey==$newkey) //钥匙验证
         if(sqlquery($selectstr,"id")!=null) //检查是否存在数据
         {   
             //echo json_return("13001"); //查询成功
-            echo '{"demoData":"This Is The JSON Data"}'; 
+            foreach (sqlset($selectstr) as $value){}
+            //$value=sqlset($selectstr);
+            echo json_encode($value);//返回资讯信息;
         } 
 
         else

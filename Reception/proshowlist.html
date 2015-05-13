@@ -8,8 +8,13 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/jquery-2.1.1.js"></script>
+<script src="js/Pclass.js"></script>
+<script src="js/jquerysession.js"></script>
+<script src="js/mainfun.js"></script>
 </head>
-
+<style type="text/css">
+  .divfl{cursor:pointer;}
+</style>
 <body >
 
 <!--头部-->
@@ -20,19 +25,47 @@
 </div>
 
 <!--主体-->
-<div align="center" style="margin:15px 5%;width:90%">
-  <a href="proshow.html"><div class="divfl"><div class="catg" >分类一</div></div></a>
-  <a href="proshow.html"><div class="divfl"><div class="catg" >分类二</div></div></a>
-  <a href="proshow.html"><div class="divfl"><div class="catg" >分类三</div></div></a>
-  <a href="proshow.html"><div class="divfl"><div class="catg" >分类四</div></div></a>
-  <a href="proshow.html"><div class="divfl"><div class="catg" >分类五</div></div></a>
-  <a href="proshow.html"><div class="divfl"><div class="catg" >分类六</div></div></a>
+<div  align="center" style="margin:15px 5%;width:90%">
+  <div id="prolist"></div>
 </div>
 
-
-
 <!--尾部-->
+<script type="text/javascript">
+	$(function(){
+        var id = '04';
+        var urls = generateUrl(id);
+        var postdata = {
+          "productid":"",    
+          "category":"",   
+        }; 
+        $.ajax({
+          url: urls,
+          type: 'POST',
+          dataType: 'json',
+          data:jQuery.param(postdata, true),// 要提交的数据
+          //error:function(XMLResponse){alert(XMLResponse.responseText)},
+          success:function(data){
+            if(data!=null){   //返回成功   
+              for(var i=0;i<data.length;i++){
+                  $html='<div class="divfl" alt='+data[i]["typeid"]+'><div class="catg">'+data[i]["typename"]+'</div></div>';
+                 $("#prolist").append($html); 
+              }
 
+            }else{  //没有资讯！
+              openTip('没有资讯！','.personregist_tip','.personregist_windowcover');
+            }
+          }
+        });
+
+	  $('#prolist').delegate(".divfl","click",function(){	  	
+	  	var category=$(this).attr('alt');
+	    $.session.remove("category");
+	    $.session.set("category",category);
+	    location.href = "proshow.html";	    
+	  })
+	});
+
+</script>
 
 </body>
 </html>

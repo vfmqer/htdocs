@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>产品类型管理</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/style.css" />
+    <script type="text/javascript" src="__PUBLIC__/Js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/jquery.sorted.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/bootstrap.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/ckform.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/common.js"></script>
+    <style type="text/css">
+    body {
+        padding-bottom: 40px;
+    }
+    
+    .sidebar-nav {
+        padding: 9px 0;
+    }
+    
+    @media (max-width: 980px) {
+        /* Enable use of floated navbar text */
+        
+        .navbar-text.pull-right {
+            float: none;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <form class="form-inline definewidth m20">
+        用户名称：
+        <input type="text" name="username" id="username" class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
+        <button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp;
+        <button type="button" class="btn btn-success" id="addnew">新增</button>
+        <!-- &nbsp;&nbsp; <button type="button" class="btn btn-success" id="addnew">新增会员</button> -->
+    </form>
+    <load href="__PUBLIC__/Css/page.css" />
+    <!-- 导入Page样式的样式表 -->
+    <table class="table table-bordered table-hover definewidth m10">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>资讯名称</th>
+                <th>资讯类型</th>
+                <th>资讯摘要</th>
+                <th>资讯内容</th>
+                <th>新闻图片</th>
+                <th>点击次数</th>
+                <th>发布时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <foreach name="result" item="vo">
+            <tr>
+                <td>{$vo.id}</td>
+                <td>{$vo.title}</td>
+                <td>{$vo.type}</td>
+                <td>{$vo.remark}</td>
+                <td>{$vo.contect}</td>
+                <td>{$vo.img}</td>
+                <td>{$vo.read}</td>
+                <td>{$vo.date}</td>
+                <td><a href="{:U('index/news_edit')}?id={$vo.id}">编辑</a>
+                    <a href="#" onclick="del({$vo.id})">删除</a>
+                </td>
+            </tr>
+        </foreach>
+    </table>
+    <hr />
+    <div class="green-black ">{$page}
+        <div/>
+        <!-- page方法显示分页 -->
+</body>
+
+</html>
+<script>
+$(function() {
+    $('#addnew').click(function() {
+        window.location.href = "{:U('index/news_add')}";
+    });
+});
+
+function del(id) {
+    if (confirm("确定要删除吗？")) {
+        var link="{:U('index/news_delete')}?id="+id;
+        window.location.href = link;
+    }
+}
+</script>

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>后台管理系统</title>
+    <title>{$_SESSION['user']['username']}，欢迎登录依森后台管理！</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="__PUBLIC__/assets/css/dpl-min.css" rel="stylesheet" type="text/css" />
     <link href="__PUBLIC__/assets/css/bui-min.css" rel="stylesheet" type="text/css" />
@@ -94,6 +94,10 @@
                     text: '展示产品管理',
                     href: "{:U('index/product')}"
                 }, {
+                    id: '15',
+                    text: '产品类型管理',
+                    href: "{:U('index/producttype')}"
+                }, {
                     id: '7',
                     text: '资讯管理',
                     href: "{:U('index/news')}"
@@ -125,7 +129,7 @@
                     id: '14',
                     text: '系统信息维护',
                     href: "{:U('index/aboutus')}"
-                }]
+                },]
             }]
         }];
         new PageUtil.MainPage({

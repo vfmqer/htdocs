@@ -8,6 +8,7 @@
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/TouchSlide.1.1.js" type="text/javascript"></script>
 <script src="js/Pclass.js"></script>
+<script src="js/jquerysession.js"></script>
 </head>
 
 <body>
@@ -41,8 +42,8 @@
       var id = '13';
       var urls = generateUrl(id);
       var postdata = {
-          "newsid":3,    
-          "type":3,   
+          "newsid":$.session.get("newsid"),    
+          "type":"",   
         }; 
         $.ajax({
           url: urls,
@@ -51,11 +52,13 @@
           data:jQuery.param(postdata, true),// 要提交的数据
           success: function (data) {
             if(data!=null){   //查询成功
-             $("#title").text(data["title"]);
-             $("#img").attr("src",url_img()+data["img"]);
-             $("#read").text(data["read"]);
-             $("#date").text(data["date"]);
-             $("#contect").text(data["contect"]);
+              for(var i=0;i<data.length;i++){
+                 $("#title").text(data[i]["title"]);
+                 $("#img").attr("src",url_img()+data[i]["img"]);
+                 $("#read").text(data[i]["read"]);
+                 $("#date").text(data[i]["date"].substring(0, 10));
+                 $("#contect").text(data[i]["contect"]);
+              }
             }else{  //没有资讯
               openTip('没有资讯！','.personregist_tip','.personregist_windowcover');
             }

@@ -39,7 +39,7 @@ POST发送值：username(用户手机),password(密码，原码)
 获取产品信息
 提交模式：GET+POST
 接口ID：04
-POST发送值：productid(产品编号), category(产品分类)
+POST发送值：productid(产品编号，可为空), category(产品分类，可为空)
 返回信息：产品详细信息
 提示信息：
 04001--查找成功

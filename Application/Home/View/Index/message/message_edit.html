@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title></title>
     <meta charset="UTF-8">
@@ -11,82 +12,116 @@
     <script type="text/javascript" src="__PUBLIC__/Js/bootstrap.js"></script>
     <script type="text/javascript" src="__PUBLIC__/Js/ckform.js"></script>
     <script type="text/javascript" src="__PUBLIC__/Js/common.js"></script>
-
- 
-
     <style type="text/css">
-        body {
-            padding-bottom: 40px;
+    body {
+        padding-bottom: 40px;
+    }
+    
+    .sidebar-nav {
+        padding: 9px 0;
+    }
+    
+    @media (max-width: 980px) {
+        /* Enable use of floated navbar text */
+        
+        .navbar-text.pull-right {
+            float: none;
+            padding-left: 5px;
+            padding-right: 5px;
         }
-        .sidebar-nav {
-            padding: 9px 0;
-        }
-
-        @media (max-width: 980px) {
-            /* Enable use of floated navbar text */
-            .navbar-text.pull-right {
-                float: none;
-                padding-left: 5px;
-                padding-right: 5px;
-            }
-        }
-
-
+    }
     </style>
 </head>
-<body>
-<form action="?" method="post" class="definewidth m20">
-<table class="table table-bordered table-hover definewidth m10">
-    <tr>
-        <td width="10%" class="tableleft">用户名</td>
-        <td><p>{$message.username}</p></td>
-    </tr>
-    <tr>
-        <td class="tableleft">留言类型</td>
-        <td><p>{$message.type}</p></td>
-    </tr>
-    <tr>
-        <td class="tableleft">真实姓名</td>
-        <td><p>{$message.turename}</p></td>
-    </tr> 
-    <tr>
-        <td class="tableleft">手机号码</td>
-        <td><p>{$message.tel}</p></td>
-    </tr>
-    <tr>
-        <td class="tableleft">留言时间</td>
-        <td><p>{$message.replytime}</p></td>
-    </tr>    
-        <tr>
-        <td class="tableleft">详细地址</td>
-        <td><p>{$message.address2}</p></td>
-    </tr>   
-    <tr>
-        <td class="tableleft">留言内容</td>
-        <td><p style="margin: 0px 0px 10px; width: 80%;">{$message.content}</p></td>
-    </tr>
-    <tr>
-        <td class="tableleft">回复</td>
-        <td><textarea name="data[reply]" style="margin: 0px 0px 10px; width: 80%; height: 233px;resize: none;">{$message.reply}</textarea>
-        </td>
-    </tr>
-    <input type="hidden" name="id" value="{$message.id}">
 
-    <tr>
-        <td class="tableleft"></td>
-        <td>
-            <button type="submit" class="btn btn-primary" type="button">回复</button> &nbsp;&nbsp;<button type="button" class="btn btn-success" name="backid" id="backid">返回列表</button>
-        </td>
-    </tr>
-</table>
-</form>
+<body>
+    <form action="?" method="post" class="definewidth m20">
+        <table class="table table-bordered table-hover definewidth m10">
+            <tr>
+                <td width="10%" class="tableleft">用户名</td>
+                <td width="70%">
+                    <p>{$message.username}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="tableleft">留言类型</td>
+                <td>
+                    <p>{$message.type}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="tableleft">真实姓名</td>
+                <td>
+                    <p>{$message.turename}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="tableleft">手机号码</td>
+                <td>
+                    <p>{$message.tel}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="tableleft">留言时间</td>
+                <td>
+                    <p>{$message.replytime}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="tableleft">详细地址</td>
+                <td>
+                    <p>{$message.address2}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="tableleft">留言内容</td>
+                <td>
+                    <p style="margin: 0px 0px 10px; width: 1000px;">{$message.content}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="tableleft">回复</td>
+                <td>
+                    <!-- 加载编辑器的容器 -->
+                    <script id="container" name="data[reply]" type="text/plain"></script>
+                    <!-- 配置文件 -->
+                    <script type="text/javascript" src="/Public/ueditor/ueditor.config.js"></script>
+                    <!-- 编辑器源码文件 -->
+                    <script type="text/javascript" src="/Public/ueditor/ueditor.all.js"></script>
+                    <!-- 实例化编辑器 -->
+                    <script type="text/javascript">
+                    var ue = UE.getEditor('container', {
+                        initialFrameWidth: 1000,
+                        initialFrameHeight: 260
+                    });
+                    ue.ready(function() {
+                        //设置编辑器的内容
+                        ue.setContent('{$message.reply}');
+                        //获取html内容，返回: <p>hello</p>
+                        var html = ue.getContent();
+                        //获取纯文本内容，返回: hello
+                        var txt = ue.getContentTxt();
+                    });
+                    </script>
+                </td>
+            </tr>
+            <input type="hidden" name="id" value="{$message.id}">
+            <tr>
+                <td class="tableleft"></td>
+                <td>
+                    <button type="submit" class="btn btn-primary" type="button">回复</button> &nbsp;&nbsp;
+                    <button type="button" class="btn btn-success" name="backid" id="backid">返回列表</button>
+                </td>
+            </tr>
+        </table>
+    </form>
 </body>
+
 </html>
 <script>
-    $(function () {       
-		$('#backid').click(function(){
-				history.back();
-		 });
-
+$(function() {
+    $('#backid').click(function() {
+        history.back();
     });
+
+});
 </script>

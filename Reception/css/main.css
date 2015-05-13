@@ -33,9 +33,10 @@ a:hover{ text-decoration:none;  /*鼠标放上去无下划线*/}
 
 /*订单*/
 .prolist{margin:10px 0 0 0;padding:0 0 5px 0;border-bottom:solid 1px #ccc;height:95px;}
-.prolist1{margin:5px 0 5px 0;padding:10px 0 5px 0;border-bottom:solid 0px #ccc;height:80px;background:#FFF;}
-.proimg{width:80px;margin:0 3%;float:left;}
-.protitle{font-size:14px;line-height:23px;color:#000;}
+.prolist1{margin:5px 0 5px 0;padding:5px 0 5px 0;border-bottom:solid 0px #ccc;height:80px;background:#FFF;cursor:pointer;}
+.proimg{width:80px;height:80px;margin:0 3%;float:left;}
+.protitle{font-size:1.2em;line-height:1.5em;color:#000;}
+.pclick{font-size:0.7em;color:#999;}
 
 /*奖品*/
 .rewardbg{margin:10px 0 0 0;padding:0 0 5px 0;border-bottom:solid 1px #ccc;height:110px;}
@@ -147,5 +148,5 @@ a:hover{ text-decoration:none;  /*鼠标放上去无下划线*/}
 .footertab .foot_seleted{width:20%;height:60px;text-align:center;float:left;color:#fff;font-size:14px;padding-top:3px;background-color:red;}
 
 /*添加空白*/
-.blank{position:relative;left:0px;bottom:0px;width:100%;height:100px}
+.blank{width:100%;height:65px;background:#F5F5F5;float:left;}
 

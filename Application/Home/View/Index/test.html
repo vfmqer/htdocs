@@ -1,54 +1,24 @@
-<?php 
-// 将HTML表格的每行每列转为数组，采集表格数据
-function get_td_array($table) {
-    // 去掉 HTML 标记属性
-    $table = preg_replace("'<table[^>]*?>'si", "", $table);
-    $table = preg_replace("'<tr[^>]*?>'si", "", $table);
-    $table = preg_replace("'<td[^>]*?>'si", "", $table);
-    $table = str_replace("</tr>", "{tr}", $table);
-    $table = str_replace("</td>", "{td}", $table);
-    // 去掉 HTML 标记
-    $table = preg_replace("'<[\/\!]*?[^<>]*?>'si", "", $table);
-    // 去掉空白字符
-    $table = preg_replace("'([\r\n])[\s]+'", "", $table);
-    $table = str_replace(" ", "", $table);
-    $table = str_replace(" ", "", $table);
-    
-    $table = explode('{tr}', $table);
-    array_pop($table);
-    foreach ($table as $key => $tr) {
-        $td = explode('{td}', $tr);
-        array_pop($td);
-        $td_array[] = $td;
-    } 
-    return $td_array;
-} 
+<!DOCTYPE HTML>
+<html lang="en-US">
 
-//测试内容    
-echo 'enenba.com亲自撸过结果：<br />';   
-$str = '
-<table width="200" border="1" cellspacing="0" cellpadding="0">
-    <tr>
-        <td>姓名</td>
-        <td>公司</td>
-        <td>电话</td>
-    </tr>
-    <tr>
-        <td>小明</td>
-        <td>xx科技</td>
-        <td>15858585858</td>
-    </tr>
-    <tr>
-    <tr>
-        <td>小红</td>
-        <td>yy科技</td>
-        <td>14848484848</td>
-    </tr>
-    </tr>
-</table>
-';
+<head>
+    <meta charset="UTF-8">
+    <title>ueditor demo</title>
+</head>
 
-$r = get_td_array($str);
-echo $str;
-printf("<p>输出数据为：</p><pre>%s</pre>\n",var_export( $r ,TRUE));
-?>
+<body>
+    <!-- 加载编辑器的容器 -->
+    <script id="container" name="content" type="text/plain">
+        这里写你的初始化内容
+    </script>
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="/Public/ueditor/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="/Public/ueditor/ueditor.all.js"></script>
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript">
+        var ue = UE.getEditor('container');
+    </script>
+</body>
+
+</html>

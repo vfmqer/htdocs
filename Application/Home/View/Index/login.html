@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>微信商城后台管理系统</title>
+    <title>依森网络移动平台管理系统1.0</title>
     <style type="text/css">
     <!-- * {
         margin: 0px;

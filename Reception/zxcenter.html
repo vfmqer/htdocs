@@ -82,11 +82,13 @@
     <!--主体-->
     <div class="" style="">
         <div class="zxselect" align="center">
-            <div class="active" id="cat1">行业信息</div>
-            <div class="list" id="cat2">问题详解</div>
-            <div class="list" id="cat3">科普知识</div>
-            <div class="list" id="cat4">安装教程</div>
-            <span class="listm" id="more">&nbsp;>&nbsp;</span>
+            <span class="listm" hidden id="more">&nbsp;>&nbsp;</span>
+            <div class="active" id="cat1" onclick="clicknews(4)">行业信息</div>
+            <div class="list" id="cat2" onclick="clicknews(2)">问题详解</div>
+            <div class="list" id="cat3" onclick="clicknews(3)">科普知识</div>
+            <div class="list" id="cat4" onclick="clicknews(1)">安装教程</div>
+            <div class="list" hidden id="cat5" onclick="clicknews(5)">活动信息</div>
+            <span class="listm" id="more" onclick="more()">&nbsp;>&nbsp;</span>
         </div>
         <div class="zxctext">
         </div>
@@ -97,40 +99,38 @@
 
 </html>
 <!--尾部-->
-<script>
-var str = '<a href="zxdetail.html"><div class="context"align="left"><img src="img/pro100201.png"/><div  class="details"><div class=""style="font-size:14px;color:#000">中国南海岛礁填海造地引关注</div><div class=""style="font-size:12px;color:#000">摘要：4月10日讯 综合媒体报道</div><div class=""style="font-size:12px;color:#ccc">点击：3000&nbsp; &nbsp; &nbsp; 发布日期：2015-04-10</div></div></div></a>';
-
-$("#cat2").click(function(event) {
-    $(this).siblings("div").removeClass("active");
-    $(this).siblings("div").addClass("list");
-    $(this).removeClass("list");
-    $(this).addClass("active");
-    $(".zxctext").html(str + str)
-});
-
-$("#cat3").click(function(event) {
-    $(this).siblings("div").removeClass("active");
-    $(this).siblings("div").addClass("list");
-    $(this).removeClass("list");
-    $(this).addClass("active");
-    $(".zxctext").html(str + str + str)
-});
-
-$("#cat4").click(function(event) {
-    $(this).siblings("div").removeClass("active");
-    $(this).siblings("div").addClass("list");
-    $(this).removeClass("list");
-    $(this).addClass("active");
-    $(".zxctext").html(str + str + str + str)
-});
-</script>
 <script type="text/javascript">
-$(function() {
+
+clicknews(4);
+function more(){
+
+}
+
+function clicknews(io) {
+    $(".active").addClass("list");
+    $(".active").removeClass("active");
+    if (io == 4) {
+        $("#cat1").removeClass("list");
+        $("#cat1").addClass("active");
+    }
+    if (io == 2) {
+        $("#cat2").removeClass("list");
+        $("#cat2").addClass("active");
+    }
+    if (io == 3) {
+        $("#cat3").removeClass("list");
+        $("#cat3").addClass("active");
+    }
+    if (io == 1) {
+        $("#cat4").removeClass("list");
+        $("#cat4").addClass("active");
+    }
+    $(".zxctext").empty();
     var id = '13';
     var urls = generateUrl(id);
     var postdata = {
         "newsid": "",
-        "type": "3",
+        "type": io,
     };
     $.ajax({
         url: urls,
@@ -140,14 +140,26 @@ $(function() {
         success: function(data) {
             if (data != null) { //查询成功
                 for (var i = 0; i < data.length; i++) {
-                    var str = '<a href="zxdetail.html"><div class="context"align="left"><img src="'+data[i]['img']+'img/pro100201.png"/><div  class="details"><div class=""style="font-size:14px;color:#000">中国南海岛礁填海造地引关注</div><div class=""style="font-size:12px;color:#000">摘要：4月10日讯 综合媒体报道</div><div class=""style="font-size:12px;color:#ccc">点击：3000&nbsp; &nbsp; &nbsp; 发布日期：2015-04-10</div></div></div></a>';
-                    $(".zxctext").html(str)
+                    var str = new Array();
+                    str[i] = '<div class="context"align="left" alt=' + data[i]["id"] + '><img src="' + url_img() + data[i]["img"] + '"/><div  class="details"><div class=""style="font-size:14px;color:#000">' + data[i]["title"] + '</div><div class=""style="font-size:12px;color:#000">摘要：' + data[i]["remark"] + '</div><div class=""style="font-size:12px;color:#ccc">点击：' + data[i]["read"] + '&nbsp; &nbsp; &nbsp; 发布日期：' + data[i]["date"].substring(0, 10) + '</div></div></div>';
                 }
+                for (var i = str.length - 1; i >= 0; i--) {
+                    $(".zxctext").append(str);
+                };
             } else { //没有资讯
                 openTip('没有资讯！', '.personregist_tip', '.personregist_windowcover');
             }
         }
     });
     return false;
+}
+
+$(function() {
+    $(".zxctext").delegate(".context", "click", function() {
+        location.href = "zxdetail.html";
+        var newsid = $(this).attr('alt');
+        $.session.remove("newsid");
+        $.session.set("newsid", newsid);
+    })
 })
 </script>

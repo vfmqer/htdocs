@@ -212,12 +212,23 @@ if($jiekey==$newkey) //钥匙验证
       {  
         $productid=$_POST['productid'];
         $category=$_POST["category"];
-        $getprostr="select * from js_product where id='".$productid."' and category='".$category."'";
+
+        if ($productid == "" && $category =="") {
+          $getprostr="select * from js_producttype where typeclass='1'";
+        }elseif ($productid == "") {
+          $getprostr="select * from js_product where category='".$category."'";
+        }elseif ($category == "") {
+          $getprostr="select * from js_product where id='".$productid."'";
+        }else{
+          $getprostr="select * from js_product where id='".$productid."' and category='".$category."'";
+        }
 
         if(sqlquery($getprostr,"id")!=null)
         {   
-            echo json_decode(array(sqlset($getprostr)));//返回数据
-            echo json_return("04001");//查找成功
+/*            echo json_decode(array(sqlset($getprostr)));//返回数据
+            echo json_return("04001");//查找成功*/
+            $value=sqlsetarry($getprostr);
+            echo json_encode($value);
         }
         else
         {

@@ -329,7 +329,7 @@ class IndexController extends Controller {
          }
                     
         $table = M('Message');
-        $count = $table->where($where)->count();//计算level的管理员数量
+        $count = $table->where($where)->count();//计算留言条数
 
         $Page = new \Think\Page($count,C('MY_PAGE_MESSAGE'));
 
@@ -337,7 +337,9 @@ class IndexController extends Controller {
         $show =$Page->show();
 
         $list = $table->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
-
+        for ($i=0; $i < count($list); $i++) { 
+            $list[$i]['reply'] = htmlspecialchars_decode($list[$i]['reply']);
+        }
         $this->assign('result',$list);
         $this->assign('page',$show);// 赋值分页输出
 
@@ -348,7 +350,8 @@ class IndexController extends Controller {
     public function message_edit(){//留言编辑方法
 
         if(IS_POST){
-            $data = I('post.data');
+            //把接收到的数据用html方式保存
+            $data = I('post.data','htmlspecialchars');
             if($data['reply']==''){
 
                 $this->error('回复为空!');
@@ -374,7 +377,8 @@ class IndexController extends Controller {
 
                 $table = M('Message');
                 $user = $table->where(array('id'=>$id))->select();
-
+                //数据库存的reply数据为加密为html格式的代码，下面进行解密
+                $user[0]['reply'] = htmlspecialchars_decode($user[0]['reply']);
                 $this->assign('message',$user[0]);
                 $this->display('index/message/message_edit');
         } 
@@ -1170,6 +1174,11 @@ class IndexController extends Controller {
             
     }
 
+    public function producttype(){
+
+        $this->display('index/producttype/producttype');
+    }
+
     public function aboutus(){//完成关于企业的信息
 
         $result = M('Aboutus');
@@ -1205,9 +1214,10 @@ class IndexController extends Controller {
 
     }
 
+
     public function test(){
 
-        $this->display();
+        $this->display('index/test');
 
     }
 

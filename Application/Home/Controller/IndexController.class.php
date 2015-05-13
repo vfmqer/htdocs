@@ -351,7 +351,7 @@ class IndexController extends Controller {
 
         if(IS_POST){
             //把接收到的数据用html方式保存
-            $data = I('post.data','htmlspecialchars');
+            $data = I('post.data');
             if($data['reply']==''){
 
                 $this->error('回复为空!');
@@ -1208,6 +1208,9 @@ class IndexController extends Controller {
         }else{
             //不是提交的POST的情况下直接显示所有要修改的信息
         $aboutus = $result->select();
+        $aboutus[0]['agreement'] = htmlspecialchars_decode($aboutus[0]['agreement']);
+        $aboutus[0]['introduction'] = htmlspecialchars_decode($aboutus[0]['introduction']);
+        $aboutus[0]['aboutus'] = htmlspecialchars_decode($aboutus[0]['aboutus']);
         $this ->assign('aboutus',$aboutus[0]);
         $this->display('index/aboutus/aboutus');
         }

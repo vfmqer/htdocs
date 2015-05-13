@@ -45,19 +45,58 @@
             <tr>
                 <td class="tableleft">注册协议</td>
                 <td>
-                    <textarea name="data[agreement]" style="margin: 0px 0px 10px; width: 80%; height: 233px;resize: none;">{$aboutus.agreement}</textarea>
+                    <!-- 加载编辑器的容器 -->
+                    <script id="container" name="data[agreement]" type="text/plain"></script>
                 </td>
             </tr>
             <tr>
                 <td class="tableleft">企业介绍</td>
                 <td>
-                    <input type="text" style="width:50%;" name="data[introduction]" value="{$aboutus.introduction}" />
+                    <!-- 加载编辑器的容器 -->
+                    <script id="container1" name="data[introduction]" type="text/plain"></script>
                 </td>
             </tr>
             <tr>
                 <td class="tableleft">关于我们</td>
                 <td>
-                    <input type="text" style="width:50%;" name="data[aboutus]" value="{$aboutus.aboutus}" />
+                    <script id="container2" name="data[aboutus]" type="text/plain"></script>
+                    <!-- 配置文件 -->
+                    <script type="text/javascript" src="/Public/ueditor/ueditor.config.js"></script>
+                    <!-- 编辑器源码文件 -->
+                    <script type="text/javascript" src="/Public/ueditor/ueditor.all.js"></script>
+                    <!-- 实例化编辑器 -->
+                    <script type="text/javascript">
+                    var ue2 = UE.getEditor('container2', {
+                        initialFrameWidth: 1000,
+                        initialFrameHeight: 260,
+                        autoHeightEnabled: false,
+
+                    });
+                    var ue1 = UE.getEditor('container1', {
+                        initialFrameWidth: 1000,
+                        initialFrameHeight: 260,
+                        autoHeightEnabled: false,
+
+                    });
+                    var ue = UE.getEditor('container', {
+                        initialFrameWidth: 1000,
+                        initialFrameHeight: 260,
+                        autoHeightEnabled: false,
+
+                    });
+                    ue.ready(function() {
+                        //设置编辑器的内容
+                        ue.setContent('{$aboutus.agreement}');
+                    });
+                    ue1.ready(function() {
+                        //设置编辑器的内容
+                        ue1.setContent('{$aboutus.introduction}');
+                    });
+                    ue2.ready(function() {
+                        //设置编辑器的内容
+                        ue2.setContent('{$aboutus.aboutus}');
+                    });
+                    </script>
                 </td>
             </tr>
             <tr>

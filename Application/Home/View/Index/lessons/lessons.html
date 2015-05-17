@@ -34,37 +34,43 @@
 </head>
 
 <body>
-    <form class="form-inline definewidth m20">
+    <form class="form-inline definewidth m20" action="?" method="get">
         用户名称：
         <input type="text" name="username" id="username" class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
         <button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp;
-        <button type="button" class="btn btn-success" id="addnew">新增问卷</button>
-        <!-- &nbsp;&nbsp; <button type="button" class="btn btn-success" id="addnew">新增会员</button> -->
+        <button type="button" class="btn btn-success" id="addnew">新增</button>
     </form>
+    <load href="__PUBLIC__/Css/page.css" />
+    <!-- 导入Page样式的样式表 -->
     <table class="table table-bordered table-hover definewidth m10">
         <thead>
             <tr>
-                <th>问卷编号</th>
-                <th>问卷类型</th>
-                <th>问卷创建时间</th>
-                <th>问卷开始时间</th>
-                <th>问卷结束时间</th>
-                <th>参加问卷人数</th>
-                <th>操作</th>
+                <th width="5%">问卷序号</th>
+                <th width="10%">问卷标题</th>
+                <th width="20%">问卷描述</th>
+                <th width="20%">题目</th>
+                <th width="15%">选项</th>
+                <th width="15%">活动开始日期－结束日期</th>
+                <th width="10%">操作</th>
             </tr>
         </thead>
-        <tr>
-            <td>1</td>
-            <td>会员1</td>
-            <td>15333446423</td>
-            <td>382938293</td>
-            <td>普通</td>
-            <td>普通</td>
-            <td>
-                <a href="{:U('index/lessons_view')}?id={$vo.id}">统计&分析</a>
-            </td>
-        </tr>
+        <foreach name="result" item="vo">
+            <tr>
+                <td>{$vo.id}</td>
+                <td>{$vo.title}</td>
+                <td>{$vo.destribe}</td>
+                <td>{$vo.question}</td>
+                <td>{$vo.option}</td>
+                <td>{$vo.starttime}至{$vo.endtime}</td>
+                <td><a href="{:U('index/lessons_edit')}?id={$vo.id}">编辑</a>
+                    <a href="{:U('index/lessons_view')}?id={$vo.id}">分析</a>
+                    <a href="{:U('index/lessons_delete')}?id={$vo.id}">删除</a></td>
+            </tr>
+        </foreach>
     </table>
+    <div class="green-black">{$page}
+        <div/>
+        <!-- page方法显示分页 -->
 </body>
 
 </html>
@@ -75,10 +81,4 @@ $(function() {
     });
 });
 
-function del(id) {
-    if (confirm("确定要删除吗？")) {
-        var link = "{:U('index/lessons_delete')}?id=" + id;
-        window.location.href = link;
-    }
-}
 </script>

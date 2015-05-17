@@ -66,12 +66,12 @@
                     <input type="text" name="data[relatearticles]" value="{$product.relatearticles}" />
                 </td>
             </tr>
-            <tr>
+<!--             <tr>
                 <td class="tableleft">关联网址</td>
                 <td>
                     <input type="text" name="data[link]" value="{$product.link}" />
                 </td>
-            </tr>
+            </tr> -->
             <tr>
                 <td class="tableleft">新增时间</td>
                 <td>
@@ -95,7 +95,28 @@
             <tr>
                 <td class="tableleft">产品详情</td>
                 <td>
-                    <textarea name="data[details]" style="margin: 0px 0px 10px; width: 80%; height: 233px;resize: none;">{$product.details}</textarea>
+                    <script id="container" name="data[details]" type="text/plain"></script>
+                    <!-- 配置文件 -->
+                    <script type="text/javascript" src="/Public/ueditor/ueditor.config.js"></script>
+                    <!-- 编辑器源码文件 -->
+                    <script type="text/javascript" src="/Public/ueditor/ueditor.all.js"></script>
+                    <!-- 实例化编辑器 -->
+                    <script type="text/javascript">
+                    var ue = UE.getEditor('container', {
+                        initialFrameWidth: 700,
+                        initialFrameHeight: 260,
+                        autoHeightEnabled: false,
+
+                    });
+                    ue.ready(function() {
+                        //设置编辑器的内容
+                        ue.setContent('{$product.details}');
+                        //获取html内容，返回: <p>hello</p>
+                        var html = ue.getContent();
+                        //获取纯文本内容，返回: hello
+                        var txt = ue.getContentTxt();
+                    });
+                    </script>
                 </td>
             </tr>
             <input type="hidden" name="id" value="{$product.id}">

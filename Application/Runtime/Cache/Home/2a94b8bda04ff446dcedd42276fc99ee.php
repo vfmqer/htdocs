@@ -4,9 +4,9 @@
 <head>
     <title><?php echo ($_SESSION['user']['username']); ?>，欢迎登录依森后台管理！</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="/Public/assets/css/dpl-min.css" rel="stylesheet" type="text/css" />
-    <link href="/Public/assets/css/bui-min.css" rel="stylesheet" type="text/css" />
-    <link href="/Public/assets/css/main-min.css" rel="stylesheet" type="text/css" />
+    <link href="/htdocs/Public/assets/css/dpl-min.css" rel="stylesheet" type="text/css" />
+    <link href="/htdocs/Public/assets/css/bui-min.css" rel="stylesheet" type="text/css" />
+    <link href="/htdocs/Public/assets/css/main-min.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
     function setTime() {
         var dt = new Date();
@@ -54,10 +54,10 @@
         <ul id="J_NavContent" class="dl-tab-conten">
         </ul>
     </div>
-    <script type="text/javascript" src="/Public/assets/js/jquery-1.8.1.min.js"></script>
-    <script type="text/javascript" src="/Public/assets/js/bui-min.js"></script>
-    <script type="text/javascript" src="/Public/assets/js/common/main-min.js"></script>
-    <script type="text/javascript" src="/Public/assets/js/config-min.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/assets/js/jquery-1.8.1.min.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/assets/js/bui-min.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/assets/js/common/main-min.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/assets/js/config-min.js"></script>
     <script>
     BUI.use('common/main', function() {
         var config = [{
@@ -137,21 +137,7 @@
         });
     });
     </script>
-    <br />
-    <br />
-    <div style="text-align: center;margin-top:-60px;width: 100%;
-    height: 89px;
-    overflow: hidden;
-    margin-bottom: 0px;">
-        <div style="margin-left:150px;">
-            <a>版权所有Copyright(C)2014-2015XXX净水有限公司</a>
-            <br />
-            <a href="http://www.essnn.com">技术支持：依森网络</a>
-        </div>
-    </div>
-    </div>
 
-</html>
 </body>
 
 </html>

@@ -47,12 +47,16 @@
       $(this).removeClass("list");
       $(this).addClass("active");
       var category=$(this).attr('alt');
+      $.session.set("category",category)
       getcatpro(category);
     })
 
-    $('#prolist1').click(function(event){
-      
-    });
+    $('.context').delegate(".prolist1","click",function(){     
+      var productid=$(this).attr('alt');
+      $.session.remove("productid");
+      $.session.set("productid",productid);
+      location.href = "prodetails.html";     
+    })
 
   })
 </script>

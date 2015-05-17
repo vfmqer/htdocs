@@ -4,15 +4,15 @@
 <head>
     <title>订单返利管理</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/Public/Css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="/Public/Css/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="/Public/Css/style.css" />
-    <script type="text/javascript" src="/Public/Js/jquery.js"></script>
-    <script type="text/javascript" src="/Public/Js/jquery.sorted.js"></script>
-    <script type="text/javascript" src="/Public/Js/bootstrap.js"></script>
-    <script type="text/javascript" src="/Public/Js/ckform.js"></script>
-    <script type="text/javascript" src="/Public/Js/common.js"></script>
-    <script type="text/javascript" src="/Public/Js/view.js"></script>
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/style.css" />
+    <script type="text/javascript" src="/htdocs/Public/Js/jquery.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/jquery.sorted.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/bootstrap.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/ckform.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/common.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/view.js"></script>
     <style type="text/css">
     body {
         padding-bottom: 40px;
@@ -38,15 +38,16 @@
     <br/>
     <form class="form-inline definewidth m20" action="?" method="post">
         &nbsp;&nbsp;&nbsp;&nbsp;活动标题：
-        <input type="text" name="time[title]" id="username" class="abc input-default" placeholder="" style="width:450px" value="">
+        <input type="text" name="time[title]" id="username" class="abc input-default" placeholder="" style="width:450px" value="<?php echo ($result_serial["title"]); ?>">
         <hr />
         <div style="text-align:center">
             <p>活动描述</p>
         </div>
-        <textarea name="time[describe]" style="margin: 0px 0px 10px; width: 100%; height: 80px;resize: none;"></textarea>
+        <textarea name="time[describe]" value="" style="margin: 0px 0px 10px; width: 100%; height: 80px;resize: none;"><?php echo ($result_serial["describe"]); ?></textarea>
         <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;活动起始时间：
-        <input type="text" name="time[starttime]" style="border:1px solid #999;" onclick="fPopCalendar(event,this,this)" onfocus="this.select()" readonly="readonly" />&nbsp;&nbsp; 活动结束时间
-        <input type="text" name="time[endtime]" style="border:1px solid #999;" onclick="fPopCalendar(event,this,this)" onfocus="this.select()" readonly="readonly" />
+        <input type="text" name="time[starttime]" value="<?php echo ($result_serial["starttime"]); ?>" style="border:1px solid #999;" onclick="fPopCalendar(event,this,this)" onfocus="this.select()" readonly="readonly" />&nbsp;&nbsp; 活动结束时间
+        <input type="text" name="time[endtime]" value="<?php echo ($result_serial["endtime"]); ?>" style="border:1px solid #999;" onclick="fPopCalendar(event,this,this)" onfocus="this.select()" readonly="readonly" />
+        <button type="button" class="btn btn-success" onclick="addRow()" id="addnew">新增奖品信息</button>
         <table id="table" name="data" class="table table-bordered table-hover definewidth m10" cellpadding="3">
             <thead>
                 <tr>
@@ -56,33 +57,66 @@
                     <td>中奖概率</td>
                     <td>操作</td>
                 </tr>
-                <tr>
-                    <td>
-                        <p>1</p>
-                    </td>
-                    <td>
-                        <input value="" name="data[0][name]" type="text">
-                    </td>
-                    <td>
-                        <input value="" name="data[0][number]" type="text">
-                    </td>
-                    <td>
-                        <input value="" name="data[0][winning]" type="text">
-                    </td>
-                    <td><a>删除</a></td>
-                </tr>
-                </tr>
+                <input value="<?php echo ($id1); ?>" type="hidden" name="id1" type="text">
+                <?php if(is_array($result_prize)): foreach($result_prize as $k=>$vo): ?><tr>
+                        <td>
+                            <p><?php echo ($k); ?></p>
+                        </td>
+                        <input value="<?php echo ($vo["id"]); ?>" type="hidden" name="data[<?php echo ($k); ?>][id]" type="text">
+                        <td>
+                            <input value="<?php echo ($vo["name"]); ?>" name="data[<?php echo ($k); ?>][name]" type="text">
+                        </td>
+                        <td>
+                            <input value="<?php echo ($vo["number"]); ?>" name="data[<?php echo ($k); ?>][number]" type="text">
+                        </td>
+                        <td>
+                            <input value="<?php echo ($vo["winning"]); ?>" name="data[<?php echo ($k); ?>][winning]" type="text">
+                        </td>
+                        <td><a>删除</a></td>
+                    </tr>
+                    </tr><?php endforeach; endif; ?>
             </thead>
         </table>
 </body>
 <hr />
 <div style="text-align: center;">
     <button type="submit" class="btn btn-primary">保存 </button>&nbsp;&nbsp;
-    <button type="button" class="btn btn-success" onclick="function(window.herf=<?php echo U(index/lottory);?>)">返回列表</button>
-</div>
-</form>
+    <div>
+        </form>
 
 </html>
+<script language="javascript" type="text/javascript">
+function addRow() {
+    //get rows
+    var table = document.getElementById("table");
+    var row = table.rows.length;
+    var rows = row - 1;
+
+    //添加一行
+    var newTr = table.insertRow();
+    //添加两列
+    var newTd0 = newTr.insertCell();
+    var newTd1 = newTr.insertCell();
+    var newTd2 = newTr.insertCell();
+    var newTd3 = newTr.insertCell();
+    var newTd4 = newTr.insertCell();
+    //设置列内容和属性
+    newTd0.innerHTML = '<p>' + rows + '</p>';
+    newTd1.innerHTML = '<input  value="" name=data[' + rows + '][name] type="text" >';
+    newTd2.innerHTML = '<input  value="" name=data[' + rows + '][number] type="text" >';
+    newTd3.innerHTML = '<input  value="" name=data[' + rows + '][winning] type="text" >';
+    newTd4.innerHTML = '<a>删除</a>';
+}
+
+// function table() {
+
+// alert(document.getElementsByTagName('que[2]').value);
+//     // var url = "<?php echo U('index/lessons_add');?>?id=1";
+//     // window.location.href = url;
+// }
+
+//日历脚本，    用<input type="text" style="border:1px solid #999;" onclick="fPopCalendar(event,this,this)" onfocus="this.select()" readonly="readonly" />可以把选择的日期输入到输入框
+</script>
 <script type="text/javascript">
 var gMonths = new Array("一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月");
 var WeekDay = new Array("日", "一", "二", "三", "四", "五", "六");

@@ -25,7 +25,7 @@ a:hover{ text-decoration:none;  /*鼠标放上去无下划线*/}
 .btload{width:100%;height:50px;line-height:50px;text-align:center;background-color:#F00;color:#FFF;font-size:20px;border:0;border-radius:3px;cursor:pointer;}
 .btyzm{width:35%;margin-left:2%;height:40px;background-color:#F00;color:#FFF;font-size:16px;border:0;border-radius:3px;cursor:pointer;}
 
-.btbg{width:100%;height:60px;position:fixed;bottom:0;}
+.btbg{width:100%;height:60px;margin-top:250px;}
 .wjmm{font-size:16px;color:#999999;float:left;}
 .sline{width:2px;height:18px;float:left;background-color:#999999;margin-left:7px;}
 .zcxyy{font-size:16px;color:#999999;margin-left:7px;}
@@ -90,9 +90,9 @@ a:hover{ text-decoration:none;  /*鼠标放上去无下划线*/}
 /*产品*/
 .maintap1{text-align:center;font-size:20px;height:40px;}
 .maintap1 .lessonbtn1{width:50%;height:40px;float:left;line-height:40px;color:#000;background-color:#D5D5D5;border-top:solid 1px #D5D5D5;}
-.proname{padding:10px 0 10px 5%;width:95%;line-height:1.4em;float:left;background-color:#F5F5F5;}
+.proname{padding:10px 0 10px 5%;width:95%;font-size:1.2em;line-height:1.4em;float:left;background-color:#F5F5F5;}
 .proname1{padding:10px 5% 10px 5%;width:90%;line-height:1.4em;background-color:#F5F5F5;}
-.redpri{color:red;font-size:1.4em;line-height:1.6em;}
+.redpri{color:red;font-size:1.4em;line-height:1.4em;}
 .content{padding:10px 5%;width:90%;margin-top:100px;}
 .contentfont{text-indent:2em;font-size:14px;width:100%;line-height:20px;color:#666;}
 .anzjc{width:100%;bottom:0;position:fixed;height:40px;line-height:40px;font-size:1em;color:red;background:black;text-align:center;}

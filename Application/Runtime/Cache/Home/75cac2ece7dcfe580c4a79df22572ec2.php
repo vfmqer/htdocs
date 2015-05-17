@@ -4,14 +4,14 @@
 <head>
     <title></title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/Public/Css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="/Public/Css/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="/Public/Css/style.css" />
-    <script type="text/javascript" src="/Public/Js/jquery.js"></script>
-    <script type="text/javascript" src="/Public/Js/jquery.sorted.js"></script>
-    <script type="text/javascript" src="/Public/Js/bootstrap.js"></script>
-    <script type="text/javascript" src="/Public/Js/ckform.js"></script>
-    <script type="text/javascript" src="/Public/Js/common.js"></script>
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/style.css" />
+    <script type="text/javascript" src="/htdocs/Public/Js/jquery.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/jquery.sorted.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/bootstrap.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/ckform.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/common.js"></script>
 
  
 
@@ -47,7 +47,7 @@
     <input type="text" name="data[truename]" id="username"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;  
     <button type="submit" class="btn btn-primary">查询</button>
 </form>
-<link rel="stylesheet" type="text/css" href="/Public/Css/page.css" /> 
+<link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/page.css" /> 
 
 <div>
 <table class="table table-bordered table-hover definewidth m10">
@@ -75,7 +75,7 @@
             <td><?php echo ($vo["recommend"]); ?></td>
             <td>
                 <a href="<?php echo U('Index/admin_edit');?>?id=<?php echo ($vo["id"]); ?>">编辑</a>                
-                <a href="<?php echo U('Index/admin_delete');?>?id=<?php echo ($vo["id"]); ?>">删除</a>                         
+                <a href="#" onclick="del(<?php echo ($vo["id"]); ?>)">删除</a>                         
             </td>
         </tr><?php endforeach; endif; ?>
 </table>
@@ -105,7 +105,7 @@
 		if(confirm("确定要删除吗？"))
 		{
 		
-			var url = "index.html";
+			var url = "<?php echo U("index/admin_delete");?>?id="+id;
 			
 			window.location.href=url;		
 		

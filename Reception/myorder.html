@@ -6,8 +6,15 @@
 <title>我的订单</title>
 <link href="css/main.css" rel="stylesheet" type="text/css">
 <script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/Pclass.js"></script>
+<script src="js/jquerysession.js"></script>
+<script src="js/mainfun.js"></script>
 </head>
-
+<style type="text/css">
+  .photo{width:90px;height:90px;margin:0 3%;float:left;}
+  .cont{font-size:16px;line-height:30px;}
+  #proshow div{cursor:pointer;}
+</style>
 <body>
 
 <!--头部-->
@@ -15,36 +22,33 @@
   <div class="headback" style="">
   <a href="index.html"><img src="img/img002.png" height="30"></a></div>
   <div class="headload" style="">我的订单</div>
-   
 </div>
 
 <!--主体-->
-<div class="">
-  <div class="prolist" style="">
-    <img src="img/proimg001.png" style="width:100px;margin:0 3%;float:left"/>
-    <div class="" style="font-size:14px;line-height:23px">佳能（Canon）EOS 70D单反套机<br/>（EF-S 18-135mm f/3.5）<br/>
-    单价：￥3000&nbsp;&nbsp;&nbsp;数量：1 <br/>
-    <div style="font-size:12px"><span style="color:red">订单号 123456789012</span>&nbsp;&nbsp;日期：2015-04-10</div>
-    </div>
-  </div>
+<div id="proshow"></div>
 
-  <div class="prolist" style="">
-    <img src="img/proimg001.png" style="width:100px;margin:0 3%;float:left"/>
-    <div class="" style="font-size:14px;line-height:23px">佳能（Canon）EOS 70D单反套机<br/>（EF-S 18-135mm f/3.5）<br/>
-    单价：￥3000&nbsp;&nbsp;&nbsp;数量：1 <br/>
-    <div style="font-size:12px"><span style="color:red">订单号 123456789012</span>&nbsp;&nbsp;日期：2015-04-10</div>
-    </div>
-  </div>
-
-  </div>
-    
+<!--提示框 -->
+<div class="personregist_windowcover"></div>
+<div class="personregist_tip">
+<p></p>
+<a href="javascript:void(0);" class="personregist_tip_surebtn" onClick="closeTip('.personregist_windowcover','.personregist_tip',event)">确定</a>
 </div>
 
-
-
-
 <!--尾部-->
+<script type="text/javascript">
+  $(function(){
+    getmyorder();
 
+    $("#proshow").delegate(".prolist","click",function(){	  	
+	  	var orderid=$(this).find('span').text();
+	    $.session.remove("orderid");
+	    $.session.set("orderid",orderid);
+	    location.href = "product.html";	    
+	})
+
+  })
+
+</script>
 
 </body>
 </html>

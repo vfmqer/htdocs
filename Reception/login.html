@@ -9,6 +9,7 @@
 <script src="js/jquery-2.1.1.js"></script>
 <script src="js/Pclass.js"></script>
 <script src="js/jquerysession.js"></script>
+<script src="js/mainfun.js"></script>
 </head>
 
 <body>
@@ -60,43 +61,8 @@
 $(function(){
   $('.btload').click(function(event){
 	
-	var username=$('#username').val();
-	var password=$('#password').val();
-
-	if(username == '')
-	{   
-		openTip('请填写用户名！','.personregist_tip','.personregist_windowcover');	
-		$('#username').focus();
-	}
-	else if(password == '' )
-	{
-		openTip('请填写密码！','.personregist_tip','.personregist_windowcover');	
-		$('#password').focus();
-	}
-	else 
-	{       var id = '02';
-		    var urls = generateUrl(id);
-		    var postdata = {
-  				"username":username,    
-			    "password":password,   
-				}; 
-		    $.ajax({
-		      url: urls,
-		      type: 'POST',
-		      dataType: 'json',
-		      data:jQuery.param(postdata, true),// 要提交的数据
-		      success: function (data) {
-			      if(data["a"]=='02001'){   //登陆成功
-			        location.href = "index.html";
-			        $.session.set('username', username);
-			      }else{  //登陆失败
-			      	openTip('用户名或者密码错误！','.personregist_tip','.personregist_windowcover');
-			      }
-		      }
-		    });
-		    return false;
-	}	
-	return false;
+  	logincheck();
+	
    })
 	
 })

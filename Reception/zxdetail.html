@@ -56,7 +56,7 @@
                  $("#title").text(data[i]["title"]);
                  $("#img").attr("src",url_img()+data[i]["img"]);
                  $("#read").text(data[i]["read"]);
-                 $("#date").text(data[i]["date"].substring(0, 10));
+                 $("#date").text("发布日期："+data[i]["date"].substring(0, 10));
                  $("#contect").text(data[i]["contect"]);
               }
             }else{  //没有资讯

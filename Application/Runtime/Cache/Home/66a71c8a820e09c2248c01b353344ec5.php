@@ -4,14 +4,14 @@
 <head>
     <title>订单返利管理</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/Public/Css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="/Public/Css/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="/Public/Css/style.css" />
-    <script type="text/javascript" src="/Public/Js/jquery.js"></script>
-    <script type="text/javascript" src="/Public/Js/jquery.sorted.js"></script>
-    <script type="text/javascript" src="/Public/Js/bootstrap.js"></script>
-    <script type="text/javascript" src="/Public/Js/ckform.js"></script>
-    <script type="text/javascript" src="/Public/Js/common.js"></script>
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/style.css" />
+    <script type="text/javascript" src="/htdocs/Public/Js/jquery.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/jquery.sorted.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/bootstrap.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/ckform.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/common.js"></script>
     <style type="text/css">
     body {
         padding-bottom: 40px;
@@ -41,13 +41,14 @@
         <button type="button" class="btn btn-success" id="addnew">误删重增</button>
         <!-- &nbsp;&nbsp; <button type="button" class="btn btn-success" id="addnew">新增会员</button> -->
     </form>
-<link rel="stylesheet" type="text/css" href="/Public/Css/page.css" /> 
+<link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/page.css" /> 
     <table class="table table-bordered table-hover definewidth m10">
         <thead>
             <tr>
                 <th>编号</th>
                 <th>用户名</th>
                 <th>定单名称</th>
+                <th>定单数量</th>
                 <th>定单编号</th>
                 <th>产品编号</th>
                 <th>交易时间</th>
@@ -60,6 +61,7 @@
             <td><?php echo ($vo["id"]); ?></td>
             <td><?php echo ($vo["username"]); ?></td>
             <td><?php echo ($vo["ordername"]); ?></td>
+            <td><?php echo ($vo["number"]); ?></td>
             <td><?php echo ($vo["orderid"]); ?></td>
             <td><?php echo ($vo["productid"]); ?></td>
             <td><?php echo ($vo["transactiontime"]); ?></td>

@@ -4,14 +4,14 @@
 <head>
     <title></title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/Public/Css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="/Public/Css/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="/Public/Css/style.css" />
-    <script type="text/javascript" src="/Public/Js/jquery.js"></script>
-    <script type="text/javascript" src="/Public/Js/jquery.sorted.js"></script>
-    <script type="text/javascript" src="/Public/Js/bootstrap.js"></script>
-    <script type="text/javascript" src="/Public/Js/ckform.js"></script>
-    <script type="text/javascript" src="/Public/Js/common.js"></script>
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/style.css" />
+    <script type="text/javascript" src="/htdocs/Public/Js/jquery.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/jquery.sorted.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/bootstrap.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/ckform.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/common.js"></script>
     <style type="text/css">
     body {
         padding-bottom: 40px;
@@ -67,19 +67,19 @@
                     <!-- 实例化编辑器 -->
                     <script type="text/javascript">
                     var ue2 = UE.getEditor('container2', {
-                        initialFrameWidth: 1000,
+                        initialFrameWidth: 700,
                         initialFrameHeight: 260,
                         autoHeightEnabled: false,
 
                     });
                     var ue1 = UE.getEditor('container1', {
-                        initialFrameWidth: 1000,
+                        initialFrameWidth: 700,
                         initialFrameHeight: 260,
                         autoHeightEnabled: false,
 
                     });
                     var ue = UE.getEditor('container', {
-                        initialFrameWidth: 1000,
+                        initialFrameWidth: 700,
                         initialFrameHeight: 260,
                         autoHeightEnabled: false,
 

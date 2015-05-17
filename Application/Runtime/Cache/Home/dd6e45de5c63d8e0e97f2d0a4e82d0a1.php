@@ -7,7 +7,7 @@
 </head>
 
 <body bgcolor="">
-    <div styel="width:100%;height:800px" align="center"><img src="/Public/Images/welcome.png" height="100" style="margin-top:250px" /></div>
+    <div styel="width:100%;height:800px" align="center"><img src="/htdocs/Public/Images/welcome.png" height="100" style="margin-top:250px" /></div>
 </body>
 
 </html>

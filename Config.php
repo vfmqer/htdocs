@@ -1,9 +1,9 @@
 ﻿<?php
 
-	$mysql_server_name='127.0.0.1';
-	$mysql_username='root';
-	$mysql_password='123456';
-	$mysql_database='js_mydata';
+	$mysql_server_name='cixi.essnn.com';
+	$mysql_username='cixidata';
+	$mysql_password='cixidatacom';
+	$mysql_database='cixidata';
 	$mysql_bk="set names utf8";
 
 function sqlsetarry($strsql)

@@ -4,14 +4,14 @@
 <head>
     <title></title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/Public/Css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="/Public/Css/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="/Public/Css/style.css" />
-    <script type="text/javascript" src="/Public/Js/jquery.js"></script>
-    <script type="text/javascript" src="/Public/Js/jquery.sorted.js"></script>
-    <script type="text/javascript" src="/Public/Js/bootstrap.js"></script>
-    <script type="text/javascript" src="/Public/Js/ckform.js"></script>
-    <script type="text/javascript" src="/Public/Js/common.js"></script>
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/style.css" />
+    <script type="text/javascript" src="/htdocs/Public/Js/jquery.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/jquery.sorted.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/bootstrap.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/ckform.js"></script>
+    <script type="text/javascript" src="/htdocs/Public/Js/common.js"></script>
     <style type="text/css">
     body {
         padding-bottom: 40px;
@@ -37,7 +37,7 @@
     <form action="?" method="post" class="definewidth m20">
         <table class="table table-bordered table-hover definewidth m10">
             <tr>
-                <td class="tableleft">ID</td>
+                <td class="tableleft">编号</td>
                 <td>
                     <p><?php echo ($productRebate["id"]); ?></p>
                 </td>
@@ -61,7 +61,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="tableleft">关联文章</td>
+                <td class="tableleft">关联链接</td>
                 <td>
                     <input type="text" name="data[relatearticles]" value="<?php echo ($productRebate["relatearticles"]); ?>" />
                 </td>
@@ -100,7 +100,26 @@
             <tr>
                 <td class="tableleft">产品详情</td>
                 <td>
-                    <textarea name="data[details]" style="margin: 0px 0px 10px; width: 80%; height: 233px;resize: none;"><?php echo ($productRebate["details"]); ?></textarea>
+                    <!-- <textarea name="data[details]" style="margin: 0px 0px 10px; width: 80%; height: 233px;resize: none;"><?php echo ($productRebate["details"]); ?></textarea> -->
+                    <!-- 加载编辑器的容器 -->
+                    <script id="container" name="data[details]" type="text/plain"></script>
+                    <!-- 配置文件 -->
+                    <script type="text/javascript" src="/Public/ueditor/ueditor.config.js"></script>
+                    <!-- 编辑器源码文件 -->
+                    <script type="text/javascript" src="/Public/ueditor/ueditor.all.js"></script>
+                    <!-- 实例化编辑器 -->
+                    <script type="text/javascript">
+                    var ue = UE.getEditor('container', {
+                        initialFrameWidth: 700,
+                        initialFrameHeight: 260,
+                        autoHeightEnabled: false,
+
+                    });
+                    ue.ready(function() {
+                        //设置编辑器的内容
+                        ue.setContent('<?php echo ($productRebate["details"]); ?>');
+                    });
+                    </script>
                 </td>
             </tr>
             <input type="hidden" name="id" value="<?php echo ($productRebate["id"]); ?>">

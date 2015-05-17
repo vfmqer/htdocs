@@ -8,6 +8,9 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/jquery-2.1.1.js"></script>
+<style type="text/css">
+  .prods:hover{background:#D5D5D5;}
+</style>
 </head>
 
 <body bgcolor="#F5F5F5">
@@ -24,19 +27,25 @@
 <div style="margin-top:10px" >
 
   <div class="prods">
-    <a href="myproduct.html"><img src="img/proimg001.png" width="60"/>
-    <span>滤芯类产品</span><div >20&nbsp;&nbsp;></div></a>
+    <img src="img/proimg001.png" width="60"/>
+    <span>滤芯类产品</span><div >4&nbsp;&nbsp;></div>
   </div>
 
   <div class="prods">
-    <a href="myproduct.html"><img src="img/proimg001.png" width="60"/>
-    <span>消毒类产品</span><div >20&nbsp;&nbsp;></div></a>
+    <img src="img/proimg001.png" width="60"/>
+    <span>消毒类产品</span><div >4&nbsp;&nbsp;></div>
   </div>
 
 </div>
 
 <!--尾部-->
-
+<script type="text/javascript">
+  $(function(){
+    $(".prods").click(function(){
+      location.href="myproduct.html";
+    })
+  })
+</script>
 
 </body>
 </html>

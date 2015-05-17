@@ -11,7 +11,7 @@
     }
     
     body {
-        background: url(/Public/Images/bg.jpg) repeat-x top center;
+        background: url(/htdocs/Public/Images/bg.jpg) repeat-x top center;
         background-color: #084e8d;
     }
     
@@ -19,7 +19,7 @@
         margin: 0 auto;
         width: 1024px;
         height: 725px;
-        background: url(/Public/Images/login_bg.png) no-repeat;
+        background: url(/htdocs/Public/Images/login_bg.png) no-repeat;
     }
     
     .login_text {
@@ -40,7 +40,7 @@
     }
     
     .text_bg {
-        background: url(/Public/Images/input_bg.jpg) no-repeat;
+        background: url(/htdocs/Public/Images/input_bg.jpg) no-repeat;
         width: 182px;
         height: 27px;
         border: none;
@@ -85,8 +85,8 @@
                 <img src="/Office/index.php/login/verify.html" onclick='this.src=this.src+"?"+Math.random()' style="margin-bottom:-5px;">
             </P>-->
                 <P class="login_submit">
-                    <input type="image" onClick="javascript:fsubmit(document.myform);return false;" src="/Public/Images/submit_btn.jpg">
-                    <input type="image" onClick="javascript:freset(document.myform);return false;" src="/Public/Images/reset_btn.jpg">
+                    <input type="image" onClick="javascript:fsubmit(document.myform);return false;" src="/htdocs/Public/Images/submit_btn.jpg">
+                    <input type="image" onClick="javascript:freset(document.myform);return false;" src="/htdocs/Public/Images/reset_btn.jpg">
                 </P>
             </form>
         </div>

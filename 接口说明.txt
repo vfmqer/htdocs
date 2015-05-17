@@ -50,7 +50,7 @@ POST发送值：productid(产品编号，可为空), category(产品分类，可
 根据订单获取产品信息
 提交模式：GET+POST
 接口ID：05
-POST发送值：orderid(订单编号)
+POST发送值：username(用户名), orderid(订单编号)
 返回信息：某个订单对应的产品详细信息
 提示信息：
 05001--查找成功
@@ -163,3 +163,13 @@ POST发送值：username(用户编号), number(抽奖编号）, result(中奖结
 提示信息：
 15001--提交成功
 15002--提交失败
+
+
+接口十六
+插入订单信息
+提交模式：GET+POST
+接口ID：16
+POST发送值：username(用户编号), orderid(订单编号，自动生成), ordername(订单名称), productid(产品编号)
+提示信息：
+16001--插入成功
+16002--插入失败

@@ -243,15 +243,20 @@ if($jiekey==$newkey) //钥匙验证
     
 	elseif($_GET['id']=="05")  //根据订单获取产品信息
     {
-        if(isset($_POST["orderid"])) //判断PSOT是否提交
+        if(isset($_POST["orderid"]) && isset($_POST["username"])) //判断PSOT是否提交
       {
-        $orderid=$_POST['orderid'];
-        $getprostr="select * from js_order a inner join js_product b on a.productid=b.id where a.orderid='".$orderid."'";
-        echo $getprostr;
-        if(sqlquery($getprostr,"orderid")!=null)
+        $orderid=$_POST['orderid'];$username=$_POST['username'];
+
+        if ($orderid==null) {
+          $getprostr="select * from js_order a inner join js_product b on a.productid=b.id where username='".$username."'";
+        }else{
+           $getprostr="select * from js_order a inner join js_product b on a.productid=b.id where orderid='".$orderid."' and username='".$username."'"; 
+        }
+
+        if(sqlquery($getprostr,"orderid")!=null)//检查是否有值
         {
-            echo array(sqlset($getprostr));//返回数据
-            echo json_return("05001");//查找成功
+            $value=sqlsetarry($getprostr);
+            echo json_encode($value);
         }
         else
         {
@@ -298,8 +303,8 @@ if($jiekey==$newkey) //钥匙验证
 
         if(sqlquery($selectstr,"username")!=null)//检查是否存在数据
         {                           
-            echo json_return("07001");//返回成功
-            echo array(sqlset($selectstr));//返回留言
+            $value=sqlsetarry($selectstr);
+            echo json_encode($value);
         }
         else
         {
@@ -314,16 +319,15 @@ if($jiekey==$newkey) //钥匙验证
 
     elseif($_GET['id']=="08")  //查询地址
     {
-       if(isset($_POST["map"])) //判断PSOT是否提交
+       if(isset($_POST["addressid"])) //判断PSOT是否提交
       {       
         //$map=$_POST['map'];
         $selectstr="select * from js_address";
 
         if(sqlquery($selectstr,"id")!=null)//检查是否存在数据
         {                           
-            echo json_return("08001");//返回成功
-            foreach (sqlset($selectstr) as $value)
-            {echo  "xy:".$value["xy"]."<br>";}
+            $value=sqlsetarry($selectstr);
+            echo json_encode($value);         
         }
         else
         {
@@ -336,19 +340,25 @@ if($jiekey==$newkey) //钥匙验证
       }  
     }
 
-    elseif($_GET['id']=="09")  //查询抽奖信息（未完成）
+    elseif($_GET['id']=="09")  //查询抽奖信息
     {
-       if(isset($_POST["map"])) //判断PSOT是否提交
-      {       
-        $selectstr="select * from js_address";
+       if(isset($_POST["lotteryid"])) //判断PSOT是否提交
+      {  
+        $lotteryid=$_POST['lotteryid'];     
+
+        if($lotteryid==null){
+          $selectstr="select * from js_serialstart";
+        }else{
+          //$selectstr="select * from js_serialstart a inner join js_prize b on a.serialnumber = b.serialnumber where id='".$lotteryid."'";
+          $selectstr="select * from js_serialstart a inner join js_prize b on a.serialnumber = b.serialnumber where a.id='".$lotteryid."'";
+        }
 
         if(sqlquery($selectstr,"id")!=null)//检查是否存在数据
         {                
-            foreach (sqlset($selectstr) as $value)
-            {echo  "xy:".$value["xy"]."<br>";}
-            echo json_return("09001");//返回成功
+            $value=sqlsetarry($selectstr);
+            echo json_encode($value);
         }
-        else
+        else 
         {
             echo json_return("09002"); //无抽奖信息           
         }
@@ -400,17 +410,21 @@ if($jiekey==$newkey) //钥匙验证
 
     elseif($_GET['id']=="12")  //获取问卷信息
     {
-       if(isset($_POST["username"]) && isset($_POST["number"]) && isset($_POST["type"])) //判断PSOT是否提交
+       if(isset($_POST["questionid"]) && isset($_POST["questiontype"])) //判断PSOT是否提交
       {       
-        $username=$_POST["username"];$number=$_POST["number"];$type=$_POST["type"];
-        $selectstr="select * from js_useranswer where username='".$username."' and type='".$type."' and number='".$number."'";
+        $questionid=$_POST["questionid"];$questiontype=$_POST["questiontype"];
+        
+        if($questionid==null){
+          $selectstr="select * from js_questiontype where type='".$questiontype."'";
+        }else{
+          $selectstr="select * from js_questiontype a inner join js_question b on a.number = b.number where a.id='".$questionid."'";
+        }
 
-        if(sqlquery($selectstr,"username")==null) //检查是否已做过问卷
+        if(sqlquery($selectstr,"id")!=null) //检查是否已做过问卷
         {   
-            echo json_return("12001"); //未做过问卷 
-            echo array(sqlset($selectstr));//返回问卷信息;
+            $value=sqlsetarry($selectstr);
+            echo json_encode($value);
         } 
-
         else
         {   echo json_return("12002");  } //已做过问卷        
       }
@@ -501,6 +515,28 @@ if($jiekey==$newkey) //钥匙验证
       {
           echo json_return("11111");//没有获取到值
       }  
+    }
+
+    elseif($_GET['id']=="16")  //根据订单获取产品信息
+    {
+        if(isset($_POST["username"]) && isset($_POST["orderid"]) && isset($_POST["ordername"]) && isset($_POST["productid"])) //判断PSOT是否提交
+        {
+        $username=$_POST['username'];$orderid=$_POST['orderid'];$ordername=$_POST['ordername'];$productid=$_POST['productid'];
+        $instprostr="insert into js_order(username,ordername,orderid,productid,transactiontime,state) value('".$username."','".$ordername."','".$orderid."','".$productid."','".$time."','0')";
+
+        if(sqlFunction($instprostr)!=0)
+        {
+            echo json_return("16001");//插入成功
+        }
+        else
+        {
+            echo json_return("16002"); //插入失败           
+        }
+      }
+      else
+      {
+        echo json_return("11111");//没有获取到值
+      }        
     }
 
 }

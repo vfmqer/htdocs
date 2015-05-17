@@ -76,7 +76,7 @@
             <td>{$vo.recommend}</td>
             <td>
                 <a href="{:U('Index/admin_edit')}?id={$vo.id}">编辑</a>                
-                <a href="{:U('Index/admin_delete')}?id={$vo.id}">删除</a>                         
+                <a href="#" onclick="del({$vo.id})">删除</a>                         
             </td>
         </tr> 
         </foreach>
@@ -107,7 +107,7 @@
 		if(confirm("确定要删除吗？"))
 		{
 		
-			var url = "index.html";
+			var url = "{:U("index/admin_delete")}?id="+id;
 			
 			window.location.href=url;		
 		

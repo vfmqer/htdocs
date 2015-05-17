@@ -8,6 +8,17 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/jquery-2.1.1.js"></script>
+<script src="js/Pclass.js"></script>
+<script src="js/jquerysession.js"></script>
+<script src="js/mainfun.js"></script>
+<style type="text/css">
+#deaddate{float:right;margin-right:10px;}
+.lotteryitem{margin-top:5px;padding:0;width:100%;}
+.lotteryitem:hover{background:#DFDFDF;}
+.lotteryitem{height:40px;line-height:40px;background:white;width:100%;color:black;text-decoration:none;font-size:14px;cursor:pointer;}
+.lotteryitem span{float:left;margin-left:5%;}
+.lotteryitem img{float:right;margin-top:11px;margin-right:5%;padding-top:2px;}
+</style>
 </head>
 
 <body style="background-color:#f5f5f5">
@@ -15,7 +26,7 @@
 <!--头部-->
 <div class="headbg" align="center">
   <div class="headback" style="">
-  <a href="#"><img src="img/img002.png" height="30"></a></div>
+  <a href="service.html"><img src="img/img002.png" height="30"></a></div>
   <div class="headload" style="">抽奖</div>   
 </div>
 
@@ -23,25 +34,33 @@
 
 <div style="margin-top:10px" >
 
-  <div class="lessons">
-    <a href="#">
-        <span>2015劳动节抽ipad大奖</span>
-        <img src="img/img22.png" height="15">
-        <span style="float:right;margin-right:10px" id="deaddate" >2015-04-30截止</span>    
-    </a>
-  </div>
-
-  <div class="lessons">
-    <a href="#">
-        <span>2015劳动节抽ipad大奖</span>
-        <img src="img/img22.png" height="15">
-        <span style="float:right;margin-right:10px" id="deaddate" >2015-04-30截止</span>    
-    </a>
-  </div>  
-</div>
+<div id="lotterylist"></div></div>
 
 <!--尾部-->
 
+<!--提示框 -->
+<div class="personregist_windowcover"></div>
+<div class="personregist_tip">
+<p></p>
+<a href="javascript:void(0);" class="personregist_tip_surebtn" onClick="closeTip('.personregist_windowcover','.personregist_tip',event)">确定</a>
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    getlotterylist();
+
+    $('#lotterylist').delegate(".lotteryitem","click",function(){     
+        var lotteryid=$(this).attr('alt');
+        $.session.remove("lotteryid");
+        $.session.set("lotteryid",lotteryid);
+        location.href = "lottery.html";     
+    })
+
+  })
+
+
+
+</script>
 
 </body>
 </html>

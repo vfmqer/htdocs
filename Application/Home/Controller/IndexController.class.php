@@ -393,11 +393,14 @@ class IndexController extends Controller {
         $wtserial=$ttserial ->field('serialnumber')->select();
         $result = $ttserial -> select();
         for ($i=0; $i < count($wtserial); $i++) {
+            //用strotime来把时间进行格式化,取年月日
            $result[$i]['starttime']=date('Y-m-d',strtotime($result[$i]['starttime']));
            $result[$i]['endtime']=date('Y-m-d',strtotime($result[$i]['endtime']));
-            $a=$tprize->field('name,number,winning')->where($wtserial[$i])->select();
+
+            $a=$tprize->field('name,number,winning')->where($wtserial[$i])->order('id')->select();
+            $string = "";
             for ($j=0; $j < count($a); $j++) { 
-                $string[$j] = $a[$j]['name'].'---'.$a[$j]['number'].'---'.$a[$j]['winning'].'%'.'<br />';
+            $string[$j] = '【'.$a[$j]['name'].'】---【'.$a[$j]['number'].'】---【'.$a[$j]['winning'].'%】'.'<br />';
             }
             for ($k=0; $k < count($string); $k++) { 
             $result[$i]['prize'].=$string[$k];
@@ -452,10 +455,64 @@ class IndexController extends Controller {
     }
  
 
-    public function lottory_view(){
+    public function lottory_view(){//抽奖的视图,可对抽奖进行编辑
 
-        $this->display('index/lottory/lottory_view');
-        
+        $id = I('get.id');
+
+        if (IS_POST) {
+            $id1 =I('post.id1');
+            $time=I('post.time');
+            $data=I('post.data');
+
+            $where1['id'] = $id1;
+
+            if($time['starttime']==""||$time['endtime']==""){
+                $this->error('请填写完全!');
+            }
+            $time['time'] = date('Y-m-d H:i:s',time());
+            $tdata = M('Prize');//打开奖品表
+
+            $ttime  = M('Serialstart');//打开活动时间表
+
+            $ret2 = $ttime ->where($where1)->save($time);
+            $serialnumber = $ttime->field('serialnumber')->where($where1)->select();
+
+            //数据涿条保存,由于有可能新增,所以必须循环
+            for ($i=0; $i < count($data); $i++) { 
+                //如果有新增的话,把serialnumber加入到数组中,并重新添加数据到数据库
+                if($data[$i]['id']==""){
+                    $data[$i]['serialnumber'] = $serialnumber[0]['serialnumber'];
+                    $ret3=$tdata->add($data[$i]);
+                }else{
+                    $where2['id'] = $data[$i]["id"];
+                    $ret1=$tdata ->field('name,number,winning')->where($where2)->save($data[$i]);
+                }
+            }
+            if(!empty($ret2) && is_numeric($ret2)){
+                $this->success('增加成功!',U('Index/lottory'));
+            }
+        }else{
+            $where['id'] = $id;
+
+            $ttime = M('Serialstart');
+            $tprize = M('Prize');
+            $serial = $ttime->where($where)->select();
+
+            $where1['serialnumber'] = $serial[0]['serialnumber'];
+            $prize =$tprize ->field('id,name,number,winning')->where($where1)->select();
+
+            //给显示的时间设置短时间
+            $serial[0]['starttime']=date('Y-m-d',strtotime($serial[0]['starttime']));
+            $serial[0]['endtime']=date('Y-m-d',strtotime($serial[0]['endtime']));      
+
+            //分两个数组传给静态页面
+            $this->assign('result_serial',$serial[0]);
+            $this->assign('result_prize',$prize);
+            $this->assign('id1',$where['id']);
+
+            $this->display('index/lottory/lottory_view');
+        }
+
     }
 
     public function address(){//地址管理方法
@@ -550,7 +607,42 @@ class IndexController extends Controller {
 
     }
 
-    public function lessons(){
+    public function lessons(){//查看问卷方法
+
+        $tq = M('Question');
+        $tqtype = M('Questiontype');
+        $where='';
+        $result = $tqtype -> select();
+
+        for ($i=0; $i < count($result); $i++) {
+            //用strotime来把时间进行格式化,取年月日
+           $result[$i]['starttime']=date('Y-m-d',strtotime($result[$i]['starttime']));
+           $result[$i]['endtime']=date('Y-m-d',strtotime($result[$i]['endtime']));
+
+            $where3['number'] =$result[$i]['number'];
+            $a=$tq->field('qusnumber,title,a,b,c,d')->where($where3)->order('id')->select();
+            $string = "";
+            $string1 = "";
+            for ($j=0; $j < count($a); $j++) { 
+
+                $string[$j] .=$j.'、'. $a[$j]['title'].'<br>';
+                $string1[$j] .=$j.  '、【A:'.$a[$j]['a'].'】【B:'.$a[$j]['b'].'】【C:'.$a[$j]['c'].'】【D:'.$a[$j]['d'].'】<br>';
+            }
+            for ($k=0; $k < count($string); $k++) { 
+                $result[$i]['question'] .=$string[$k];
+                $result[$i]['option'] .=$string1[$k];
+            }
+
+        }
+        $count =count($result);//计算地址数量
+
+        $Page = new \Think\Page($count,C('MY_PAGE'));
+        $show =$Page->show();
+
+        $list = $tqtype->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
+
+        $this->assign('result',$result);
+        $this->assign('page',$show);// 赋值分页输出
 
         $this->display('index/lessons/lessons'); 
         
@@ -558,15 +650,51 @@ class IndexController extends Controller {
 
     public function lessons_view(){
 
+        $data = I("post.data");
+        $questiontype = I("post.questiontype");
+        dump($data);dump($questiontype);exit();
         $this->display('index/lessons/lessons_add'); 
         
     }
 
-    public function lessons_add(){
+    public function lessons_edit(){
+
+        $data = I("post.data");
+        $questiontype = I("post.questiontype");
+        dump($data);dump($questiontype);exit();
+        $this->display('index/lessons/lessons_edit'); 
+        
+    }
+
+    public function lessons_add(){//添加问卷方法
 
         if(IS_POST){
-            $data=I('post.data');
-            dump($data);
+        $data = I("post.data");
+        $questiontype = I("post.questiontype");
+
+
+        if($questiontype['starttime']==""||$questiontype['endtime']==""){
+            $this->error('请填写完全!');
+        }
+        $questiontype['time'] = date('Y-m-d H:i:s',time());
+        $tdata = M('Question');
+
+        $ttype  = M('Questiontype');
+
+        $number=$ttype->max('number')+1;
+
+        for ($i=0; $i < count($data); $i++) { 
+        $data[$i]['number']=$number;
+        }
+
+        $questiontype['number'] =$number;
+        $ret1 = $ttype->add($questiontype);
+        for ($i=0; $i < count($data); $i++) { 
+            $ret2 = $tdata->add($data[$i]); 
+        }
+        if(!empty($ret2) && is_numeric($ret2)&&!empty($ret1) && is_numeric($ret1)){
+            $this->success('增加成功!',U('Index/lessons'));
+        }
         }else{
         $this->display('index/lessons/lessons_add'); 
         }   
@@ -630,7 +758,7 @@ class IndexController extends Controller {
 
         if (IS_POST) {
 
-            $news=I('post.data');
+            $news=I('post.data','htmlspecialchars');
             if ($news['title']==''||$news['type']==''||$news['remark']==''||$news['contect']=='') {
 
                 $this->error('请填写完全！');
@@ -722,7 +850,10 @@ class IndexController extends Controller {
                     }
                     $table = M('News');
                     $news = $table->where(array('id'=>$id))->select();
+
+                    $news[0]['contect'] = htmlspecialchars_decode($news[0]['contect']);
                     $this->assign('news',$news[0]);
+
 
                     $this->display('Index/news/news_edit');
                     } //地址编辑方法 
@@ -1005,7 +1136,7 @@ class IndexController extends Controller {
     public function productRebate_add(){//返利产品增加方法 
 
             if(IS_POST){   
-            $data = I('post.data');
+            $data = I('post.data','htmlspecialchars');
             if($data['name']==''||$data['price']==''||$data['details']==''||$data['category']==''||$data['backmoney1']==''||$data['backmoney2']==''||$data['backmoney3']==''){
 
                 $this->error('回复为空!');
@@ -1030,7 +1161,7 @@ class IndexController extends Controller {
     public function productRebate_edit(){//返利产品增加方法 
 
             if(IS_POST){   
-            $data = I('post.data');
+            $data = I('post.data','htmlspecialchars');
             if($data['name']==''||$data['price']==''||$data['details']==''||$data['category']==''||$data['backmoney1']==''||$data['backmoney2']==''||$data['backmoney3']==''){
                 $this->error('请填写完全!');
 
@@ -1056,6 +1187,9 @@ class IndexController extends Controller {
                     
                     $table = M('Productrebate');
                     $product = $table->where(array('id'=>$id))->select();
+
+                    $product[0]['details'] = htmlspecialchars_decode($product[0]['details']);
+
                     $this->assign('productRebate',$product[0]);
                     $this->display('index/productRebate/productRebate_edit'); 
                     } //地址编辑方法    
@@ -1087,12 +1221,13 @@ class IndexController extends Controller {
         $count = $table->where($where)->count();//计算地址数量
 
         $Page = new \Think\Page($count,C('MY_PAGE'));
-        $show =$Page->show();
+        $show = $Page->show();
 
         $list = $table->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
 
         $this->assign('result',$list);
         $this->assign('page',$show);// 赋值分页输出
+
 
         $this->display('index/product/product'); 
         
@@ -1101,7 +1236,7 @@ class IndexController extends Controller {
     public function product_add(){//展示产品增加方法 
 
             if(IS_POST){   
-            $data = I('post.data');
+            $data = I('post.data','htmlspecialchars');
             if($data['name']==''||$data['price']==''||$data['details']==''||$data['category']==''){
 
                 $this->error('请填写完全!');
@@ -1126,7 +1261,7 @@ class IndexController extends Controller {
     public function product_edit(){//展示产品增加方法 
 
             if(IS_POST){   
-            $data = I('post.data');
+            $data = I('post.data','htmlspecialchars');
             if($data['name']==''||$data['price']==''||$data['details']==''||$data['category']==''){
                 $this->error('请填写完全!');
 
@@ -1152,6 +1287,7 @@ class IndexController extends Controller {
                     
                     $table = M('Product');
                     $product = $table->where(array('id'=>$id))->select();
+                    $product[0]['details'] = htmlspecialchars_decode($product[0]['details']);
                     $this->assign('product',$product[0]);
                     $this->display('index/product/product_edit'); 
                     } //地址编辑方法    
@@ -1174,9 +1310,39 @@ class IndexController extends Controller {
             
     }
 
-    public function producttype(){
+    public function producttype(){//产品类型管理
 
+        $table = M("Producttype");
+
+        $count = $table->count();
+        $Page = new \Think\Page($count,C("MY_PAGE_PRODUCTTYPE"));
+        $show = $Page ->show();
+
+
+        $result = $table->limit($Page->firstRow.','.$Page->lsitRows)->select();
+
+        for ($i=0; $i < count($result); $i++) { 
+            if ($result[$i]['typeclass']==0) {
+                $result[$i]['typeclass']="返利产品";
+            }
+            if ($result[$i]['typeclass']==1) {
+                $result[$i]['typeclass']="展示产品";
+            }
+        }
+        $this->assign('result',$result);
+        $this ->assign('page',$show);
         $this->display('index/producttype/producttype');
+
+    }
+
+    public function producttype_add(){
+
+        $this->display("index/producttype/producttype_add");
+    }
+
+    public function producttype_edit(){
+
+        $this->display("index/producttype/producttype_edit");
     }
 
     public function aboutus(){//完成关于企业的信息
@@ -1216,6 +1382,10 @@ class IndexController extends Controller {
         }
 
     }
+
+
+
+
 
 
     public function test(){

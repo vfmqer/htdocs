@@ -10,6 +10,7 @@
 <script src="js/jquery-2.1.1.js"></script>
 <script src="js/Pclass.js"></script>
 <script src="js/jquerysession.js"></script>
+<script src="js/mainfun.js"></script>
 <script type="text/javascript">
 jQuery(function () {
   $("#showleft").click(function(event) {
@@ -95,93 +96,8 @@ jQuery(function () {
 
 <script type="text/javascript">
   $(function(){
-
-    //如果已经登录，显示用户名
-    if ($.session.get('username')) {
-      $("#usernc").text($.session.get('username'));
-    }
-
-    //1跳转之前先检查是否登录，没有登录直接跳转到登录界面
-    $("#myproduct").click(function(event) {
-      if ($.session.get('username')) {
-        location.href = "myproductlist.html";
-      }else{
-        location.href = "login.html";
-      }
-    });
-
-    //2跳转之前先检查是否登录，没有登录直接跳转到登录界面
-    $("#myorder").click(function(event) {
-      if ($.session.get('username')) {
-        location.href = "myorder.html";
-      }else{
-        location.href = "login.html";
-      }
-    });
-
-    //3跳转之前先检查是否登录，没有登录直接跳转到登录界面
-    $("#myreward").click(function(event) {
-      if ($.session.get('username')) {
-        location.href = "myreward.html";
-      }else{
-        location.href = "login.html";
-      }
-    });
-
-    //4跳转之前先检查是否登录，没有登录直接跳转到登录界面
-    $("#zxcenter").click(function(event) {
-      location.href = "zxcenter.html";
-    });
-
-    //5跳转之前先检查是否登录，没有登录直接跳转到登录界面
-    $("#recommend").click(function(event) {
-      if ($.session.get('username')) {
-        location.href = "recommend.html";
-      }else{
-        location.href = "login.html";
-      }
-    });
-
-    //6跳转之前先检查是否登录，没有登录直接跳转到登录界面
-    $("#mypassword").click(function(event) {
-      if ($.session.get('username')) {
-        location.href = "xgmm.html";
-      }else{
-        location.href = "login.html";
-      }
-    });
-
-    //7跳转之前先检查是否登录，没有登录直接跳转到登录界面
-    $("#onekeymap").click(function(event) {
-      location.href = "onekeymap.html";
-    });    
-
-    //8跳转之前先检查是否登录，没有登录直接跳转到登录界面
-    $("#totaobao").click(function(event) {
-      location.href = "http://ai.m.taobao.com/index.html";
-    });       
-
-    //9跳转之前先检查是否登录，没有登录直接跳转到登录界面
-    $("#complain").click(function(event) {
-      if ($.session.get('username')) {
-        location.href = "complain.html";
-      }else{
-        location.href = "login.html";
-      }
-    });
-
-    //10退出登录，关闭session
-    $("#loginout").click(function(event) {
-      if ($.session.get('username')) {
-        $.session.clear();
-        $("#usernc").text("用户昵称");
-      }else{
-        openTip('没有登录，不需要退出！','.personregist_tip','.personregist_windowcover');
-      }
-    });
-
+    leftdiv(); 
   })
-
 </script>
 
 </body>

@@ -69,7 +69,29 @@
             <tr>
                 <td class="tableleft">资讯详情</td>
                 <td>
-                    <textarea name="data[contect]" style="margin: 0px 0px 10px; width: 80%; height: 233px;resize: none;"></textarea>
+                    <!-- <textarea name="data[contect]" style="margin: 0px 0px 10px; width: 80%; height: 233px;resize: none;"></textarea> -->
+                    <script id="container" name="data[contect]" type="text/plain"></script>
+                    <!-- 配置文件 -->
+                    <script type="text/javascript" src="/Public/ueditor/ueditor.config.js"></script>
+                    <!-- 编辑器源码文件 -->
+                    <script type="text/javascript" src="/Public/ueditor/ueditor.all.js"></script>
+                    <!-- 实例化编辑器 -->
+                    <script type="text/javascript">
+                    var ue = UE.getEditor('container', {
+                        initialFrameWidth: 1000,
+                        initialFrameHeight: 260,
+                        autoHeightEnabled: false,
+
+                    });
+                    ue.ready(function() {
+                        //设置编辑器的内容
+                        ue.setContent('<?php echo ($news["contect"]); ?>');
+                        //获取html内容，返回: <p>hello</p>
+                        var html = ue.getContent();
+                        //获取纯文本内容，返回: hello
+                        var txt = ue.getContentTxt();
+                    });
+                    </script>
                 </td>
             </tr>
             <tr>

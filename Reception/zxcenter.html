@@ -82,13 +82,13 @@
     <!--主体-->
     <div class="" style="">
         <div class="zxselect" align="center">
-            <span class="listm" hidden id="more">&nbsp;>&nbsp;</span>
+            <span class="listm" hidden id="less">&nbsp;<&nbsp;</span>
             <div class="active" id="cat1" onclick="clicknews(4)">行业信息</div>
             <div class="list" id="cat2" onclick="clicknews(2)">问题详解</div>
             <div class="list" id="cat3" onclick="clicknews(3)">科普知识</div>
             <div class="list" id="cat4" onclick="clicknews(1)">安装教程</div>
             <div class="list" hidden id="cat5" onclick="clicknews(5)">活动信息</div>
-            <span class="listm" id="more" onclick="more()">&nbsp;>&nbsp;</span>
+            <span class="listm" id="more">&nbsp;>&nbsp;</span>
         </div>
         <div class="zxctext">
         </div>
@@ -100,11 +100,20 @@
 </html>
 <!--尾部-->
 <script type="text/javascript">
-
 clicknews(4);
-function more(){
+$("#more").bind("click", function() {
+    $("#less").toggle(350);
+    $("#cat1").toggle(350);
+    $("#cat5").toggle(350);
+    $("#more").toggle(350);
+});
 
-}
+$("#less").bind("click", function() {
+    $("#less").toggle(350);
+    $("#cat1").toggle(350);
+    $("#cat5").toggle(350);
+    $("#more").toggle(350);
+});
 
 function clicknews(io) {
     $(".active").addClass("list");
@@ -125,6 +134,10 @@ function clicknews(io) {
         $("#cat4").removeClass("list");
         $("#cat4").addClass("active");
     }
+    if (io == 5) {
+        $("#cat5").removeClass("list");
+        $("#cat5").addClass("active");
+    }
     $(".zxctext").empty();
     var id = '13';
     var urls = generateUrl(id);
@@ -142,10 +155,10 @@ function clicknews(io) {
                 for (var i = 0; i < data.length; i++) {
                     var str = new Array();
                     str[i] = '<div class="context"align="left" alt=' + data[i]["id"] + '><img src="' + url_img() + data[i]["img"] + '"/><div  class="details"><div class=""style="font-size:14px;color:#000">' + data[i]["title"] + '</div><div class=""style="font-size:12px;color:#000">摘要：' + data[i]["remark"] + '</div><div class=""style="font-size:12px;color:#ccc">点击：' + data[i]["read"] + '&nbsp; &nbsp; &nbsp; 发布日期：' + data[i]["date"].substring(0, 10) + '</div></div></div>';
+                    $(".zxctext").append(str[i]);
                 }
-                for (var i = str.length - 1; i >= 0; i--) {
-                    $(".zxctext").append(str);
-                };
+
+
             } else { //没有资讯
                 openTip('没有资讯！', '.personregist_tip', '.personregist_windowcover');
             }

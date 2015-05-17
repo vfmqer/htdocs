@@ -29,33 +29,19 @@
   <div id="prolist"></div>
 </div>
 
+<!--提示框 -->
+<div class="personregist_windowcover"></div>
+<div class="personregist_tip">
+<p></p>
+<a href="javascript:void(0);" class="personregist_tip_surebtn" onClick="closeTip('.personregist_windowcover','.personregist_tip',event)">确定</a>
+</div>
+
+
 <!--尾部-->
 <script type="text/javascript">
 	$(function(){
-        var id = '04';
-        var urls = generateUrl(id);
-        var postdata = {
-          "productid":"",    
-          "category":"",   
-        }; 
-        $.ajax({
-          url: urls,
-          type: 'POST',
-          dataType: 'json',
-          data:jQuery.param(postdata, true),// 要提交的数据
-          //error:function(XMLResponse){alert(XMLResponse.responseText)},
-          success:function(data){
-            if(data!=null){   //返回成功   
-              for(var i=0;i<data.length;i++){
-                  $html='<div class="divfl" alt='+data[i]["typeid"]+'><div class="catg">'+data[i]["typename"]+'</div></div>';
-                 $("#prolist").append($html); 
-              }
-
-            }else{  //没有资讯！
-              openTip('没有资讯！','.personregist_tip','.personregist_windowcover');
-            }
-          }
-        });
+    
+    getprocatgroy();
 
 	  $('#prolist').delegate(".divfl","click",function(){	  	
 	  	var category=$(this).attr('alt');

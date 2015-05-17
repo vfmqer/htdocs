@@ -39,35 +39,26 @@
         <input type="text" name="username" id="username" class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
         <button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp;
         <button type="button" class="btn btn-success" id="addnew">新增</button>
-        <!-- &nbsp;&nbsp; <button type="button" class="btn btn-success" id="addnew">新增会员</button> -->
     </form>
     <load href="__PUBLIC__/Css/page.css" />
     <!-- 导入Page样式的样式表 -->
     <table class="table table-bordered table-hover definewidth m10">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>资讯名称</th>
-                <th>资讯类型</th>
-                <th>资讯摘要</th>
-                <th>资讯内容</th>
-                <th>新闻图片</th>
-                <th>点击次数</th>
-                <th>发布时间</th>
+                <th>编号</th>
+                <th>产品名称</th>
+                <th>类型ID</th>
+                <th>产品类型</th>
                 <th>操作</th>
             </tr>
         </thead>
         <foreach name="result" item="vo">
             <tr>
                 <td>{$vo.id}</td>
-                <td>{$vo.title}</td>
-                <td>{$vo.type}</td>
-                <td>{$vo.remark}</td>
-                <td>{$vo.contect}</td>
-                <td>{$vo.img}</td>
-                <td>{$vo.read}</td>
-                <td>{$vo.date}</td>
-                <td><a href="{:U('index/news_edit')}?id={$vo.id}">编辑</a>
+                <td>{$vo.typename}</td>
+                <td>{$vo.typeid}</td>
+                <td>{$vo.typeclass}</td>
+                <td><a href="{:U('index/producttype_edit')}?id={$vo.id}">编辑</a>
                     <a href="#" onclick="del({$vo.id})">删除</a>
                 </td>
             </tr>
@@ -83,13 +74,13 @@
 <script>
 $(function() {
     $('#addnew').click(function() {
-        window.location.href = "{:U('index/news_add')}";
+        window.location.href = "{:U('index/producttype_add')}";
     });
 });
 
 function del(id) {
     if (confirm("确定要删除吗？")) {
-        var link="{:U('index/news_delete')}?id="+id;
+        var link="{:U('index/producttype_delete')}?id="+id;
         window.location.href = link;
     }
 }

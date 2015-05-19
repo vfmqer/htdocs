@@ -28,9 +28,13 @@
 <!--头部-->
 <div class="headbg" align="center">
   <div class="headback" style="">
-  <a href="proshow.html"><img src="img/img002.png" height="30"></a></div>
+  <a href="directsell.html"><img src="img/img002.png" height="30"></a></div>
   <div class="headload" style="">产品详情</div>   
 </div>
+
+<!--加空白行-->
+<div class="blank"></div>
+
 
 <!--主体-->
 <div id="listpro">
@@ -72,7 +76,7 @@
   
   $(function(){
 
-    getprodetail($.session.get("productid"));
+    getprodetail($.session.get("zx_productid"));
 
     var str="";
 

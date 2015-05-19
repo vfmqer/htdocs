@@ -16,21 +16,6 @@
  .leftin{left:0;}
  .leftout{left:100%;}
 </style>
-
-<script type="text/javascript">
-jQuery(function () {
-  $("#showleft").click(function(event) {
-    /* Act on the event */
-    $(".cbbody").toggleClass('leftin');
-  });
-  
-  $(".cbbody").click(function(event) {
-    /* Act on the event */
-    $(".cbbody").toggleClass('leftin');
-  });  
- });  
-</script>
-
 </head>
 
 <body>
@@ -41,6 +26,10 @@ jQuery(function () {
   <a href="javascript:void(0)" id="showleft"><img src="img/img06.png" height="30"></a></div>
   <div class="headload" style="">加盟</div>   
 </div>
+
+<!--加空白行-->
+<div class="blank"></div>
+
 
 <!--主体-->
 
@@ -86,6 +75,7 @@ jQuery(function () {
 
 
 <!--侧边栏-->
+<div class="bgdiv"></div>
 <div class="cbbody" >
    <div class="cbuser" align="center" id="usernc">用户昵称</div>
    <div class="cblist"> <img src="img/img11.png" > <div id="myproduct"><span>我的产品  </div></span> </div>

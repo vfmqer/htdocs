@@ -2,7 +2,7 @@
 function generateUrl(id) { //生成url
 
     var keyswitcher = "1123456789";
-    var baseurl = "/api.php?keys=7fff7c317d3d5eeef988d15c6934d111&datetime=2015-05-08-05-33&id=" + id;
+    var baseurl = "http://cixi.essnn.com/api.php?keys=7fff7c317d3d5eeef988d15c6934d111&datetime=2015-05-08-05-33&id=" + id;
     /*	var date=new Date();
     	var year=date.getFullYear();
     	var month=date.getMonth()+1;
@@ -21,7 +21,7 @@ function generateUrl(id) { //生成url
 
 function url_img() {
 
-    return "/Public/Images/";
+    return "http://cixi.essnn.com/Public/Images/";
    
 }
 

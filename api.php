@@ -130,8 +130,8 @@ if($jiekey==$newkey) //钥匙验证
         }
         else
         {
-           $regstr="insert into js_user(username,phone,password,level,vip,addtime,integral,type) value('".$username."','".$username."','".$password."',
-            0,0,'".$time."',0,'用户')";
+           $regstr="insert into js_user(username,phone,password,level,vip,addtime,integral,type,count,mark,endadd) value('".$username."','".$username."','".$password."',
+            0,0,'".$time."',0,'用户','1','0','aaaa')";
 
             if(sqlFunction($regstr)!=0)
             {
@@ -215,6 +215,8 @@ if($jiekey==$newkey) //钥匙验证
 
         if ($productid == "" && $category =="") {
           $getprostr="select * from js_producttype where typeclass='1'";
+        }elseif ($category == "*") {
+          $getprostr="select * from js_product";
         }elseif ($productid == "") {
           $getprostr="select * from js_product where category='".$category."'";
         }elseif ($category == "") {
@@ -394,10 +396,10 @@ if($jiekey==$newkey) //钥匙验证
 
     elseif($_GET['id']=="11")  //提交问卷结果
     {
-       if(isset($_POST["username"]) && isset($_POST["number"]) && isset($_POST["qusnumber"]) && isset($_POST["result"])) //判断PSOT是否提交
+       if(isset($_POST["username"]) && isset($_POST["questiontype"]) && isset($_POST["qusnumber"]) && isset($_POST["result"]) && isset($_POST["questionid"])) //判断PSOT是否提交
       {       
-        $username=$_POST["username"];$number=$_POST["number"];$qusnumber=$_POST["qusnumber"];$result=$_POST["result"];$type=$_POST["type"];
-        $insertstr="insert into js_useranswer(username,type,number,qusnumber,result,time) value('".$username."','".$type."','".$number."','".$qusnumber."','".$result."','".$time."')";
+        $username=$_POST["username"];$questiontype=$_POST["questiontype"];$qusnumber=$_POST["qusnumber"];$result=$_POST["result"];$questionid=$_POST["questionid"];
+        $insertstr="insert into js_useranswer(username,type,number,qusnumber,result,time) value('".$username."','".$questiontype."','".$questionid."','".$qusnumber."','".$result."','".$time."')";
 
         if(sqlFunction($insertstr)!=0) //检查是否插入成功
         {   echo json_return("11001");  } //提交成功
@@ -410,7 +412,7 @@ if($jiekey==$newkey) //钥匙验证
 
     elseif($_GET['id']=="12")  //获取问卷信息
     {
-       if(isset($_POST["questionid"]) && isset($_POST["questiontype"])) //判断PSOT是否提交
+       if(isset($_POST["questionid"]) && isset($_POST["questiontype"])) //判断PSOT是否提交questionnumber
       {       
         $questionid=$_POST["questionid"];$questiontype=$_POST["questiontype"];
         

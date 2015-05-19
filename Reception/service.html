@@ -16,20 +16,6 @@
  .leftin{left:0;}
  .leftout{left:100%;}
 </style>
-<script type="text/javascript">
-jQuery(function () {
-  $("#showleft").click(function(event) {
-    /* Act on the event */
-    $(".cbbody").toggleClass('leftin');
-  });
-
-  $(".cbbody").click(function(event) {
-    /* Act on the event */
-    $(".cbbody").toggleClass('leftin');
-  });  
- });  
-</script>
-
 </head>
 
 <body style="background-color:#f5f5f5">
@@ -41,6 +27,10 @@ jQuery(function () {
   <div class="headload" style="">售后</div>   
 </div>
 
+<!--加空白行-->
+<div class="blank"></div>
+
+
 <!--主体-->
 
 
@@ -51,6 +41,8 @@ jQuery(function () {
 
 <div id="questionlist"></div>
 
+<!--加空白行-->
+<div class="blank pullleft"></div>
 
 <!--尾部-->
 <a href="lottery_list.html"><div class="lottery"><div>我要抽奖</div></div></a>
@@ -70,6 +62,7 @@ jQuery(function () {
 </div>
 
 <!--侧边栏-->
+<div class="bgdiv"></div>
 <div class="cbbody" >
    <div class="cbuser" align="center" id="usernc">用户昵称</div>
    <div class="cblist"> <img src="img/img11.png" > <div id="myproduct"><span>我的产品  </div></span> </div>
@@ -90,27 +83,41 @@ jQuery(function () {
     leftdiv();
 
     var questiontype="0";
+    $.session.set("questiontype",questiontype);
     getquestionlist(questiontype);
 
     $("#shouhou").click(function(event) {
-        $("#questionlist").html("");
-        $(this).siblings("div").removeClass("active");
-        $(this).siblings("div").addClass("lessonbtn");
-        $(this).removeClass("lessonbtn");
-        $(this).addClass("active");
-        questiontype="0";
-        getquestionlist(questiontype);       
-      });
+      $("#questionlist").html("");
+      $(this).siblings("div").removeClass("active");
+      $(this).siblings("div").addClass("lessonbtn");
+      $(this).removeClass("lessonbtn");
+      $(this).addClass("active");
+      questiontype="0";
+      $.session.set("questiontype",questiontype);
+      getquestionlist(questiontype);       
+    });
 
-      $("#shichang").click(function(event) {
-        $("#questionlist").html("");
-        $(this).siblings("div").removeClass("active");
-        $(this).siblings("div").addClass("lessonbtn");
-        $(this).removeClass("lessonbtn");
-        $(this).addClass("active");
-        questiontype="1";
-        getquestionlist(questiontype); 
-      });
+    $("#shichang").click(function(event) {
+      $("#questionlist").html("");
+      $(this).siblings("div").removeClass("active");
+      $(this).siblings("div").addClass("lessonbtn");
+      $(this).removeClass("lessonbtn");
+      $(this).addClass("active");
+      questiontype="1";
+      $.session.set("questiontype",questiontype);
+      getquestionlist(questiontype); 
+    });
+
+    $("#questionlist").delegate(".lessons","click",function(){
+      location.href = "service_lesson.html";
+      var questionid=$(this).attr('alt');
+      var questiontitle=$(this).find("span").text();
+      $.session.remove("questiontitle");
+      $.session.set("questiontitle",questiontitle);
+      $.session.remove("questionid");
+      $.session.set("questionid",questionid);
+    })
+
   })
 
 </script>

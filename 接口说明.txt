@@ -115,7 +115,7 @@ POST发送值：username(用户编号)
 提交问卷结果
 提交模式：GET+POST
 接口ID：11
-POST发送值：username(用户编号), number(第几套）, qusnumber(第几题), result(选择结果)，type(问卷类型)
+POST发送值：username(用户编号), questionid(问卷编号), qusnumber(第几题), result(选择结果)，type(问卷类型)
 提示信息：
 11001--提交成功
 11002--提交失败
@@ -125,7 +125,7 @@ POST发送值：username(用户编号), number(第几套）, qusnumber(第几题
 获取问卷信息
 提交模式：GET+POST
 接口ID：12
-POST发送值：username(用户编号), number(第几套）,type(问卷类型)
+POST发送值：questionid(问卷编号) ,type(问卷类型)
 返回信息：问卷信息
 提示信息：
 12001--未做过问卷

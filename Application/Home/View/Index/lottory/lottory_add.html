@@ -39,7 +39,8 @@
 
     <form class="form-inline definewidth m20" action="?" method="post">
             &nbsp;&nbsp;&nbsp;&nbsp;活动标题：
-        <input type="text" name="time[title]" id="username" class="abc input-default" placeholder="" style="width:450px"  value="">
+        <input type="text" name="time[title]" id="username" class="abc input-default" placeholder="" style="width:450px"  value=""><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;活动WIFI：
+        <input type="text" name="time[wifi]" id="username" class="abc input-default" placeholder="" style="width:250px"  value="">
         <hr /><div style="text-align:center"><p>活动描述</p></div>
         <textarea name="time[describe]" style="margin: 0px 0px 10px; width: 100%; height: 80px;resize: none;"></textarea><br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;活动起始时间：
@@ -53,6 +54,7 @@
                 <tr>
                     <td>编号</td>
                     <td>奖品名称</td>
+                    <td>奖品图片</td>
                     <td>奖品数量</td>
                     <td>中奖概率</td>
                     <td>操作</td>
@@ -64,6 +66,9 @@
                     <td>
                         <input value="" name="data[0][name]" type="text">
                     </td>
+                    <td>
+                        <input value="" name="data[0][img]" type="file">
+                    </td>                    
                     <td>
                         <input value="" name="data[0][number]" type="text">
                     </td>
@@ -95,12 +100,14 @@ function addRow() {
     //添加两列
     var newTd0 = newTr.insertCell();
     var newTd1 = newTr.insertCell();
+    var newTd5 = newTr.insertCell();
     var newTd2 = newTr.insertCell();
     var newTd3 = newTr.insertCell();
     var newTd4 = newTr.insertCell();
     //设置列内容和属性
     newTd0.innerHTML = '<p>' + row + '</p>';
     newTd1.innerHTML = '<input  value="" name=data[' + rows + '][name] type="text" >';
+    newTd5.innerHTML = '<input  name=data[' + rows + '][img] type="file" >';
     newTd2.innerHTML = '<input  value="" name=data[' + rows + '][number] type="text" >';
     newTd3.innerHTML = '<input  value="" name=data[' + rows + '][winning] type="text" >';
     newTd4.innerHTML = '<a>删除</a>';

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title><?php echo ($_SESSION['user']['username']); ?>，欢迎登录依森后台管理！</title>
+    <title><?php echo ($_SESSION['user']['username']); ?>，欢迎登录后台管理系统！</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="/htdocs/Public/assets/css/dpl-min.css" rel="stylesheet" type="text/css" />
     <link href="/htdocs/Public/assets/css/bui-min.css" rel="stylesheet" type="text/css" />
@@ -98,6 +98,10 @@
                     text: '产品类型管理',
                     href: "<?php echo U('index/producttype');?>"
                 }, {
+                    id: '16',
+                    text: '滤心管理',
+                    href: "<?php echo U('index/filter');?>"
+                },{
                     id: '7',
                     text: '资讯管理',
                     href: "<?php echo U('index/news');?>"

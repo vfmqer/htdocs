@@ -22,6 +22,10 @@
 </div>
 
 
+<!--加空白行-->
+<div class="blank"></div>
+
+
 <!--主体-->
 <div class="" style="">
   <div class="" style="margin:40px 5% 0 5%">
@@ -64,58 +68,8 @@
 
 <script>
 $(function(){
-    $('.btload').click(function(event){
-    
-    var username=$('#username').val();
-    var password=$('#password').val();
-    var yanzm=$('#yanzm').val();
-    //alert(username+"|"+password+"|"+yanzm);
-
-    if(username == '' )
-    {  
-      openTip('请填写用户名！','.personregist_tip','.personregist_windowcover'); 
-      $('#username').focus();
-    }
-    else if(password == '' )
-    {
-      openTip('请填写密码！','.personregist_tip','.personregist_windowcover');  
-      $('#password').focus();
-    }  
-    else if(yanzm == '' )
-    {
-      openTip('请填写验证码！','.personregist_tip','.personregist_windowcover');  
-      $('#yanzm').focus();
-    }
-    else 
-    {      
-          var id = '01';
-          var urls = generateUrl(id);
-          var postdata = {
-            "username":username,    
-            "password":password,
-            //"yanzm":yanzm   
-          }; 
-          $.ajax({
-            url: urls,
-            type: 'POST',
-            dataType: 'json',
-            data:jQuery.param(postdata, true),// 要提交的数据
-            success: function (data) {
-              if(data["a"]=='01001'){   //注册成功
-                location.href = "index.html";
-                $.session.set('username', username);
-              }else if(data["a"]=='01002'){//重复注册
-                openTip('用户名已被注册，请重新填写！','.personregist_tip','.personregist_windowcover');
-              }else{  //注册失败
-                openTip('注册失败！','.personregist_tip','.personregist_windowcover');
-              }
-            }
-          });
-          return false;
-    } 
-  }) 
+    userregist();
 })
-      
 </script>
 
 </body>

@@ -40,6 +40,10 @@
   <div class="headload" style="">抽奖</div>   
 </div>
 
+<!--加空白行-->
+<div class="blank"></div>
+
+
 <!--主体-->
 <div class="lotterydes"><div>此处填写说明文字</div></div>
 
@@ -53,7 +57,7 @@
 	</div>
 </div>
 
-<div class="hdsign" >2015劳动节抽ipad大奖活动说明</div>
+<div class="hdsign" ></div>
 
 <div class="textfont">
 <!-- <div>五一假日已至，金蛋迎福，大使抬来一担担的祝福送给大家，祝大家砸金蛋，得大奖，在新的一年里幸福美满。</div>
@@ -77,12 +81,12 @@
 	
 	$(".eggList div").click(function() {
 		if (clicktimes==0) {			
-			eggClick($(this));			
+			//eggClick($(this));
+			getlotterydetail();			
 		}else{
 			openTip('亲，已经抽过奖了，不能再抽了！','.personregist_tip','.personregist_windowcover');
 		}
 	});			
-
 
 	$(".eggList div").hover(function() {
 		var posL = $(this).position().left + 65;

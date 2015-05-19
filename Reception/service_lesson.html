@@ -8,6 +8,9 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/jquery-2.1.1.js"></script>
+<script src="js/Pclass.js"></script>
+<script src="js/jquerysession.js"></script>
+<script src="js/mainfun.js"></script>
 <!-- <script src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <link rel="stylesheet" href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" type="text/css"> -->
@@ -32,26 +35,35 @@ label.checked {background-position:left bottom;background: url(bg.gif) no-repeat
   <div class="headload" style="">售后</div>   
 </div>
 
+<!--加空白行-->
+<div class="blank"></div>
+
+
 <!--主体-->
-<div  class="wenj">
- 某某问卷调查表
-</div>
+<div  class="wenj"></div>
 
-<div >
-  <form action="echo.cfm" method="post">                
-    <div class="wjlist">  
-      <div >您的性别：</div>    
-        <div class="wjitem" ><input type="radio" name="sex" id="nan" value="男" checked><label for="nan">男</label></div>
-        <div class="wjitem" ><input type="radio" name="sex" id="nv" value="女" ><label for="nv">女</label></div>           
-    </div>                           
-  </form>  
+<div id="questions"></div>
 
-</div>  
-
+<!--加空白行-->
+<div class="blank pullleft"></div>
 
 <!--尾部-->
-<a href="#"><div class="submit_les"><div>提交</div></div></a>
+<div class="submit_les"><div>提交</div></div>
 
+<!--提示框 -->
+<div class="personregist_windowcover"></div>
+<div class="personregist_tip">
+<p></p>
+<a href="javascript:void(0);" class="personregist_tip_surebtn" onClick="closeTip('.personregist_windowcover','.personregist_tip',event)">确定</a>
+</div>
 
+<script type="text/javascript">
+  $(function(){
+    getlessons();
+    $(".submit_les").click(function(){
+      postlessons();
+    })
+  })
+</script>
 </body>
 </html>

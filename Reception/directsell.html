@@ -12,24 +12,12 @@
 <script src="js/jquerysession.js"></script>
 <script src="js/mainfun.js"></script>
 <script type="text/javascript">
-jQuery(function () {
-  $("#showleft").click(function(event) {
-    /* Act on the event */
-    $(".cbbody").toggleClass('leftin');
-  });
-  
-  $(".cbbody").click(function(event) {
-    /* Act on the event */
-    $(".cbbody").toggleClass('leftin');
-  });
-
- });  
 </script>
 
 <style type="text/css">
 .leftin{left:0;}
-.proimg{width:100px;margin:0 3%;float:left;}
 .pro_name{font-size:14px;line-height:23px;color:#000;}
+.fbdate{font-size:12px;color:#999;}
 </style>
 </head>
 
@@ -43,18 +31,14 @@ jQuery(function () {
    
 </div>
 
+<!--加空白行-->
+<div class="blank"></div>
+
 <!--主体-->
-<div class="listbody">
-  <a href="prodetails.html">
-  <div class="prolist" >
-    <img src="img/proimg001.png" class="proimg" />
-    <div class="pro_name" >佳能（Canon）EOS 70D单反套机（EF-S 18-135mm f/3.5）<br/>
-    <span style="color:red">￥600</span>
-    <div style="font-size:12px;color:#999">发布日期：2015-04-10</div>
-    </div>
-  </div>
-  </a>  
-</div>
+<div class="listbody"></div>
+
+<!--加空白行-->
+<div class="blank pullleft"></div>
 
 <!--尾部-->
 <div class="footertab" >
@@ -73,6 +57,7 @@ jQuery(function () {
 </div>
 
 <!--侧边栏-->
+<div class="bgdiv"></div>
 <div class="cbbody" >
    <div class="cbuser" align="center" id="usernc">用户昵称</div>
    <div class="cblist"> <img src="img/img11.png" > <div id="myproduct"><span>我的产品  </div></span> </div>
@@ -91,6 +76,17 @@ jQuery(function () {
 <script type="text/javascript">
   $(function(){
     leftdiv();
+
+    var category="*";
+    getcatpro(category);
+
+    $('.listbody').delegate(".prolist","click",function(){
+      location.href = "prodetails.html";
+      var zx_productid=$(this).attr('alt');
+      $.session.remove("zx_productid");
+      $.session.set("zx_productid",zx_productid);
+    })
+
   })
 
 </script>

@@ -620,7 +620,7 @@ class IndexController extends Controller {
            $result[$i]['endtime']=date('Y-m-d',strtotime($result[$i]['endtime']));
 
             $where3['number'] =$result[$i]['number'];
-            $a=$tq->field('qusnumber,title,a,b,c,d')->where($where3)->order('id')->select();
+            $a=$tq->field('title,a,b,c,d')->where($where3)->order('id')->select();
             $string = "";
             $string1 = "";
             for ($j=0; $j < count($a); $j++) { 
@@ -650,20 +650,94 @@ class IndexController extends Controller {
 
     public function lessons_view(){
 
-        $data = I("post.data");
-        $questiontype = I("post.questiontype");
-        dump($data);dump($questiontype);exit();
-        $this->display('index/lessons/lessons_add'); 
+        $id = I("get.id");
+        $wheret['id'] = $id;
+        $ttype = M("Questiontype");
+        $tquestion =M("Question");
+        $tuseranswer = M("Useranswer");
+
+        $number = $ttype->where($wheret)->select();
+        $number[0]['starttime'] = date('Y-m-d',strtotime($number[0]['starttime']));
+        $number[0]['endtime'] = date('Y-m-d',strtotime($number[0]['endtime']));
+
+        $whereq['number'] = $number[0]['number'];
+
+        $whereid['number'] = $number[0]['id'];
+
+        $count = $tuseranswer->where($whereid)->count('DISTINCT username');
+        $number[0]['count'] = $count;
+
+        $question = $tquestion->where($whereq)->select();
+
+        $wh['number'] = $id;
+        for ($i=0; $i < count($question); $i++) {
+            $wh['qusnumber'] =$question[$i]['id'];
+            $wh['result'] = 'a';
+            $winninga = $tuseranswer->where($wh)->count();
+            $wh['result'] = 'b';
+            $winningb = $tuseranswer->where($wh)->count();
+            $wh['result'] = 'c';
+            $winningc = $tuseranswer->where($wh)->count();
+            $wh['result'] = 'd';
+            $winningd = $tuseranswer->where($wh)->count();
+            $question[$i]['a'] .='【'.round($winninga/$count*100,2).'%】';
+            $question[$i]['b'] .='【'.round($winningb/$count*100,2).'%】';
+            $question[$i]['c'] .='【'.round($winningc/$count*100,2).'%】';
+            $question[$i]['d'] .='【'.round($winningd/$count*100,2).'%】';
+        }
+
+        $this->assign('res',$question);
+        $this->assign('result_number',$number[0]);
+        $this->display('index/lessons/lessons_view'); 
         
     }
 
     public function lessons_edit(){
 
-        $data = I("post.data");
-        $questiontype = I("post.questiontype");
-        dump($data);dump($questiontype);exit();
+        $tableq = M("Question");
+        $tablet = M("Questiontype");
+
+        $id = I('get.id');
+        $where['id'] = $id;
+        $result_lessons = $tablet->where($where)->select();
+        if(IS_POST){
+            $id1 = I("post.id1");
+            $where1['id'] = $id1;
+
+            $data = I("post.data");
+            $questiontype = I("post.questiontype"); 
+            $result_lessons = $tablet->where($where1)->select();
+            $addnumber = $result_lessons[0]['number'];
+            $ret2 = $tablet ->where($where1)->save($questiontype);
+            for ($i=0; $i < count($data); $i++) { 
+                //如果有新增的话,把number加入到数组中,并重新添加数据到数据库
+                if($data[$i]['id']==""){
+                    $data[$i]['number'] = $addnumber;
+                    $ret3=$tableq->add($data[$i]);
+                }else{
+                    $where2['id'] = $data[$i]["id"];
+                    $ret1=$tableq ->field('a,b,c,d,title')->where($where2)->save($data[$i]);
+                }
+                
+            }
+
+                $this->success('修改成功!',U('Index/lessons'));
+        }else{
+
+
+        $result_lessons[0]['starttime'] = date('Y-m-d',strtotime($result_lessons[0]['starttime']));
+        $result_lessons[0]['endtime'] = date('Y-m-d',strtotime($result_lessons[0]['endtime']));
+
+        $wherer['number'] = $result_lessons[0]['number'];
+        $res = $tableq->where($wherer)->select();
+
+        $this->assign('res',$res);
+        $this->assign('result_lessons',$result_lessons[0]);
+        $this->assign('id1',$where['id']);
+
         $this->display('index/lessons/lessons_edit'); 
-        
+        }
+
     }
 
     public function lessons_add(){//添加问卷方法
@@ -1343,7 +1417,102 @@ class IndexController extends Controller {
     public function producttype_edit(){
 
         $this->display("index/producttype/producttype_edit");
+
     }
+
+    public function filter(){//滤心管理方法
+
+
+        $table = M('Filter');
+
+        $where='';
+        $count = $table->where($where)->count();//计算地址数量
+
+        $Page = new \Think\Page($count,C('MY_PAGE'));
+        $show = $Page->show();
+
+        $list = $table->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();
+
+        $this->assign('result',$list);
+        $this->assign('page',$show);// 赋值分页输出
+
+        $this->display("index/filter/filter");
+
+    }
+
+    public function filter_edit(){//滤心管理编辑方法
+
+
+        $table = M("Filter");
+
+
+
+        if(IS_POST){
+            $data = I("post.data");
+
+            $id = I("post.id");
+            $where['id'] = $id;
+
+            if($data['name']==""||$data['life']==""||$data['level']==""||$data['barcode']==""){
+                $this ->error("请填写完全！");
+            }
+            $data['endtime'] = date('Y-m-d H:i:s',time());
+
+            $ret = $table ->where($where)->save($data);
+            if(isset($ret)&&!empty($ret)){
+                $this->success('滤心修改成功',U("index/filter"));
+            }
+
+        }else{
+
+            $id = I("get.id");
+            $where['id'] = $id;
+
+            $result = $table->where($where)->select();
+
+            $this ->assign('result',$result[0]);
+
+            $this->display("index/filter/filter_edit");
+
+        }
+
+    }  
+
+    public function filter_add(){//添加滤心方法
+
+        if(IS_POST){
+            $data = I("post.data");
+            $table = M("Filter");
+            if($data['name']==""||$data['life']==""||$data['level']==""||$data['barcode']==""){
+                $this ->error("请填写完全！");
+            }
+            $data['time'] = date('Y-m-d H:i:s',time());
+            $ret = $table -> add($data);
+            if(isset($ret)&&!empty($ret)){
+                $this -> success("添加滤心成功",U("index/filter_add"));
+            }
+
+        }else{
+            $this->display("index/filter/filter_add");
+        }
+
+    }
+
+    public function filter_delete(){//滤心删除方法
+
+        $id = I("get.id");
+        $table =M("Filter");
+        $where["id"] = $id;
+
+        $ret = $table ->where($where)->delete();
+        if(isset($ret)&&!empty($ret)){
+            $this ->success("删除成功",U("index/filter"));
+        }else{
+            $this->error('非法访问！是否想做滤心的相关操作？',U("index/filter"));
+        }
+        
+
+    }  
 
     public function aboutus(){//完成关于企业的信息
 
@@ -1383,86 +1552,57 @@ class IndexController extends Controller {
 
     }
 
+    public function getprize(){
 
+        $fp=fsockopen('time.nist.gov',13,$errno,$errstr,90);  
+        $ufc = explode(' ',fread($fp,date('Y')));  
+        $oneday = explode('-',$ufc[1]);  
+        $mydate = $oneday[1].'-'.$oneday[2].'-'. date('Y').' '.$ufc[2]; 
+        $datetime = explode(" ",$mydate);  
+        $dateexplode = explode("-",$datetime[0]);  
+        $timeexplode = explode(":",$datetime[1]);  
+        $unixdatetime = mktime($timeexplode[0]+8,$timeexplode[1],0,$dateexplode[0],$dateexplode[1],$dateexplode[2]);  
 
+        $intday =date("Y-m-d",$unixdatetime);
+        //以上代码为获取网络的时间，进行做如下比对
+        $day = date("Y-m-d");
+        $id = I("get.id");
 
+        $date = date("d");
+        dump(date('d',$unixdatetime));exit();
+        if($intday===$day&&date('d',$intday)==28){
+            if($id == $date){
+               
+                $table = M("User");
+                //保存多个字段
+                $where['endadd'] = array('neq',$day);
+
+                $where['mark'] = array('lt',2);
+
+                $con['endadd'] = $day;
+                $con['count'] = array('exp','count+1');
+                $con['mark'] = array('exp','mark+1');
+                $ret = $table->where($where)->save($con);
+                if(isset($ret)&&!empty($ret)){
+                    $this->success('抽奖次数增加成功！');
+                }else{
+                    $this->error("本月已增加过抽奖次数，请下月再增加");
+                }
+            }else{
+                $this->error('非法访问！是否已修改了本地的时间？',U("index/welcome"));
+            }
+        }else{
+            $this->error('网络时间获取有误,请稍后再试',U("index/welcome"));
+        }
+
+    }
 
 
     public function test(){
 
-        $this->display('index/test');
+        $this->display('index/welcome/welcome');
 
     }
 
-    public function get_td_array($table) {//输入table源码 返回数组
-            // 去掉 HTML 标记属性
-            $table = preg_replace("'<table[^>]*?>'si", "", $table);
-            $table = preg_replace("'<tr[^>]*?>'si", "", $table);
-            $table = preg_replace("'<td[^>]*?>'si", "", $table);
-            $table = str_replace("</tr>", "{tr}", $table);
-            $table = str_replace("</td>", "{td}", $table);
-            // 去掉 HTML 标记
-            $table = preg_replace("'<[\/\!]*?[^<>]*?>'si", "", $table);
-            // 去掉空白字符
-            $table = preg_replace("'([\r\n])[\s]+'", "", $table);
-            $table = str_replace(" ", "", $table);
-            $table = str_replace(" ", "", $table);
-            
-            $table = explode('{tr}', $table);
-            array_pop($table);
-            foreach ($table as $key => $tr) {
-                $td = explode('{td}', $tr);
-                array_pop($td);
-                $td_array[] = $td;
-            } 
-            return $td_array;
-
-    } 
-
-
-    public function lottory_getdata(){//后台获得中奖概率
-        $prize_arr = array(
-            '0' => array('id'=>1,'prize'=>'平板电脑','v'=>3),
-            '1' => array('id'=>2,'prize'=>'数码相机','v'=>5),
-            '2' => array('id'=>3,'prize'=>'音箱设备','v'=>10),
-            '3' => array('id'=>4,'prize'=>'4G优盘','v'=>12),
-            '4' => array('id'=>5,'prize'=>'Q币10元','v'=>20),
-            '5' => array('id'=>6,'prize'=>'下次没准就能中哦','v'=>50),);
-
-
-                foreach ($prize_arr as $key => $val) {
-                    $arr[$val['id']] = $val['v'];
-                }
-                //print_r($arr);
-
-                $rid = getRand($arr); //根据概率获取奖项id
-                $res['msg'] = ($rid==6)?0:1; 
-                $res['prize'] = $prize_arr[$rid-1]['prize']; //中奖项
-                echo json_encode($res);exit;
-
-    }
-  
-    public function getRand($proArr) { //计算概率
-
-            $result = '';
-
-            //概率数组的总概率精度
-            $proSum = array_sum($proArr);
-
-            //概率数组循环
-            foreach ($proArr as $key => $proCur) {
-                $randNum = mt_rand(1, $proSum);
-                if ($randNum <= $proCur) {
-                    $result = $key;
-                    break;
-                } else {
-                    $proSum -= $proCur;
-                }
-            }
-            unset ($proArr);
-
-            return $result;
-         }   
-
-    }
+}
     

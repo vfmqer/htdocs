@@ -4,14 +4,14 @@
 <head>
     <title>抽奖管理</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/style.css" />
-    <script type="text/javascript" src="/htdocs/Public/Js/jquery.js"></script>
-    <script type="text/javascript" src="/htdocs/Public/Js/jquery.sorted.js"></script>
-    <script type="text/javascript" src="/htdocs/Public/Js/bootstrap.js"></script>
-    <script type="text/javascript" src="/htdocs/Public/Js/ckform.js"></script>
-    <script type="text/javascript" src="/htdocs/Public/Js/common.js"></script>
+    <link rel="stylesheet" type="text/css" href="/Public/Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/Public/Css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/Public/Css/style.css" />
+    <script type="text/javascript" src="/Public/Js/jquery.js"></script>
+    <script type="text/javascript" src="/Public/Js/jquery.sorted.js"></script>
+    <script type="text/javascript" src="/Public/Js/bootstrap.js"></script>
+    <script type="text/javascript" src="/Public/Js/ckform.js"></script>
+    <script type="text/javascript" src="/Public/Js/common.js"></script>
     <style type="text/css">
     body {
         padding-bottom: 40px;
@@ -41,13 +41,14 @@
         <button type="button" class="btn btn-success" id="addnew">新增</button>
         <!-- &nbsp;&nbsp; <button type="button" class="btn btn-success" id="addnew">新增会员</button> -->
     </form>
-    <link rel="stylesheet" type="text/css" href="/htdocs/Public/Css/page.css" />
+    <link rel="stylesheet" type="text/css" href="/Public/Css/page.css" />
     <!-- 导入Page样式的样式表 -->
     <table class="table table-bordered table-hover definewidth m10">
         <thead>
             <tr>
                 <th>活动序号</th>
                 <th>抽奖名称</th>
+                <th>活动wifi</th>
                 <th width="30%">抽奖描述</th>
                 <th>抽奖奖品---奖品数量---中奖概率</th>
                 <th>抽奖开始－结束日期</th>
@@ -57,6 +58,7 @@
         <?php if(is_array($result)): foreach($result as $key=>$vo): ?><tr>
             <td><?php echo ($vo["id"]); ?></td>
             <td><?php echo ($vo["title"]); ?></td>
+            <td><?php echo ($vo["wifi"]); ?></td>
             <td><?php echo ($vo["describe"]); ?></td>
             <td>
             <?php echo ($vo["prize"]); ?>

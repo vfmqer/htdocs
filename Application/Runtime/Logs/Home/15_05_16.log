@@ -333,400 +333,53 @@ INFO: [ app_init ] --START--
 INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
 INFO: [ app_init ] --END-- [ RunTime:0.000641s ]
 
-[ 2015-05-16T23:17:01+08:00 ] 127.0.0.1 /htdocs/
+[ 2015-05-16T23:06:49+08:00 ] 106.120.160.109 /
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.043002s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000664s ]
 
-[ 2015-05-16T23:17:03+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/welcome
+[ 2015-05-16T23:27:15+08:00 ] 39.190.59.119 /
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000080s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001068s ]
 
-[ 2015-05-16T23:17:14+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/admin
+[ 2015-05-16T23:27:15+08:00 ] 39.190.59.119 /index.php/Home/Index/login
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000067s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000703s ]
 
-[ 2015-05-16T23:17:22+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/userdisplay
+[ 2015-05-16T23:27:22+08:00 ] 39.190.59.119 /index.php/Home/index/login
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000106s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001015s ]
 
-[ 2015-05-16T23:17:32+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/userguid
+[ 2015-05-16T23:27:29+08:00 ] 39.190.59.119 /index.php/Home/index/login
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000048s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000565s ]
 
-[ 2015-05-16T23:20:53+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/userguid
+[ 2015-05-16T23:27:30+08:00 ] 39.190.59.119 /index.php/Home/index/index
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-ERR: SQLSTATE[HY000] [1049] Unknown database 'js_data'
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000071s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000670s ]
 
-[ 2015-05-16T23:20:56+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/userguid
+[ 2015-05-16T23:27:34+08:00 ] 39.190.59.119 /index.php/Home/index/welcome
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-ERR: SQLSTATE[HY000] [1049] Unknown database 'js_data'
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000587s ]
 
-[ 2015-05-16T23:21:05+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/userguid
+[ 2015-05-16T23:27:37+08:00 ] 39.190.59.119 /index.php/Home/index/lessons
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000764s ]
 
-[ 2015-05-16T23:21:07+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/userguid
+[ 2015-05-16T23:27:42+08:00 ] 39.190.59.119 /index.php/Home/index/message
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000082s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000844s ]
 
-[ 2015-05-16T23:21:08+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lottory
+[ 2015-05-16T23:27:45+08:00 ] 39.190.59.119 /index.php/Home/Index/message_edit?id=1
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:21:10+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/productRebate
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:21:12+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/product
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:21:13+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/userguid
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:23:21+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/userguid
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:23:25+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lottory
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:23:26+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/productRebate
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:23:27+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/product
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:23:29+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/welcome
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:24:36+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/userguid
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:24:37+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lottory
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:24:38+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/product
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:24:38+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/producttype
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.004001s ]
-
-[ 2015-05-16T23:24:38+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/news
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:24:39+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lessons
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:24:39+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/message
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002001s ]
-
-[ 2015-05-16T23:24:40+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/address
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:24:41+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/order
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
-
-[ 2015-05-16T23:24:42+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/rebate
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
-
-[ 2015-05-16T23:24:42+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/barcode
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002001s ]
-
-[ 2015-05-16T23:24:44+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/aboutus
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:24:54+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/aboutus
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:24:56+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/productRebate
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:24:59+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lessons
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:25:08+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/message
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:25:13+08:00 ] 127.0.0.1 /htdocs/index.php/Home/Index/message_edit?id=1
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:29:36+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/message
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:29:39+08:00 ] 127.0.0.1 /htdocs/index.php/Home/Index/message_edit?id=1
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001001s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002001s ]
-
-[ 2015-05-16T23:29:47+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lessons
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:29:49+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/productRebate
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:29:50+08:00 ] 127.0.0.1 /htdocs/index.php/Home/Index/productRebate_edit?id=1
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:29:54+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/aboutus
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.003001s ]
-
-[ 2015-05-16T23:32:54+08:00 ] 127.0.0.1 /htdocs/
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
-
-[ 2015-05-16T23:32:56+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/welcome
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
-
-[ 2015-05-16T23:32:57+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/lessons
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:33:01+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/message
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:33:04+08:00 ] 127.0.0.1 /htdocs/index.php/Home/Index/message_edit?id=1
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:33:14+08:00 ] 127.0.0.1 /htdocs/index.php/Home/index/admin
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:43:22+08:00 ] 192.168.1.106 /htdocs/
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:43:22+08:00 ] 192.168.1.106 /htdocs/index.php/Home/Index/login
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:44:13+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/login
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:44:15+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/index
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:44:16+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/welcome
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:44:25+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/lessons
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:44:33+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/message
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:44:48+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/address
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:44:54+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/order
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:45:01+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/barcode
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:45:07+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/aboutus
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:45:20+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/admin
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:45:23+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/userguid
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:45:32+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/lottory
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:45:40+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/productRebate
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:45:58+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/userdisplay
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:46:06+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/user_delete?id=63
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:46:07+08:00 ] 192.168.1.106 /htdocs/index.php/Home/Index/userdisplay
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:46:10+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/productRebate
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:46:17+08:00 ] 192.168.1.106 /htdocs/index.php/Home/Index/productRebate_edit?id=1
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:46:28+08:00 ] 192.168.1.106 /htdocs/index.php/Home/Index/productRebate_edit?
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:46:29+08:00 ] 192.168.1.106 /htdocs/index.php/Home/Index/productRebate
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002001s ]
-
-[ 2015-05-16T23:46:32+08:00 ] 192.168.1.106 /htdocs/index.php/Home/Index/productRebate_edit?id=1
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:46:49+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/product
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:46:56+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/aboutus
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:47:25+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/address
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:47:28+08:00 ] 192.168.1.106 /htdocs/index.php/Home/Index/address_edit?id=1
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002001s ]
-
-[ 2015-05-16T23:47:45+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/address
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:47:46+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/order
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-
-[ 2015-05-16T23:47:49+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/userdisplay
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:47:52+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/lottory
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
-
-[ 2015-05-16T23:47:55+08:00 ] 192.168.1.106 /htdocs/index.php/Home/index/lottory_view?id=13
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000073s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000830s ]
 

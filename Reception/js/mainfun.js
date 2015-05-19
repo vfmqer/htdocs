@@ -2,6 +2,59 @@
 
 //登录检查
 function logincheck(){
+  $('.btload').click(function(event){
+    
+    var username=$('#username').val();
+    var password=$('#password').val();
+    var yanzm=$('#yanzm').val();
+    //alert(username+"|"+password+"|"+yanzm);
+
+    if(username == '' )
+    {  
+      openTip('请填写用户名！','.personregist_tip','.personregist_windowcover'); 
+      $('#username').focus();
+    }
+    else if(password == '' )
+    {
+      openTip('请填写密码！','.personregist_tip','.personregist_windowcover');  
+      $('#password').focus();
+    }  
+    else if(yanzm == '' )
+    {
+      openTip('请填写验证码！','.personregist_tip','.personregist_windowcover');  
+      $('#yanzm').focus();
+    }
+    else 
+    {      
+          var id = '01';
+          var urls = generateUrl(id);
+          var postdata = {
+            "username":username,    
+            "password":password,
+            //"yanzm":yanzm   
+          }; 
+          $.ajax({
+            url: urls,
+            type: 'POST',
+            dataType: 'json',
+            data:jQuery.param(postdata, true),// 要提交的数据
+            success: function (data) {
+              if(data["a"]=='01001'){   //注册成功
+                location.href = "index.html";
+                $.session.set('username', username);
+              }else if(data["a"]=='01002'){//重复注册
+                openTip('用户名已被注册，请重新填写！','.personregist_tip','.personregist_windowcover');
+              }else{  //注册失败
+                openTip('注册失败！','.personregist_tip','.personregist_windowcover');
+              }
+            }
+          });
+          return false;
+    } 
+  }) 
+}
+//登录检查
+function logincheck(){
   var username=$('#username').val();
   var password=$('#password').val();
 
@@ -117,8 +170,15 @@ function getcatpro(category){
           success:function(data){
             if(data!=null){   //返回成功   
               for(var i=0;i<data.length;i++){
-                var html='<div class="prolist1" alt='+data[i]["id"]+'><img src='+url_img()+data[i]["img"]+' class="proimg"/><div class="protitle">'+data[i]["name"]+'<div class="pclick">点击：'+data[i]["read"]+'&nbsp;&nbsp;&nbsp;发布日期：'+data[i]["lasttime"].substring(0,10)+'</div></div></div>';                
-                $(".context").append(html);
+
+                if (category!="*") {
+                  var html='<div class="prolist1" alt='+data[i]["id"]+'><img src='+url_img()+data[i]["img"]+' class="proimg"/><div class="protitle">'+data[i]["name"]+'<div class="pclick">点击：'+data[i]["read"]+'&nbsp;&nbsp;&nbsp;发布日期：'+data[i]["lasttime"].substring(0,10)+'</div></div></div>';                
+                  $(".context").append(html);
+                }else{
+                  var html='<div class="prolist" alt='+data[i]["id"]+'><img src='+url_img()+data[i]["img"]+' class="proimg" /><div class="pro_name" ><div>'+data[i]["name"]+'</div><div style="color:red">￥ '+data[i]["price"]+'</div><div class="fbdate">发布日期：'+data[i]["lasttime"].substring(0,10)+'</div></div></div>';                                  
+                  $(".listbody").append(html);
+                }
+                
               }
             }else{  //没有资讯！
               openTip('没有产品信息！','.personregist_tip','.personregist_windowcover');
@@ -146,11 +206,13 @@ function getprodetail(productid){
           success:function(data){
             if(data!=null){   //返回成功   
               for(var i=0;i<data.length;i++){
-                //var html="";
                 $(".proname span").text(data[i]["name"]);
+                $(".proname1").text(data[i]["name"]);
                 $(".proname div").text("￥"+data[i]["price"]);
                 $("#imgsrc").attr("src",url_img()+data[i]["img"]);
+                $(".imgset").attr("src",url_img()+data[i]["img"]);
                 $(".content").text(data[i]["details"]);
+                $(".contentfont").text(data[i]["details"]);
               }
             }else{  //没有资讯！
               openTip('没有产品信息！','.personregist_tip','.personregist_windowcover');
@@ -245,6 +307,179 @@ function getlotterylist(){
     });
 }
 
+//砸金蛋调用数据库
+function getlotterydetail(){
+
+  var id = '09';
+  var urls = generateUrl(id);
+  var postdata = {
+      "lotteryid":$.session.get("lotteryid"),
+  }; 
+
+  $.ajax({
+        url: urls,
+        type: 'POST',
+        dataType: 'json',
+        data:jQuery.param(postdata, true),// 要提交的数据
+        //error:function(XMLResponse){alert(XMLResponse.responseText)},
+        success:function(data){
+            if(data!=null){   //返回成功   
+              for(var i=0;i<data.length;i++){    
+                $(".hdsign").text(data[0]["title"]);
+                $(".textfont").text(data[0]["describe"]);  
+                //var prize_arr = new Array();
+                //prize_arr[i]= new array('id':data[i]["number"],'prize':data[i]["name"],'v':data[i]["winning"]);
+              }
+              alert($prize_arr);
+            }else{  //没有资讯！
+              openTip('没有奖品！','.personregist_tip','.personregist_windowcover');
+            }
+        }    
+  });
+
+}
+
+
+//砸金蛋控制
+function eggClick(obj){
+
+  clicktimes=1;
+  var _this = obj;
+  _this.find("span").hide();
+
+  $.getJSON("data.php",function(res){
+    /*if(_this.hasClass("curr")){
+      alert("蛋全碎了，别砸了！刷新再来.");
+      return false;
+    }*/
+    //_this.unbind('click');
+    //$(".hammer").css({"top":_this.position().top-55,"left":_this.position().left+185});
+
+
+    $(".hammer").css({"top":_this.position().top-55,"left":_this.position().left});
+    $(".hammer").animate({
+      "top":_this.position().top-25,
+      "left":_this.position().left  //"left":_this.position().left+125
+      },30,function(){
+        _this.addClass("curr"); //蛋碎效果
+
+        _this.find("sup").show(); //金花四溅
+        $(".hammer").hide();
+        $('.resultTip').css({display:'block',top:'550px',left:_this.position().left-15,opacity:0}).animate({top: '120px',opacity:1},300,function(){
+          if(res.msg==1){
+            $("#result").html("恭喜，您中得"+res.prize+"!");
+          }else{
+            $("#result").html("很遗憾,您没能中奖!");
+          }
+        }); 
+      }
+    );
+  });
+}
+
+//提交问卷
+function postlessons(){  
+  var username=$.session.get("username");
+  var questionid=$.session.get("questionid");
+  var questiontype=$.session.get("questiontype");
+  $("#questions").find(".wjlist").bind("myclick",function(){
+    var id = '11';
+    var urls = generateUrl(id);
+    var postdata = {
+        "username":username,
+        "qusnumber":$(this).find("input:radio:checked").attr("name"),
+        "result":$(this).find("input:radio:checked").attr("id"), 
+        "questiontype":questiontype, 
+        "questionid":questionid, 
+    }; 
+    $.ajax({
+          url: urls,
+          type: 'POST',
+          dataType: 'json',
+          data:jQuery.param(postdata, true),// 要提交的数据
+          //error:function(XMLResponse){alert(XMLResponse.responseText)},
+          success:function(data){
+            if(data["a"]=="11001"){   //返回成功   
+              openTip('提交成功！','.personregist_tip','.personregist_windowcover');
+              location.href = "service.html";
+            }else{  //插入失败！
+              openTip('提交问卷失败，请重新提交！','.personregist_tip','.personregist_windowcover');
+            }
+          }
+    });
+
+  }).trigger("myclick");
+}
+
+//获取问卷问题
+function getlessons(){    
+    var id = '12';
+    var urls = generateUrl(id);
+    var postdata = {
+      "questionid":$.session.get("questionid"),
+      "questiontype":"",
+    }; 
+    $.ajax({
+          url: urls,
+          type: 'POST',
+          dataType: 'json',
+          data:jQuery.param(postdata, true),// 要提交的数据
+          //error:function(XMLResponse){alert(XMLResponse.responseText)},
+          success:function(data){
+            if(data!=null){   //返回成功   
+              for(var i=0;i<data.length;i++){  
+                $htmlitem="";
+                if(data[i]["a"]!=""){
+                  $htmlitem=$htmlitem+'<div class="wjitem" ><input type="radio" name='+data[i]["id"]+' id="a" value='+data[i]["a"]+' checked><label>'+data[i]["a"]+'</label></div>';
+                }
+                if(data[i]["b"]!=""){
+                  $htmlitem=$htmlitem+'<div class="wjitem" ><input type="radio" name='+data[i]["id"]+' id="b" value='+data[i]["b"]+'><label>'+data[i]["b"]+'</label></div>';
+                }
+                if(data[i]["c"]!=""){
+                  $htmlitem=$htmlitem+'<div class="wjitem" ><input type="radio" name='+data[i]["id"]+' id="c" value='+data[i]["c"]+'><label>'+data[i]["c"]+'</label></div>';
+                }
+                if(data[i]["d"]!=""){
+                  $htmlitem=$htmlitem+'<div class="wjitem" ><input type="radio" name='+data[i]["id"]+' id="d" value='+data[i]["d"]+'><label>'+data[i]["d"]+'</label></div>';
+                }                                                                
+                $html='<div class="wjlist"><div >'+data[i]["title"]+'：</div>'+$htmlitem+'</div>';           
+                $("#questions").append($html);$(".wenj").text($.session.get("questiontitle"));     
+              }                           
+            }else{  //没有资讯！
+              openTip('没有问卷信息！','.personregist_tip','.personregist_windowcover');
+            }
+          }
+    });
+}
+
+//获取问卷title
+function getquestionlist(questiontype){
+
+  var id = '12';
+  var urls = generateUrl(id);
+  var postdata = {
+      "questionid":"",
+      "questiontype":questiontype,
+  }; 
+
+  $.ajax({
+        url: urls,
+        type: 'POST',
+        dataType: 'json',
+        data:jQuery.param(postdata, true),// 要提交的数据
+        //error:function(XMLResponse){alert(XMLResponse.responseText)},
+        success:function(data){
+            if(data!=null){   //返回成功   
+              for(var i=0;i<data.length;i++){  
+                $html='<div class="lessons" alt='+data[i]["id"]+'><div><span>'+data[i]["title"]+'</span><img src="img/img22.png" height="15"></div></div>';           
+                $("#questionlist").append($html);
+              }
+            }else{  //没有资讯！
+              openTip('没有问卷信息！','.personregist_tip','.personregist_windowcover');
+            }
+        }    
+  });
+}
+
 
 //获取资讯信息
 function getzxlist(){
@@ -278,12 +513,15 @@ function getzxlist(){
 function createorder(){    
     var id = '16';
     var urls = generateUrl(id);
-    var orderid="D"+$.session.get("username")+$.session.get("productid");
+    //var mydate = new Date();
+    //alert(mydate.getTime());
+    //getorderid();  
+    var orderid="D"+$.session.get("username")+$.session.get("zx_productid")+"001";
     var postdata = {
         "username":$.session.get("username"),
         "ordername":"",    
         "orderid":orderid,
-        "productid":$.session.get("productid"),  
+        "productid":$.session.get("zx_productid"),  
     }; 
     $.ajax({
           url: urls,
@@ -302,103 +540,6 @@ function createorder(){
           }
     });
 }
-
-
-//砸金蛋调用数据库
-function getlotterydetail(){
-
-  var id = '09';
-  var urls = generateUrl(id);
-  var postdata = {
-      "lotteryid":$.session.get("lotteryid"),
-  }; 
-
-  $.ajax({
-        url: urls,
-        type: 'POST',
-        dataType: 'json',
-        data:jQuery.param(postdata, true),// 要提交的数据
-        //error:function(XMLResponse){alert(XMLResponse.responseText)},
-        success:function(data){
-            if(data!=null){   //返回成功   
-              for(var i=0;i<data.length;i++){    
-                $(".hdsign").text(data[0]["title"]);
-                $(".textfont").text(data[0]["describe"]);            
-              }
-            }else{  //没有资讯！
-              openTip('没有资讯！','.personregist_tip','.personregist_windowcover');
-            }
-        }    
-  });
-
-}
-
-
-//砸金蛋控制
-function eggClick(obj){
-
-  clicktimes=1;
-  $(this).children("span").hide();
-
-  var _this = obj;
-  $.getJSON("data.php",function(res){
-    if(_this.hasClass("curr")){
-      alert("蛋全碎了，别砸了！刷新再来.");
-      return false;
-    }
-    //_this.unbind('click');
-    //$(".hammer").css({"top":_this.position().top-55,"left":_this.position().left+185});
-    $(".hammer").css({"top":_this.position().top-55,"left":_this.position().left});
-    $(".hammer").animate({
-      "top":_this.position().top-25,
-      "left":_this.position().left  //"left":_this.position().left+125
-      },30,function(){
-        _this.addClass("curr"); //蛋碎效果
-
-        _this.find("sup").show(); //金花四溅
-        $(".hammer").hide();
-        $('.resultTip').css({display:'block',top:'550px',left:_this.position().left-15,opacity:0}).animate({top: '120px',opacity:1},300,function(){
-          if(res.msg==1){
-            $("#result").html("恭喜，您中得"+res.prize+"!");
-          }else{
-            $("#result").html("很遗憾,您没能中奖!");
-          }
-        }); 
-      }
-    );
-  });
-}
-
-
-//
-function getquestionlist(questiontype){
-
-  var id = '12';
-  var urls = generateUrl(id);
-  var postdata = {
-      "questionid":"",
-      "questiontype":questiontype,
-  }; 
-
-  $.ajax({
-        url: urls,
-        type: 'POST',
-        dataType: 'json',
-        data:jQuery.param(postdata, true),// 要提交的数据
-        //error:function(XMLResponse){alert(XMLResponse.responseText)},
-        success:function(data){
-            if(data!=null){   //返回成功   
-              for(var i=0;i<data.length;i++){  
-                $html='<div class="lessons" ><a href="service_lesson.html"><span>'+data[i]["title"]+'</span><img src="img/img22.png" height="15"></a></div>';           
-                $("#questionlist").append($html);
-              }
-            }else{  //没有资讯！
-              openTip('没有资讯！','.personregist_tip','.personregist_windowcover');
-            }
-        }    
-  });
-}
-
 
 //侧边栏应用
 function leftdiv(){
@@ -487,5 +628,19 @@ function leftdiv(){
       }else{
         openTip('没有登录，不需要退出！','.personregist_tip','.personregist_windowcover');
       }
-    });      
+    });  
+
+    $("#showleft").click(function(event) {
+    /* Act on the event */
+      $(".cbbody").toggleClass('leftin');
+      $(".bgdiv").toggleClass('leftin');
+      $("body").toggleClass('bodydiv');
+    });
+
+    $(".cbbody,.bgdiv").click(function(event) {
+      /* Act on the event */
+      $(".cbbody").toggleClass('leftin');
+      $(".bgdiv").toggleClass('leftin');
+      $("body").toggleClass('bodydiv');
+    });    
 }
